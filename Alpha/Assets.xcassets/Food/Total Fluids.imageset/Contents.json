@@ -1,0 +1,36 @@
+{
+  "images" : [
+    {
+      "filename" : "total drank.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "total drank2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "total drank-1.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "total drank2x-1.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

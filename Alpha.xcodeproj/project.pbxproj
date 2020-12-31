@@ -1,0 +1,855 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6805DB522517AD4D00976CCA /* WalkthroughBodyTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6805DB512517AD4D00976CCA /* WalkthroughBodyTypeController.swift */; };
+		6838A0CD250CF64300C75D8E /* PreferredUnitsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838A0CC250CF64300C75D8E /* PreferredUnitsAPI.swift */; };
+		6838A0CF250CFAE000C75D8E /* PreferredUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6838A0CE250CFAE000C75D8E /* PreferredUnits.swift */; };
+		683BA36E25946283004645D4 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA36D25946283004645D4 /* Nutrition.swift */; };
+		683BA3842594750C004645D4 /* ActivityDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA3832594750C004645D4 /* ActivityDataView.swift */; };
+		683BA3D725964580004645D4 /* NutritionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA3D625964580004645D4 /* NutritionAPI.swift */; };
+		683BA3DA2596460A004645D4 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA3D92596460A004645D4 /* Food.swift */; };
+		683BA3ED2597943F004645D4 /* HydrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA3EC2597943F004645D4 /* HydrationView.swift */; };
+		683BA40225992865004645D4 /* ActivityLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA40125992864004645D4 /* ActivityLogView.swift */; };
+		683BA40525993508004645D4 /* ActivityLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA40425993508004645D4 /* ActivityLogViewModel.swift */; };
+		683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2304255CD6F900D601E1 /* UserTarget.swift */; };
+		683D232C255F5BAE00D601E1 /* MacrosTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */; };
+		683D239B256204C800D601E1 /* UserTargetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D239A256204C800D601E1 /* UserTargetAPI.swift */; };
+		683D241F2568D02B00D601E1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D241E2568D02B00D601E1 /* Activity.swift */; };
+		683D24222568D0F900D601E1 /* FitnessActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D24212568D0F900D601E1 /* FitnessActivity.swift */; };
+		683D2577256DC7EA00D601E1 /* NutritionActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2576256DC7EA00D601E1 /* NutritionActivity.swift */; };
+		683D257A256DCB2100D601E1 /* HydrationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2579256DCB2100D601E1 /* HydrationActivity.swift */; };
+		683D257D256DCEA300D601E1 /* SleepActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D257C256DCEA300D601E1 /* SleepActivity.swift */; };
+		683D2580256DCEDA00D601E1 /* MindfulnessActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D257F256DCEDA00D601E1 /* MindfulnessActivity.swift */; };
+		683D2583256DF1A000D601E1 /* FitnessLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2582256DF1A000D601E1 /* FitnessLog.swift */; };
+		683D25AA256DFBC900D601E1 /* ActivityLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D25A9256DFBC900D601E1 /* ActivityLog.swift */; };
+		683D25C1256DFCC400D601E1 /* NutritionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D25C0256DFCC400D601E1 /* NutritionLog.swift */; };
+		683D25D9256DFE3F00D601E1 /* SleepLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D25D8256DFE3F00D601E1 /* SleepLog.swift */; };
+		683D25DC256DFE5F00D601E1 /* MindfulnessLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D25DB256DFE5F00D601E1 /* MindfulnessLog.swift */; };
+		683D295D250E2EBC006B3DE7 /* BodyMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D295C250E2EBC006B3DE7 /* BodyMeasurement.swift */; };
+		685BAF132581D05F0029CFDE /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF122581D05F0029CFDE /* ActivityController.swift */; };
+		685BAF162581D0880029CFDE /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF152581D0880029CFDE /* ActivityViewModel.swift */; };
+		685BAF6D2583024B0029CFDE /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF6C2583024B0029CFDE /* ActivityView.swift */; };
+		685BAF90258468B60029CFDE /* TargetActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */; };
+		685BAF9325846B590029CFDE /* TargetActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF9225846B590029CFDE /* TargetActivityView.swift */; };
+		685BAFEB258C30A60029CFDE /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 685BAFEA258C30A60029CFDE /* Activity.storyboard */; };
+		685BAFEE258C36E90029CFDE /* HydrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAFED258C36E90029CFDE /* HydrationController.swift */; };
+		685BAFF1258C38500029CFDE /* HydrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAFF0258C38500029CFDE /* HydrationViewModel.swift */; };
+		686C354E24E4087A00B2D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C354D24E4087A00B2D2D6 /* AppDelegate.swift */; };
+		686C355024E4087A00B2D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C354F24E4087A00B2D2D6 /* SceneDelegate.swift */; };
+		686C355724E4087B00B2D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686C355624E4087B00B2D2D6 /* Assets.xcassets */; };
+		686C355A24E4087B00B2D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686C355824E4087B00B2D2D6 /* LaunchScreen.storyboard */; };
+		686C356524E4151C00B2D2D6 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C356424E4151C00B2D2D6 /* MainController.swift */; };
+		686C356724E6208600B2D2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686C355324E4087A00B2D2D6 /* Main.storyboard */; };
+		6883EAE82516F1810011C91F /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6883EAE72516F1800011C91F /* Walkthrough.storyboard */; };
+		6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */; };
+		6883EB062516F2FB0011C91F /* WalkthroughFinaleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6883EB052516F2FB0011C91F /* WalkthroughFinaleController.swift */; };
+		6883EB1B2516F3160011C91F /* WalkthroughBioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6883EB1A2516F3160011C91F /* WalkthroughBioController.swift */; };
+		6886A30F25100C4E002A3A84 /* BodyMeasurementAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6886A30E25100C4E002A3A84 /* BodyMeasurementAPI.swift */; };
+		6886A31125101A7F002A3A84 /* BodyMeasurementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6886A31025101A7F002A3A84 /* BodyMeasurementController.swift */; };
+		6886BD18251199F700F29BEF /* DarkModeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6886BD17251199F700F29BEF /* DarkModeSettingsView.swift */; };
+		6886BD1A2511A8CB00F29BEF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6886BD192511A8CB00F29BEF /* Settings.storyboard */; };
+		68878E0B250CDB8400ACA5EC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878E0A250CDB8400ACA5EC /* Global.swift */; };
+		68878E0D250CEC6D00ACA5EC /* PreferredUnitsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878E0C250CEC6D00ACA5EC /* PreferredUnitsController.swift */; };
+		6887CA2F254A3A7B00CB617C /* TargetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887CA2E254A3A7B00CB617C /* TargetsController.swift */; };
+		6887CA32254D89A000CB617C /* BodyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887CA31254D89A000CB617C /* BodyGoalView.swift */; };
+		6887CA37254DA26C00CB617C /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887CA36254DA26C00CB617C /* TargetView.swift */; };
+		689BDFBB257733B10029DE3D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689BDFBA257733B10029DE3D /* HealthKit.framework */; };
+		689BE02B257846810029DE3D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689BE02A257846810029DE3D /* Charts.framework */; };
+		689BE040257846D90029DE3D /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */; };
+		689BE05425786AB20029DE3D /* HealthKitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE05325786AB20029DE3D /* HealthKitAPI.swift */; };
+		68AAA70D251599A100972664 /* TeamColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAA70C251599A100972664 /* TeamColorController.swift */; };
+		68BEE5EE24EBF98C00250310 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEE5ED24EBF98C00250310 /* HomeController.swift */; };
+		68BEE5F224EC273E00250310 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BEE5F124EC273E00250310 /* SideMenu.storyboard */; };
+		68BEE5F424EC434400250310 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEE5F324EC434400250310 /* LoginController.swift */; };
+		68BEE5F624EC442200250310 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEE5F524EC442200250310 /* SignUpController.swift */; };
+		68BEE5FA24EC482400250310 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68BEE5F924EC482400250310 /* GoogleService-Info.plist */; };
+		68CA587124EC9DEC0038BCE2 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68CA587024EC9DEC0038BCE2 /* Start.storyboard */; };
+		68CA587424ED53950038BCE2 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA587324ED53950038BCE2 /* SettingsController.swift */; };
+		68CA587624ED798E0038BCE2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA587524ED798E0038BCE2 /* AuthService.swift */; };
+		68CA587924ED841F0038BCE2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA587824ED841F0038BCE2 /* Config.swift */; };
+		68CA587B24EEACA20038BCE2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA587A24EEACA20038BCE2 /* API.swift */; };
+		68CA587E24EEACDE0038BCE2 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA587D24EEACDE0038BCE2 /* UserAPI.swift */; };
+		68CA588024EEAD940038BCE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA587F24EEAD940038BCE2 /* User.swift */; };
+		68CA588324EEB27E0038BCE2 /* BioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA588224EEB27E0038BCE2 /* BioController.swift */; };
+		68CA588524EFDE740038BCE2 /* BioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA588424EFDE740038BCE2 /* BioAPI.swift */; };
+		68CA588724EFDF520038BCE2 /* Bio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA588624EFDF520038BCE2 /* Bio.swift */; };
+		68CE31402518C7B5007855EF /* WalkthroughActivityLevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CE313F2518C7B5007855EF /* WalkthroughActivityLevelController.swift */; };
+		68DADB8A24E6A6AB00366A97 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DADB8924E6A6AB00366A97 /* SideMenuController.swift */; };
+		68DDD289251AD5F5002387ED /* WalkthroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DDD288251AD5F5002387ED /* WalkthroughController.swift */; };
+		68DDD28C251AE8B6002387ED /* BioLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DDD28B251AE8B6002387ED /* BioLibrary.swift */; };
+		68DDD28F251B72EA002387ED /* WalkthroughUnitsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DDD28E251B72EA002387ED /* WalkthroughUnitsController.swift */; };
+		68DDD292251B7787002387ED /* WalkthroughTeamColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DDD291251B7787002387ED /* WalkthroughTeamColorController.swift */; };
+		68E049F8257463F200D68862 /* ActivityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E049F7257463F200D68862 /* ActivityAPI.swift */; };
+		A26B60DAFE57764997AD21B3 /* Pods_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E888ED676A806F0CDA8EF58A /* Pods_Alpha.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		49C7CE3B319924460AD809C4 /* Pods-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpha.debug.xcconfig"; path = "Target Support Files/Pods-Alpha/Pods-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
+		6805DB512517AD4D00976CCA /* WalkthroughBodyTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughBodyTypeController.swift; sourceTree = "<group>"; };
+		6838A0CC250CF64300C75D8E /* PreferredUnitsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnitsAPI.swift; sourceTree = "<group>"; };
+		6838A0CE250CFAE000C75D8E /* PreferredUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnits.swift; sourceTree = "<group>"; };
+		683BA36D25946283004645D4 /* Nutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
+		683BA3832594750C004645D4 /* ActivityDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDataView.swift; sourceTree = "<group>"; };
+		683BA3D625964580004645D4 /* NutritionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionAPI.swift; sourceTree = "<group>"; };
+		683BA3D92596460A004645D4 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		683BA3EC2597943F004645D4 /* HydrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationView.swift; sourceTree = "<group>"; };
+		683BA40125992864004645D4 /* ActivityLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogView.swift; sourceTree = "<group>"; };
+		683BA40425993508004645D4 /* ActivityLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogViewModel.swift; sourceTree = "<group>"; };
+		683D2304255CD6F900D601E1 /* UserTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTarget.swift; sourceTree = "<group>"; };
+		683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTargetView.swift; sourceTree = "<group>"; };
+		683D239A256204C800D601E1 /* UserTargetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTargetAPI.swift; sourceTree = "<group>"; };
+		683D241E2568D02B00D601E1 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		683D24212568D0F900D601E1 /* FitnessActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessActivity.swift; sourceTree = "<group>"; };
+		683D2576256DC7EA00D601E1 /* NutritionActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionActivity.swift; sourceTree = "<group>"; };
+		683D2579256DCB2100D601E1 /* HydrationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationActivity.swift; sourceTree = "<group>"; };
+		683D257C256DCEA300D601E1 /* SleepActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepActivity.swift; sourceTree = "<group>"; };
+		683D257F256DCEDA00D601E1 /* MindfulnessActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessActivity.swift; sourceTree = "<group>"; };
+		683D2582256DF1A000D601E1 /* FitnessLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessLog.swift; sourceTree = "<group>"; };
+		683D25A9256DFBC900D601E1 /* ActivityLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLog.swift; sourceTree = "<group>"; };
+		683D25C0256DFCC400D601E1 /* NutritionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionLog.swift; sourceTree = "<group>"; };
+		683D25D8256DFE3F00D601E1 /* SleepLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepLog.swift; sourceTree = "<group>"; };
+		683D25DB256DFE5F00D601E1 /* MindfulnessLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindfulnessLog.swift; sourceTree = "<group>"; };
+		683D295C250E2EBC006B3DE7 /* BodyMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurement.swift; sourceTree = "<group>"; };
+		685BAF122581D05F0029CFDE /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		685BAF152581D0880029CFDE /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewModel.swift; path = "Alpha/View Models/ActivityViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		685BAF6C2583024B0029CFDE /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetActivityViewModel.swift; sourceTree = "<group>"; };
+		685BAF9225846B590029CFDE /* TargetActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetActivityView.swift; sourceTree = "<group>"; };
+		685BAFEA258C30A60029CFDE /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
+		685BAFED258C36E90029CFDE /* HydrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationController.swift; sourceTree = "<group>"; };
+		685BAFF0258C38500029CFDE /* HydrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewModel.swift; sourceTree = "<group>"; };
+		686C354A24E4087A00B2D2D6 /* Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		686C354D24E4087A00B2D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		686C354F24E4087A00B2D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		686C355424E4087A00B2D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		686C355624E4087B00B2D2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		686C355924E4087B00B2D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		686C355B24E4087B00B2D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		686C356424E4151C00B2D2D6 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		6883EAE72516F1800011C91F /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughIntroController.swift; sourceTree = "<group>"; };
+		6883EB052516F2FB0011C91F /* WalkthroughFinaleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFinaleController.swift; sourceTree = "<group>"; };
+		6883EB1A2516F3160011C91F /* WalkthroughBioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughBioController.swift; sourceTree = "<group>"; };
+		6886A30E25100C4E002A3A84 /* BodyMeasurementAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementAPI.swift; sourceTree = "<group>"; };
+		6886A31025101A7F002A3A84 /* BodyMeasurementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementController.swift; sourceTree = "<group>"; };
+		6886BD17251199F700F29BEF /* DarkModeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSettingsView.swift; sourceTree = "<group>"; };
+		6886BD192511A8CB00F29BEF /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		68878E0A250CDB8400ACA5EC /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		68878E0C250CEC6D00ACA5EC /* PreferredUnitsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferredUnitsController.swift; path = Alpha/Controllers/Settings/PreferredUnitsController.swift; sourceTree = SOURCE_ROOT; };
+		6887CA2E254A3A7B00CB617C /* TargetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsController.swift; sourceTree = "<group>"; };
+		6887CA31254D89A000CB617C /* BodyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyGoalView.swift; sourceTree = "<group>"; };
+		6887CA36254DA26C00CB617C /* TargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
+		689BDFB9257733B10029DE3D /* Alpha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alpha.entitlements; sourceTree = "<group>"; };
+		689BDFBA257733B10029DE3D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		689BE02A257846810029DE3D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
+		689BE05325786AB20029DE3D /* HealthKitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAPI.swift; sourceTree = "<group>"; };
+		68AAA70C251599A100972664 /* TeamColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamColorController.swift; sourceTree = "<group>"; };
+		68BEE5ED24EBF98C00250310 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		68BEE5F124EC273E00250310 /* SideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
+		68BEE5F324EC434400250310 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		68BEE5F524EC442200250310 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		68BEE5F924EC482400250310 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		68CA587024EC9DEC0038BCE2 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		68CA587324ED53950038BCE2 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		68CA587524ED798E0038BCE2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		68CA587824ED841F0038BCE2 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		68CA587A24EEACA20038BCE2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		68CA587D24EEACDE0038BCE2 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		68CA587F24EEAD940038BCE2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		68CA588224EEB27E0038BCE2 /* BioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioController.swift; sourceTree = "<group>"; };
+		68CA588424EFDE740038BCE2 /* BioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAPI.swift; sourceTree = "<group>"; };
+		68CA588624EFDF520038BCE2 /* Bio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bio.swift; sourceTree = "<group>"; };
+		68CE313F2518C7B5007855EF /* WalkthroughActivityLevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughActivityLevelController.swift; sourceTree = "<group>"; };
+		68DADB8924E6A6AB00366A97 /* SideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
+		68DDD288251AD5F5002387ED /* WalkthroughController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughController.swift; sourceTree = "<group>"; };
+		68DDD28B251AE8B6002387ED /* BioLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioLibrary.swift; sourceTree = "<group>"; };
+		68DDD28E251B72EA002387ED /* WalkthroughUnitsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughUnitsController.swift; sourceTree = "<group>"; };
+		68DDD291251B7787002387ED /* WalkthroughTeamColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughTeamColorController.swift; sourceTree = "<group>"; };
+		68E049F7257463F200D68862 /* ActivityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAPI.swift; sourceTree = "<group>"; };
+		A1C8677D1A62260CF69FC0EB /* Pods-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpha.release.xcconfig"; path = "Target Support Files/Pods-Alpha/Pods-Alpha.release.xcconfig"; sourceTree = "<group>"; };
+		E888ED676A806F0CDA8EF58A /* Pods_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		686C354724E4087A00B2D2D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				689BE02B257846810029DE3D /* Charts.framework in Frameworks */,
+				A26B60DAFE57764997AD21B3 /* Pods_Alpha.framework in Frameworks */,
+				689BDFBB257733B10029DE3D /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		637ACCF547B5B77FC3880654 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49C7CE3B319924460AD809C4 /* Pods-Alpha.debug.xcconfig */,
+				A1C8677D1A62260CF69FC0EB /* Pods-Alpha.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6822375B24E9419A007CAD9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				68839D29256EA8CE00303A4B /* Activity */,
+				6887CA34254D89A700CB617C /* Targets */,
+				6886BD17251199F700F29BEF /* DarkModeSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		683D25BE256DFCA700D601E1 /* Activity Log */ = {
+			isa = PBXGroup;
+			children = (
+				683D25A9256DFBC900D601E1 /* ActivityLog.swift */,
+				683D2582256DF1A000D601E1 /* FitnessLog.swift */,
+				683D25C0256DFCC400D601E1 /* NutritionLog.swift */,
+				683D25D8256DFE3F00D601E1 /* SleepLog.swift */,
+				683D25DB256DFE5F00D601E1 /* MindfulnessLog.swift */,
+			);
+			path = "Activity Log";
+			sourceTree = "<group>";
+		};
+		683D25DE256DFF1900D601E1 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				683D241E2568D02B00D601E1 /* Activity.swift */,
+				683D2576256DC7EA00D601E1 /* NutritionActivity.swift */,
+				683D2579256DCB2100D601E1 /* HydrationActivity.swift */,
+				683D257C256DCEA300D601E1 /* SleepActivity.swift */,
+				683D257F256DCEDA00D601E1 /* MindfulnessActivity.swift */,
+				683D24212568D0F900D601E1 /* FitnessActivity.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		685BAF182581D09D0029CFDE /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				683BA40425993508004645D4 /* ActivityLogViewModel.swift */,
+				685BAFF0258C38500029CFDE /* HydrationViewModel.swift */,
+				685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */,
+				685BAF152581D0880029CFDE /* ActivityViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		686C354124E4087A00B2D2D6 = {
+			isa = PBXGroup;
+			children = (
+				686C354C24E4087A00B2D2D6 /* Alpha */,
+				686C354B24E4087A00B2D2D6 /* Products */,
+				637ACCF547B5B77FC3880654 /* Pods */,
+				D40D713327FAFEB093F5F47A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		686C354B24E4087A00B2D2D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				686C354A24E4087A00B2D2D6 /* Alpha.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		686C354C24E4087A00B2D2D6 /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				685BAF182581D09D0029CFDE /* View Models */,
+				689BDFB9257733B10029DE3D /* Alpha.entitlements */,
+				68CA588124EEAD990038BCE2 /* Models */,
+				68CA587C24EEACA90038BCE2 /* API */,
+				68CA587724ED799C0038BCE2 /* Services */,
+				68BEE5EA24EA866500250310 /* Supporting Files */,
+				6822375B24E9419A007CAD9A /* Views */,
+				686C356224E40A1000B2D2D6 /* Delegates */,
+				686C356324E40A1800B2D2D6 /* Controllers */,
+				686C356124E408A400B2D2D6 /* Storyboards */,
+				686C355624E4087B00B2D2D6 /* Assets.xcassets */,
+				686C355B24E4087B00B2D2D6 /* Info.plist */,
+				68BEE5F924EC482400250310 /* GoogleService-Info.plist */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
+		686C356124E408A400B2D2D6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				685BAFEA258C30A60029CFDE /* Activity.storyboard */,
+				683BA40125992864004645D4 /* ActivityLogView.swift */,
+				6886BD192511A8CB00F29BEF /* Settings.storyboard */,
+				686C355324E4087A00B2D2D6 /* Main.storyboard */,
+				68CA587024EC9DEC0038BCE2 /* Start.storyboard */,
+				6883EAE72516F1800011C91F /* Walkthrough.storyboard */,
+				68BEE5F124EC273E00250310 /* SideMenu.storyboard */,
+				686C355824E4087B00B2D2D6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		686C356224E40A1000B2D2D6 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				686C354D24E4087A00B2D2D6 /* AppDelegate.swift */,
+				686C354F24E4087A00B2D2D6 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		686C356324E40A1800B2D2D6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				689BE206257DB1910029DE3D /* Activity */,
+				6883EAEE2516F25B0011C91F /* Walkthrough */,
+				6886A31225101F96002A3A84 /* Settings */,
+				68CA587224ED535D0038BCE2 /* Sign In */,
+				68BEE5ED24EBF98C00250310 /* HomeController.swift */,
+				68DADB8924E6A6AB00366A97 /* SideMenuController.swift */,
+				686C356424E4151C00B2D2D6 /* MainController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		68839D29256EA8CE00303A4B /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				683BA3EC2597943F004645D4 /* HydrationView.swift */,
+				683BA3832594750C004645D4 /* ActivityDataView.swift */,
+				685BAF9225846B590029CFDE /* TargetActivityView.swift */,
+				685BAF6C2583024B0029CFDE /* ActivityView.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		6883EAEE2516F25B0011C91F /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				68DDD291251B7787002387ED /* WalkthroughTeamColorController.swift */,
+				68DDD28E251B72EA002387ED /* WalkthroughUnitsController.swift */,
+				6805DB512517AD4D00976CCA /* WalkthroughBodyTypeController.swift */,
+				68CE313F2518C7B5007855EF /* WalkthroughActivityLevelController.swift */,
+				6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */,
+				68DDD288251AD5F5002387ED /* WalkthroughController.swift */,
+				6883EB052516F2FB0011C91F /* WalkthroughFinaleController.swift */,
+				6883EB1A2516F3160011C91F /* WalkthroughBioController.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		6886A31225101F96002A3A84 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				68AAA70C251599A100972664 /* TeamColorController.swift */,
+				6886A31025101A7F002A3A84 /* BodyMeasurementController.swift */,
+				68878E0C250CEC6D00ACA5EC /* PreferredUnitsController.swift */,
+				68CA587324ED53950038BCE2 /* SettingsController.swift */,
+				68CA588224EEB27E0038BCE2 /* BioController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6887CA34254D89A700CB617C /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */,
+				6887CA31254D89A000CB617C /* BodyGoalView.swift */,
+				6887CA36254DA26C00CB617C /* TargetView.swift */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		689BE206257DB1910029DE3D /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				685BAFED258C36E90029CFDE /* HydrationController.swift */,
+				685BAF122581D05F0029CFDE /* ActivityController.swift */,
+				6887CA2E254A3A7B00CB617C /* TargetsController.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		68BEE5EA24EA866500250310 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */,
+				68878E0A250CDB8400ACA5EC /* Global.swift */,
+				68DDD28B251AE8B6002387ED /* BioLibrary.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68CA587224ED535D0038BCE2 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				68BEE5F324EC434400250310 /* LoginController.swift */,
+				68BEE5F524EC442200250310 /* SignUpController.swift */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
+		68CA587724ED799C0038BCE2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				68CA587524ED798E0038BCE2 /* AuthService.swift */,
+				68CA587824ED841F0038BCE2 /* Config.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		68CA587C24EEACA90038BCE2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				689BE05325786AB20029DE3D /* HealthKitAPI.swift */,
+				68E049F7257463F200D68862 /* ActivityAPI.swift */,
+				683BA3D625964580004645D4 /* NutritionAPI.swift */,
+				683D239A256204C800D601E1 /* UserTargetAPI.swift */,
+				68CA587A24EEACA20038BCE2 /* API.swift */,
+				68CA587D24EEACDE0038BCE2 /* UserAPI.swift */,
+				6838A0CC250CF64300C75D8E /* PreferredUnitsAPI.swift */,
+				68CA588424EFDE740038BCE2 /* BioAPI.swift */,
+				6886A30E25100C4E002A3A84 /* BodyMeasurementAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		68CA588124EEAD990038BCE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				683BA3D92596460A004645D4 /* Food.swift */,
+				683D25BE256DFCA700D601E1 /* Activity Log */,
+				683D25DE256DFF1900D601E1 /* Activity */,
+				683D2304255CD6F900D601E1 /* UserTarget.swift */,
+				683BA36D25946283004645D4 /* Nutrition.swift */,
+				683D295C250E2EBC006B3DE7 /* BodyMeasurement.swift */,
+				6838A0CE250CFAE000C75D8E /* PreferredUnits.swift */,
+				68CA588624EFDF520038BCE2 /* Bio.swift */,
+				68CA587F24EEAD940038BCE2 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D40D713327FAFEB093F5F47A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				689BE02A257846810029DE3D /* Charts.framework */,
+				689BDFBA257733B10029DE3D /* HealthKit.framework */,
+				E888ED676A806F0CDA8EF58A /* Pods_Alpha.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		686C354924E4087A00B2D2D6 /* Alpha */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 686C355E24E4087B00B2D2D6 /* Build configuration list for PBXNativeTarget "Alpha" */;
+			buildPhases = (
+				42D23F3332A369AC34CB11CC /* [CP] Check Pods Manifest.lock */,
+				686C354624E4087A00B2D2D6 /* Sources */,
+				686C354724E4087A00B2D2D6 /* Frameworks */,
+				686C354824E4087A00B2D2D6 /* Resources */,
+				E3FE8980AF0F84A08D23FFC2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Alpha;
+			productName = Alpha;
+			productReference = 686C354A24E4087A00B2D2D6 /* Alpha.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		686C354224E4087A00B2D2D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = "Garrett Head";
+				TargetAttributes = {
+					686C354924E4087A00B2D2D6 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 686C354524E4087A00B2D2D6 /* Build configuration list for PBXProject "Alpha" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 686C354124E4087A00B2D2D6;
+			productRefGroup = 686C354B24E4087A00B2D2D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				686C354924E4087A00B2D2D6 /* Alpha */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		686C354824E4087A00B2D2D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BEE5FA24EC482400250310 /* GoogleService-Info.plist in Resources */,
+				685BAFEB258C30A60029CFDE /* Activity.storyboard in Resources */,
+				68BEE5F224EC273E00250310 /* SideMenu.storyboard in Resources */,
+				686C356724E6208600B2D2D6 /* Main.storyboard in Resources */,
+				686C355A24E4087B00B2D2D6 /* LaunchScreen.storyboard in Resources */,
+				686C355724E4087B00B2D2D6 /* Assets.xcassets in Resources */,
+				6883EAE82516F1810011C91F /* Walkthrough.storyboard in Resources */,
+				68CA587124EC9DEC0038BCE2 /* Start.storyboard in Resources */,
+				6886BD1A2511A8CB00F29BEF /* Settings.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42D23F3332A369AC34CB11CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Alpha-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3FE8980AF0F84A08D23FFC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alpha/Pods-Alpha-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alpha/Pods-Alpha-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alpha/Pods-Alpha-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		686C354624E4087A00B2D2D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68CA588024EEAD940038BCE2 /* User.swift in Sources */,
+				68CA587B24EEACA20038BCE2 /* API.swift in Sources */,
+				685BAF9325846B590029CFDE /* TargetActivityView.swift in Sources */,
+				683D257D256DCEA300D601E1 /* SleepActivity.swift in Sources */,
+				6886A31125101A7F002A3A84 /* BodyMeasurementController.swift in Sources */,
+				68CA587424ED53950038BCE2 /* SettingsController.swift in Sources */,
+				6805DB522517AD4D00976CCA /* WalkthroughBodyTypeController.swift in Sources */,
+				683D25DC256DFE5F00D601E1 /* MindfulnessLog.swift in Sources */,
+				68DADB8A24E6A6AB00366A97 /* SideMenuController.swift in Sources */,
+				68CA588524EFDE740038BCE2 /* BioAPI.swift in Sources */,
+				683D2580256DCEDA00D601E1 /* MindfulnessActivity.swift in Sources */,
+				683BA3DA2596460A004645D4 /* Food.swift in Sources */,
+				6887CA2F254A3A7B00CB617C /* TargetsController.swift in Sources */,
+				685BAFF1258C38500029CFDE /* HydrationViewModel.swift in Sources */,
+				685BAFEE258C36E90029CFDE /* HydrationController.swift in Sources */,
+				68BEE5F424EC434400250310 /* LoginController.swift in Sources */,
+				683D25C1256DFCC400D601E1 /* NutritionLog.swift in Sources */,
+				683D295D250E2EBC006B3DE7 /* BodyMeasurement.swift in Sources */,
+				685BAF162581D0880029CFDE /* ActivityViewModel.swift in Sources */,
+				68CA587624ED798E0038BCE2 /* AuthService.swift in Sources */,
+				683BA3842594750C004645D4 /* ActivityDataView.swift in Sources */,
+				68CA588324EEB27E0038BCE2 /* BioController.swift in Sources */,
+				68DDD289251AD5F5002387ED /* WalkthroughController.swift in Sources */,
+				683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */,
+				68CA587E24EEACDE0038BCE2 /* UserAPI.swift in Sources */,
+				68BEE5F624EC442200250310 /* SignUpController.swift in Sources */,
+				68AAA70D251599A100972664 /* TeamColorController.swift in Sources */,
+				689BE05425786AB20029DE3D /* HealthKitAPI.swift in Sources */,
+				689BE040257846D90029DE3D /* HealthKitSetupAssistant.swift in Sources */,
+				686C356524E4151C00B2D2D6 /* MainController.swift in Sources */,
+				6887CA32254D89A000CB617C /* BodyGoalView.swift in Sources */,
+				6838A0CD250CF64300C75D8E /* PreferredUnitsAPI.swift in Sources */,
+				685BAF132581D05F0029CFDE /* ActivityController.swift in Sources */,
+				686C354E24E4087A00B2D2D6 /* AppDelegate.swift in Sources */,
+				68CA587924ED841F0038BCE2 /* Config.swift in Sources */,
+				6886BD18251199F700F29BEF /* DarkModeSettingsView.swift in Sources */,
+				68DDD28F251B72EA002387ED /* WalkthroughUnitsController.swift in Sources */,
+				68BEE5EE24EBF98C00250310 /* HomeController.swift in Sources */,
+				6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */,
+				683D2577256DC7EA00D601E1 /* NutritionActivity.swift in Sources */,
+				683BA3D725964580004645D4 /* NutritionAPI.swift in Sources */,
+				68DDD292251B7787002387ED /* WalkthroughTeamColorController.swift in Sources */,
+				68CA588724EFDF520038BCE2 /* Bio.swift in Sources */,
+				68E049F8257463F200D68862 /* ActivityAPI.swift in Sources */,
+				683D232C255F5BAE00D601E1 /* MacrosTargetView.swift in Sources */,
+				683D241F2568D02B00D601E1 /* Activity.swift in Sources */,
+				683BA36E25946283004645D4 /* Nutrition.swift in Sources */,
+				683D24222568D0F900D601E1 /* FitnessActivity.swift in Sources */,
+				6883EB062516F2FB0011C91F /* WalkthroughFinaleController.swift in Sources */,
+				686C355024E4087A00B2D2D6 /* SceneDelegate.swift in Sources */,
+				6887CA37254DA26C00CB617C /* TargetView.swift in Sources */,
+				683BA3ED2597943F004645D4 /* HydrationView.swift in Sources */,
+				683BA40525993508004645D4 /* ActivityLogViewModel.swift in Sources */,
+				6883EB1B2516F3160011C91F /* WalkthroughBioController.swift in Sources */,
+				683D25D9256DFE3F00D601E1 /* SleepLog.swift in Sources */,
+				683D257A256DCB2100D601E1 /* HydrationActivity.swift in Sources */,
+				6838A0CF250CFAE000C75D8E /* PreferredUnits.swift in Sources */,
+				68878E0B250CDB8400ACA5EC /* Global.swift in Sources */,
+				683D2583256DF1A000D601E1 /* FitnessLog.swift in Sources */,
+				68DDD28C251AE8B6002387ED /* BioLibrary.swift in Sources */,
+				68CE31402518C7B5007855EF /* WalkthroughActivityLevelController.swift in Sources */,
+				685BAF90258468B60029CFDE /* TargetActivityViewModel.swift in Sources */,
+				683D25AA256DFBC900D601E1 /* ActivityLog.swift in Sources */,
+				685BAF6D2583024B0029CFDE /* ActivityView.swift in Sources */,
+				683BA40225992865004645D4 /* ActivityLogView.swift in Sources */,
+				68878E0D250CEC6D00ACA5EC /* PreferredUnitsController.swift in Sources */,
+				683D239B256204C800D601E1 /* UserTargetAPI.swift in Sources */,
+				6886A30F25100C4E002A3A84 /* BodyMeasurementAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		686C355324E4087A00B2D2D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				686C355424E4087A00B2D2D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		686C355824E4087B00B2D2D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				686C355924E4087B00B2D2D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		686C355C24E4087B00B2D2D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		686C355D24E4087B00B2D2D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		686C355F24E4087B00B2D2D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49C7CE3B319924460AD809C4 /* Pods-Alpha.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Alpha/Alpha.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WVLJ6K5F9U;
+				INFOPLIST_FILE = Alpha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xc.com.Alpha.Alpha;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		686C356024E4087B00B2D2D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1C8677D1A62260CF69FC0EB /* Pods-Alpha.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Alpha/Alpha.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WVLJ6K5F9U;
+				INFOPLIST_FILE = Alpha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xc.com.Alpha.Alpha;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		686C354524E4087A00B2D2D6 /* Build configuration list for PBXProject "Alpha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				686C355C24E4087B00B2D2D6 /* Debug */,
+				686C355D24E4087B00B2D2D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		686C355E24E4087B00B2D2D6 /* Build configuration list for PBXNativeTarget "Alpha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				686C355F24E4087B00B2D2D6 /* Debug */,
+				686C356024E4087B00B2D2D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 686C354224E4087A00B2D2D6 /* Project object */;
+}

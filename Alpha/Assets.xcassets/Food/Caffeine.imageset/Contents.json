@@ -1,0 +1,38 @@
+{
+  "images" : [
+    {
+      "filename" : "icons8-java-bean-24.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-java-bean-48.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-java-bean-96.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "icons8-java-bean-25.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-java-bean-49.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-java-bean-97.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

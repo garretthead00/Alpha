@@ -1,0 +1,41 @@
+{
+  "images" : [
+    {
+      "filename" : "icons8-tea-24.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-tea-48-3.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-tea-96-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "icons8-tea-25.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-tea-48-4.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-tea-96-3.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
+  }
+}

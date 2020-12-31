@@ -1,0 +1,41 @@
+{
+  "images" : [
+    {
+      "filename" : "icons8-cup-24.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-cup-48.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-cup-96-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "icons8-cup-25.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-cup-49.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-cup-96-3.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
+  }
+}

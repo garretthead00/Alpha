@@ -1,0 +1,38 @@
+{
+  "images" : [
+    {
+      "filename" : "icons8-sugar-cubes-24.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-sugar-cubes-48.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-sugar-cubes-96.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "icons8-sugar-cubes-25.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icons8-sugar-cubes-49.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icons8-sugar-cubes-97.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
