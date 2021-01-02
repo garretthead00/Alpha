@@ -7,12 +7,12 @@
 //
 
 import Foundation
-
 import FirebaseDatabase
 import FirebaseAuth
 
 class ActivityAPI {
     var ACTIVITYLOGS_DB_REF = Database.database().reference().child("activityLogs")
+    
     
     
     func observeActivityLogs(forActivity activity: String, completion: @escaping([ActivityLog]) -> Void) {
@@ -117,7 +117,7 @@ class ActivityAPI {
         })
     }
     
-    func observeMindfulnessLogs( completion: @escaping (MindfulnessLog) -> Void) {
+    func observeMindfulnessLogs(completion: @escaping (MindfulnessLog) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
@@ -132,5 +132,24 @@ class ActivityAPI {
             }
         })
     }
+    
+    
+    // Creates the Activity Log based on the food parameter
+    func createLog(withFood food: Food){
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let now = Date().timeIntervalSince1970
+        let newLogRef = API.Activity.ACTIVITYLOGS_DB_REF.child(currentUser.uid).child("nutrition").childByAutoId()
+        newLogRef.setValue(["timestamp": now, "foodId": food.id!, "servingSize": food.servingSize!, "servingUnit": food.servingUnit!])
+        for nutrient in food.nutrition {
+                newLogRef.updateChildValues([nutrient.id: nutrient.value])
+        }
+        
+        // "Fan-out" nutrition data
+        API.Archive.archiveData(forFood: food, withLogId: newLogRef.key!)
+    }
+    
+
     
 }

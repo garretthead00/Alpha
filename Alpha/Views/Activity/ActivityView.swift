@@ -49,7 +49,7 @@ class ActivityView: UITableViewCell {
         self.pieChart.noDataText = "..."
         self.pieChart.legend.enabled = false
         self.pieChart.drawHoleEnabled = true
-        self.pieChart.holeColor = NSUIColor.black
+        self.pieChart.holeColor = NSUIColor.systemBackground
         self.pieChart.drawSlicesUnderHoleEnabled = true
         self.pieChart.usePercentValuesEnabled = false
         self.pieChart.holeRadiusPercent = 0.9

@@ -43,4 +43,6 @@ class NutritionAPI {
         newLogRef.setValue(["timestamp": now, "foodId": "water", "servingSize": servingSize, "water": servingSize])
     }
     
+
+    
 }

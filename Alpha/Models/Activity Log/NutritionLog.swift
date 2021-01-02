@@ -185,8 +185,8 @@ extension NutritionLog {
 
         // Other
          //log.fluids = data["fluids"] as? Double
-         log.water = data["water"] as? Double
-         log.caffeine = data["caffeine"] as? Double
+        log.water = data[ACTIVITY_IDENTIFIERS.Water.rawValue] as? Double
+        log.caffeine = data["caffeine"] as? Double
 
         // Vitamins
          log.vitaminA = data["vitaminA"] as? Double

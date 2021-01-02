@@ -17,6 +17,10 @@
 		683BA3ED2597943F004645D4 /* HydrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA3EC2597943F004645D4 /* HydrationView.swift */; };
 		683BA40225992865004645D4 /* ActivityLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA40125992864004645D4 /* ActivityLogView.swift */; };
 		683BA40525993508004645D4 /* ActivityLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA40425993508004645D4 /* ActivityLogViewModel.swift */; };
+		683BA439259E33EC004645D4 /* HydrationTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA438259E33EC004645D4 /* HydrationTargetView.swift */; };
+		683BA43C259E3912004645D4 /* HydrationTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */; };
+		683BA44F25A0A097004645D4 /* NutritionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA44E25A0A096004645D4 /* NutritionHandler.swift */; };
+		683BA46225A0BD43004645D4 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA46125A0BD43004645D4 /* Archive.swift */; };
 		683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2304255CD6F900D601E1 /* UserTarget.swift */; };
 		683D232C255F5BAE00D601E1 /* MacrosTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */; };
 		683D239B256204C800D601E1 /* UserTargetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D239A256204C800D601E1 /* UserTargetAPI.swift */; };
@@ -101,6 +105,10 @@
 		683BA3EC2597943F004645D4 /* HydrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationView.swift; sourceTree = "<group>"; };
 		683BA40125992864004645D4 /* ActivityLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogView.swift; sourceTree = "<group>"; };
 		683BA40425993508004645D4 /* ActivityLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogViewModel.swift; sourceTree = "<group>"; };
+		683BA438259E33EC004645D4 /* HydrationTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationTargetView.swift; sourceTree = "<group>"; };
+		683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationTargetViewModel.swift; sourceTree = "<group>"; };
+		683BA44E25A0A096004645D4 /* NutritionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionHandler.swift; path = Alpha/Models/NutritionHandler.swift; sourceTree = SOURCE_ROOT; };
+		683BA46125A0BD43004645D4 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		683D2304255CD6F900D601E1 /* UserTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTarget.swift; sourceTree = "<group>"; };
 		683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTargetView.swift; sourceTree = "<group>"; };
 		683D239A256204C800D601E1 /* UserTargetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTargetAPI.swift; sourceTree = "<group>"; };
@@ -238,6 +246,7 @@
 		685BAF182581D09D0029CFDE /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */,
 				683BA40425993508004645D4 /* ActivityLogViewModel.swift */,
 				685BAFF0258C38500029CFDE /* HydrationViewModel.swift */,
 				685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */,
@@ -288,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				685BAFEA258C30A60029CFDE /* Activity.storyboard */,
-				683BA40125992864004645D4 /* ActivityLogView.swift */,
 				6886BD192511A8CB00F29BEF /* Settings.storyboard */,
 				686C355324E4087A00B2D2D6 /* Main.storyboard */,
 				68CA587024EC9DEC0038BCE2 /* Start.storyboard */,
@@ -325,9 +333,11 @@
 		68839D29256EA8CE00303A4B /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				683BA438259E33EC004645D4 /* HydrationTargetView.swift */,
 				683BA3EC2597943F004645D4 /* HydrationView.swift */,
 				683BA3832594750C004645D4 /* ActivityDataView.swift */,
 				685BAF9225846B590029CFDE /* TargetActivityView.swift */,
+				683BA40125992864004645D4 /* ActivityLogView.swift */,
 				685BAF6C2583024B0029CFDE /* ActivityView.swift */,
 			);
 			path = Activity;
@@ -413,7 +423,9 @@
 			children = (
 				689BE05325786AB20029DE3D /* HealthKitAPI.swift */,
 				68E049F7257463F200D68862 /* ActivityAPI.swift */,
+				683BA46125A0BD43004645D4 /* Archive.swift */,
 				683BA3D625964580004645D4 /* NutritionAPI.swift */,
+				683BA44E25A0A096004645D4 /* NutritionHandler.swift */,
 				683D239A256204C800D601E1 /* UserTargetAPI.swift */,
 				68CA587A24EEACA20038BCE2 /* API.swift */,
 				68CA587D24EEACDE0038BCE2 /* UserAPI.swift */,
@@ -581,6 +593,7 @@
 				683D25DC256DFE5F00D601E1 /* MindfulnessLog.swift in Sources */,
 				68DADB8A24E6A6AB00366A97 /* SideMenuController.swift in Sources */,
 				68CA588524EFDE740038BCE2 /* BioAPI.swift in Sources */,
+				683BA46225A0BD43004645D4 /* Archive.swift in Sources */,
 				683D2580256DCEDA00D601E1 /* MindfulnessActivity.swift in Sources */,
 				683BA3DA2596460A004645D4 /* Food.swift in Sources */,
 				6887CA2F254A3A7B00CB617C /* TargetsController.swift in Sources */,
@@ -611,6 +624,7 @@
 				68BEE5EE24EBF98C00250310 /* HomeController.swift in Sources */,
 				6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */,
 				683D2577256DC7EA00D601E1 /* NutritionActivity.swift in Sources */,
+				683BA43C259E3912004645D4 /* HydrationTargetViewModel.swift in Sources */,
 				683BA3D725964580004645D4 /* NutritionAPI.swift in Sources */,
 				68DDD292251B7787002387ED /* WalkthroughTeamColorController.swift in Sources */,
 				68CA588724EFDF520038BCE2 /* Bio.swift in Sources */,
@@ -624,7 +638,9 @@
 				6887CA37254DA26C00CB617C /* TargetView.swift in Sources */,
 				683BA3ED2597943F004645D4 /* HydrationView.swift in Sources */,
 				683BA40525993508004645D4 /* ActivityLogViewModel.swift in Sources */,
+				683BA44F25A0A097004645D4 /* NutritionHandler.swift in Sources */,
 				6883EB1B2516F3160011C91F /* WalkthroughBioController.swift in Sources */,
+				683BA439259E33EC004645D4 /* HydrationTargetView.swift in Sources */,
 				683D25D9256DFE3F00D601E1 /* SleepLog.swift in Sources */,
 				683D257A256DCB2100D601E1 /* HydrationActivity.swift in Sources */,
 				6838A0CF250CFAE000C75D8E /* PreferredUnits.swift in Sources */,

@@ -16,4 +16,5 @@ struct API {
     static var UserTarget = UserTargetAPI()
     static var Activity = ActivityAPI()
     static var Nutrition = NutritionAPI()
+    static var Archive = ArchiveAPI()
 }

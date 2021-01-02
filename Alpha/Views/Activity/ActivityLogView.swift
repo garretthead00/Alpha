@@ -13,7 +13,6 @@ class ActivityLogView: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
     
@@ -30,10 +29,9 @@ class ActivityLogView: UITableViewCell {
     
     private func updateView(){
         if let viewModel = activityLogViewModel {
-            nameLabel.text = viewModel.name
+            nameLabel.text = "\(viewModel.timestamp)"
             iconImageView.image = viewModel.icon
-            timestampLabel.text = viewModel.timestamp
-            valueLabel.text = "\(viewModel.value)"
+            valueLabel.text = "\(viewModel.value) \(viewModel.unit)"
         }
     }
 }

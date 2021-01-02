@@ -149,7 +149,7 @@ struct NutritionActivity : Activity {
         self.progress = self.energyConsumed
     }
     
-    mutating func setValue(forIdentifier id: String, value: Double){
+    func setValue(forIdentifier id: String, value: Double){
     }
     
     func getValue(ofKey key: String) -> Double {
