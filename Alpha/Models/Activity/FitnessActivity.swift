@@ -15,33 +15,17 @@ struct FitnessActivity : Activity {
     var name: String
     var icon: UIImage
     var color: UIColor
-    var progress: Double?
+    var progress: Double? {
+        let handler = archiveDataHandlers.filter({ $0.id == progressIdentifier }).first
+        return handler?.total
+    }
     var activityType: ActivityType? = .fitness
-    
-    // MARK: - Fitness Activity properties
     var healthKitIdentifiers : [String]?
-    var totalActiveCaloriesBurned : Double = 0.0
-    var totalRestingCaloriesBurned : Double = 0.0
-    var totalCaloriesBurned : Double {
-        return (totalActiveCaloriesBurned + totalRestingCaloriesBurned)
-    }
-    var exerciseMinutes : Double = 0.0
-    var distance : Double = 0.0
-    var workoutsCompleted : Int {
-        return logs.count
-    }
-    var steps : Double = 0.0
-    var flightsAscended : Double = 0.0
-    var standMinutes : Double = 0.0
-    var work : Double = 0.0
-    var cyclingDistance : Double = 0.0
-    var swimDistance : Double = 0.0
     
-    var logs : [FitnessLog] = [] {
-        didSet {
-            calculateTotals()
-        }
-    }
+    var logs : [FitnessLog] = []
+    var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .EnergyBurned
+    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .ExerciseMinutes, .Steps, .Distance, .WorkoutsCompleted]
+    var archiveDataHandlers : [ArchiveDataHandler] = []
     
     // MARK: - HealthKit properties
     var healthKitEnabled : Bool? = false
@@ -52,49 +36,42 @@ struct FitnessActivity : Activity {
         self.name = "Fitness"
         self.icon = UIImage(named: "Fitness")!
         self.color = .systemRed
-        self.healthKitIdentifiers = ["energyBurned", "steps"]
-        self.progress = self.totalActiveCaloriesBurned
     }
 
-    
-    // Using the fitnessLogs, calculate the total values for each Fitness Activity property.
-    mutating func calculateTotals(){
-        totalActiveCaloriesBurned = logs.reduce(0, {$0 + ($1.energyBurned ?? 0.0)})
-        distance = logs.reduce(0, {$0 + ($1.distance ?? 0.0)})
-        steps = logs.reduce(0, {$0 + ($1.steps  ?? 0.0)})
-        exerciseMinutes = logs.reduce(0, {$0 + ($1.exerciseMinutes  ?? 0.0)})
-        updateActivity()
-    }
+
     
     func getValue(ofKey key: String) -> Double {
-        var value = 0.0
+        var value : ACTIVITY_DATA_IDENTIFIER = .EnergyBurned
         switch key {
-            case "energyBurned": value = healthKitEnabled! ? hkEnergyBurned : totalActiveCaloriesBurned
-            case "steps": value = healthKitEnabled! ? hkStepCount : steps
-            case "distance": value = distance
-            case "exerciseMinutes": value = exerciseMinutes
-            case "flightsAscended": value = flightsAscended
-            case "standMinutes": value = standMinutes
-            case "workouts": value = Double(workoutsCompleted)
-            default: value = 0.0
+            case "energyBurned": value = .EnergyBurned
+            case "steps": value = .Steps
+            case "distance": value = .Distance
+            case "exerciseMinutes": value = .ExerciseMinutes
+            case "workouts": value = .WorkoutsCompleted
+            default: break
         }
-        return value
+        let handler = archiveDataHandlers.filter({ $0.id == value }).first
+        return handler?.total ?? 0.0
     }
     
     mutating func setValue(forIdentifier id: String, value: Double){
         switch id {
             case "energyBurned" :
                 hkEnergyBurned = value
-                updateActivity()
             case "steps" :
                 hkStepCount = value
 
             default : break
         }
     }
+
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler {
+        return archiveDataHandlers.filter({ $0.id == identifier }).first!
+    }
     
-    mutating func updateActivity(){
-        progress = healthKitEnabled! ? hkEnergyBurned : totalActiveCaloriesBurned
+    func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double {
+        let handler = archiveDataHandlers.filter({ $0.id == identifier }).first
+        return handler?.total ?? 0.0
     }
 }
 

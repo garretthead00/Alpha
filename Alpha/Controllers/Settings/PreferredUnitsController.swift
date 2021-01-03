@@ -14,7 +14,7 @@ let weightUnits : [String] = ["lbs", "kg"]
 let volumeUnits : [String] = ["fl oz", "mL"]
 let heightUnits : [String] = ["in", "cm"]
 let distanceUnits : [String] = ["mi", "km"]
-let caloricUnits : [String] = ["kCal", "kJ"]
+let energyUnits : [String] = ["kCal", "kJ"]
 
 class PreferredUnitsController: UITableViewController {
 
@@ -29,7 +29,7 @@ class PreferredUnitsController: UITableViewController {
     @IBOutlet weak var weightSegmentedControl: UISegmentedControl!
     @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
     @IBOutlet weak var distanceSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var caloriesSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var energySegmentedControl: UISegmentedControl!
     @IBOutlet weak var volumeSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -66,11 +66,11 @@ class PreferredUnitsController: UITableViewController {
             }
             
         }
-        if let calories = preferredUnits.energy {
-            if let index = caloricUnits.firstIndex(of: calories) {
-               self.caloriesSegmentedControl.selectedSegmentIndex = index
+        if let energy = preferredUnits.energy {
+            if let index = energyUnits.firstIndex(of: energy) {
+               self.energySegmentedControl.selectedSegmentIndex = index
             } else {
-                self.caloriesSegmentedControl.selectedSegmentIndex = 0
+                self.energySegmentedControl.selectedSegmentIndex = 0
             }
             
         }
@@ -113,8 +113,8 @@ class PreferredUnitsController: UITableViewController {
     @IBAction func distanceUnits_DidChange(_ sender: Any) {
         updateDistanceUnits()
     }
-    @IBAction func caloriesUnits_DidChange(_ sender: Any) {
-        updateCaloriesUnits()
+    @IBAction func energyUnits_DidChange(_ sender: Any) {
+        updateEnergyUnits()
     }
     @IBAction func volumeUnits_DidChange(_ sender: Any) {
         updateVolumeUnits()
@@ -144,11 +144,11 @@ extension PreferredUnitsController {
         self.preferredUnits.distance = unit
         API.PreferredUnits.updatePreferredUnits(withKey: "distance", value: unit)
     }
-    private func updateCaloriesUnits(){
-        let index = caloriesSegmentedControl.selectedSegmentIndex
-        let unit = caloricUnits[index]
+    private func updateEnergyUnits(){
+        let index = energySegmentedControl.selectedSegmentIndex
+        let unit = energyUnits[index]
         self.preferredUnits.energy = unit
-        API.PreferredUnits.updatePreferredUnits(withKey: "calories", value: unit)
+        API.PreferredUnits.updatePreferredUnits(withKey: "energy", value: unit)
         
     }
     private func updateVolumeUnits(){

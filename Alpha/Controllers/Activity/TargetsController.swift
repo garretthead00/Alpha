@@ -22,7 +22,8 @@ class TargetsController: UITableViewController {
     // MARK: - Target Attributes
     let sections = ["Body", "Fitness", "Nutrition", "Hydration", "Sleep", "Mindfulness"]
     
-    var userTargets : [UserTarget] = [] { didSet { manageTargets() } }
+    var bodyGoal : String? { didSet { updateController() } }
+    var userTargets : [UserTarget] = [] { didSet { updateController() } }
     var fitnessTargets : [UserTarget] = []
     var nutritionTargets : [UserTarget] = []
     var hydrationTargets : [UserTarget] = []
@@ -31,7 +32,6 @@ class TargetsController: UITableViewController {
     
     
     // MARK: - Target Parameters
-    var bodyGoal : String? = nil
     var macroSum : Double = 0.0
     
     
@@ -70,17 +70,23 @@ class TargetsController: UITableViewController {
     
     private func fetchUserTargets() {
         ProgressHUD.show("targets...", interaction: false)
-        API.UserTarget.observeUserTargets(completion: {
-            target in
-            if let target = target {
+        API.Bio.fetchBodyGoal(completion: { goal in
+            self.bodyGoal = goal
+            API.UserTarget.observeTargets(completion: { targets in
                 ProgressHUD.show(icon: .bolt)
-                print("returned target: \(target.id) with value: \(target.value!)")
-                self.userTargets.append(target)
-            }
+                self.userTargets = targets
+                self.manageTargets()
+                
+            })
         })
     }
     
     private func manageTargets(){
+        fitnessTargets.removeAll()
+        nutritionTargets.removeAll()
+        hydrationTargets.removeAll()
+        sleepTargets.removeAll()
+        mindfulnessTargets.removeAll()
         fitnessTargets = userTargets.filter({ $0.targetType == .fitness })
         nutritionTargets = userTargets.filter({ $0.targetType == .nutrition })
         hydrationTargets = userTargets.filter({ $0.targetType == .hydration })
@@ -93,7 +99,7 @@ class TargetsController: UITableViewController {
         ProgressHUD.show("saving...", interaction: false)
         API.UserTarget.updateTargets(targets: userTargets)
         ProgressHUD.show(icon: .bolt)
-        updateController()
+        manageTargets()
     }
     
 
@@ -126,27 +132,24 @@ class TargetsController: UITableViewController {
         let section = indexPath.section
         let row = indexPath.row
         if section == 0 {
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "BodyGoalTargetView", for: indexPath) as! BodyGoalView
             cell.delegate = self
-            if let index = userTargets.firstIndex(where: { $0.id == "bodyGoal"}) {
-                cell.bodyGoal = userTargets[index].value as? String
-            }
+            cell.bodyGoal = self.bodyGoal
             return cell
         } else {
             if section == 2 && row > 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MacrosTargetView", for: indexPath) as! MacrosTargetView
                 cell.delegate = self
-                cell.energyConsumed = nutritionTargets.first(where: { $0.id == "energyConsumed" })!.value as? Double
-                cell.protein = nutritionTargets.first(where: { $0.id == "protein" })!.value as? Double
-                cell.fat = nutritionTargets.first(where: { $0.id == "fats" })!.value as? Double
-                cell.carbohydrate = nutritionTargets.first(where: { $0.id == "carbohydrates" })!.value as? Double
+                cell.energyConsumed = nutritionTargets.first(where: { $0.id == .EnergyConsumed })!.value
+                cell.protein = nutritionTargets.first(where: { $0.id == .Protein })!.value
+                cell.fat = nutritionTargets.first(where: { $0.id == .Fat })!.value
+                cell.carbohydrate = nutritionTargets.first(where: { $0.id == .Carbohydrates })!.value
                 return cell
             } else {
                 var target : UserTarget?
                 switch section {
                     case 1: target = fitnessTargets[row]
-                    case 2: target = nutritionTargets.filter({ $0.id == "energyConsumed" }).first
+                case 2: target = nutritionTargets.filter({ $0.id == .EnergyConsumed }).first
                     case 3: target = hydrationTargets[row]
                     case 4: target = sleepTargets[row]
                     case 5: target = mindfulnessTargets[row]
@@ -184,7 +187,7 @@ class TargetsController: UITableViewController {
             if !((section == 0 || (section == 2 && row > 0))) {
                 switch section {
                     case 1: setTarget(target: fitnessTargets[row])
-                    case 2: setTarget(target: nutritionTargets.filter({ $0.id == "energyConsumed" }).first!)
+                    case 2: setTarget(target: nutritionTargets[row])
                     case 3: setTarget(target: hydrationTargets[row])
                     case 4: setTarget(target: sleepTargets[row])
                     case 5: setTarget(target: mindfulnessTargets[row])
@@ -209,15 +212,15 @@ class TargetsController: UITableViewController {
 
 extension TargetsController : UserTargetDelegate {
     func updateMacros(protein: Double, fat: Double, carbs: Double, sum: Double) {
-        setTarget(withId: "protein", value: protein)
-        setTarget(withId: "fats", value: fat)
-        setTarget(withId: "carbohydrates", value: carbs)
+        setTarget(withIdentifier: .Protein, value: protein)
+        setTarget(withIdentifier: .Fat, value: fat)
+        setTarget(withIdentifier: .Carbohydrates, value: carbs)
         macroSum = sum
         print("update macros: sum = \(macroSum)")
     }
     
-    func setTarget(withId id: String, value: Any){
-        let index = userTargets.firstIndex(where: { $0.id == id})
+    func setTarget(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER, value: Double){
+        let index = userTargets.firstIndex(where: { $0.id == identifier})
         userTargets[index!].value = value
         manageTargets()
     }
@@ -237,8 +240,9 @@ extension TargetsController : UserTargetDelegate {
             }
             if let value = Double(input) {
                 target.value = value
-                API.UserTarget.updateUserTarget(target: target.id, value: value)
-                self.manageTargets()
+                //API.UserTarget.updateUserTarget(target: target.id, value: value)
+                //self.manageTargets()
+                self.updateController()
             }
             
         })
@@ -250,7 +254,7 @@ extension TargetsController : UserTargetDelegate {
     }
     
     func updateBodyGoalTarget(value: String) {
-        setTarget(withId: "bodyGoal", value: value)
+        self.bodyGoal = value
     }
 }
 

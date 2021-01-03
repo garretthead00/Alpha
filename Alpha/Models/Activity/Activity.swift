@@ -9,6 +9,22 @@
 import Foundation
 import UIKit
 
+protocol Activity {
+    var name : String { get }
+    var icon : UIImage { get }
+    var color : UIColor { get }
+    var progress : Double? { get }
+    var healthKitIdentifiers : [String]? { get set }
+    var healthKitEnabled : Bool? { get set }
+    var activityType : ActivityType? { get set }
+ 
+    var progressIdentifier : ACTIVITY_DATA_IDENTIFIER { get set }
+    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] { get set }
+    var archiveDataHandlers : [ArchiveDataHandler] { get set }
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler
+    func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double
+}
+
 enum ActivityType {
     case fitness
     case nutrition
@@ -16,23 +32,7 @@ enum ActivityType {
     case sleep
     case mindfulness
 }
-
-protocol Activity {
-    var name : String { get }
-    var icon : UIImage { get }
-    var color : UIColor { get }
-    var progress : Double? { get set }
-    var healthKitIdentifiers : [String]? { get set }
-    var healthKitEnabled : Bool? { get set }
-    var activityType : ActivityType? { get set }
-    mutating func setValue(forIdentifier id: String, value: Double)
-    mutating func updateActivity()
-    mutating func calculateTotals()
-    func getValue(ofKey key: String) -> Double
-}
-
-
-enum ACTIVITY_IDENTIFIERS : String {
+enum ACTIVITY_DATA_IDENTIFIER : String {
     
     // FITNESS
     case EnergyBurned = "EnergyBurned"
@@ -46,7 +46,7 @@ enum ACTIVITY_IDENTIFIERS : String {
 
     // Macros
     case Protein = "Protein"
-    case Carbs = "Carbohydrates"
+    case Carbohydrates = "Carbohydrates"
     case Fat = "Fat"
     
     // Carbohydrates
@@ -61,7 +61,6 @@ enum ACTIVITY_IDENTIFIERS : String {
     
     // Other
     case TotalFluids = "TotalFluids"
-    case Water = "Water"
     case Caffeine = "Caffeine"
     
     // Vitamins
@@ -96,4 +95,19 @@ enum ACTIVITY_IDENTIFIERS : String {
     case Manganese = "Manganese"
     case Molybdenum = "Molybdenum"
     case Selenium = "Selenium"
+    
+    // Hydration
+    case Water = "Water"
+    
+    // Sleep
+    case SleepMinutes = "SleepMinutes"
+    
+    // Mindfulness
+    case MindfulMinutes = "MindfulMinutes"
 }
+
+
+
+
+
+

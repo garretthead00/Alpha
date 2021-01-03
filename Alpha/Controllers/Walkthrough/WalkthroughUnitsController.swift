@@ -22,14 +22,14 @@ class WalkthroughUnitsController: UIViewController {
     @IBOutlet weak var weightSegmentedControl: UISegmentedControl!
     @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
     @IBOutlet weak var distanceSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var caloriesSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var energySegmentedControl: UISegmentedControl!
     @IBOutlet weak var volumeSegmentedControl: UISegmentedControl!
     
     // MARK: - Selection Variables
     private var weightUnitSelected : String?
     private var heightUnitSelected : String?
     private var distanceUnitSelected : String?
-    private var caloriesUnitSelected : String?
+    private var energyUnitSelected : String?
     private var volumeUnitSelected : String?
     
     var delegate : WalkthroughDelegate?
@@ -40,12 +40,12 @@ class WalkthroughUnitsController: UIViewController {
         weightSegmentedControl.selectedSegmentIndex = 0
         heightSegmentedControl.selectedSegmentIndex = 0
         distanceSegmentedControl.selectedSegmentIndex = 0
-        caloriesSegmentedControl.selectedSegmentIndex = 0
+        energySegmentedControl.selectedSegmentIndex = 0
         volumeSegmentedControl.selectedSegmentIndex = 0
         weightUnitSelected = weightSegmentedControl.titleForSegment(at: 0)
         heightUnitSelected = heightSegmentedControl.titleForSegment(at: 0)
         distanceUnitSelected = distanceSegmentedControl.titleForSegment(at: 0)
-        caloriesUnitSelected = caloriesSegmentedControl.titleForSegment(at: 0)
+        energyUnitSelected = energySegmentedControl.titleForSegment(at: 0)
         volumeUnitSelected = volumeSegmentedControl.titleForSegment(at: 0)
         updateView()
     }
@@ -63,8 +63,8 @@ class WalkthroughUnitsController: UIViewController {
         if let distance = self.distanceUnitSelected {
             units.distance = distance
         }
-        if let calories = self.caloriesUnitSelected {
-            units.energy = calories
+        if let energy = self.energyUnitSelected {
+            units.energy = energy
         }
         if let volume = self.volumeUnitSelected {
             units.volume = volume
@@ -97,10 +97,10 @@ class WalkthroughUnitsController: UIViewController {
             updateView()
         }
     }
-    @IBAction func caloriesUnitSelection_DidChange(_ sender: Any) {
-        let index = caloriesSegmentedControl.selectedSegmentIndex
-        if let unit = caloriesSegmentedControl.titleForSegment(at: index) {
-            self.caloriesUnitSelected = unit
+    @IBAction func energyUnitSelection_DidChange(_ sender: Any) {
+        let index = energySegmentedControl.selectedSegmentIndex
+        if let unit = energySegmentedControl.titleForSegment(at: index) {
+            self.energyUnitSelected = unit
             self.preferredUnits?.energy = unit
             updateView()
         }

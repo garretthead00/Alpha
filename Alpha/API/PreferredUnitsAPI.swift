@@ -46,7 +46,7 @@ class PreferredUnitsAPI {
             "weight" : units.weight!,
             "height" : units.height!,
             "distance" : units.distance!,
-            "calories" : units.energy!,
+            "energy" : units.energy!,
             "volume" : units.volume!
         ], withCompletionBlock: {
             err, ref in

@@ -16,7 +16,10 @@ struct MindfulnessActivity : Activity {
     var name: String
     var icon: UIImage
     var color: UIColor
-    var progress: Double?
+    var progress: Double? {
+        let handler = archiveDataHandlers.filter({ $0.id == progressIdentifier }).first
+        return handler?.total
+    }
     var healthKitIdentifiers : [String]?
     var healthKitEnabled : Bool? = false
     var activityType: ActivityType? = .mindfulness
@@ -27,47 +30,28 @@ struct MindfulnessActivity : Activity {
     // MARK: - HealthKit Properties
     var hkMindfulMinutes : Double = 0.0
     
+    var logs : [MindfulnessLog] = []
+    
+    var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .MindfulMinutes
+    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.MindfulMinutes]
+    var archiveDataHandlers : [ArchiveDataHandler] = []
     
     init() {
         self.name = "Mindfulness"
         self.icon = UIImage(named: "mindfulness")!
         self.color = .systemTeal
         self.healthKitIdentifiers = ["mindfulMinutes"]
-        self.progress = self.mindfulMinutes
+    }
+
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler {
+        return archiveDataHandlers.filter({ $0.id == identifier }).first!
+    }
+    func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double {
+        let handler = archiveDataHandlers.filter({ $0.id == identifier }).first
+        return handler?.total ?? 0.0
     }
     
-    var logs : [MindfulnessLog] = [] {
-        didSet {
-            calculateTotals()
-        }
-    }
     
-    mutating func calculateTotals(){
-        mindfulMinutes = logs.reduce(0, {$0 + ($1.mindfulMinutes ?? 0.0)})
-        updateActivity()
-    }
-    
-    mutating func updateActivity(){
-        progress = healthKitEnabled! ? hkMindfulMinutes : mindfulMinutes
-    }
-    
-    mutating func setValue(forIdentifier id: String, value: Double){
-        switch id {
-            case "mindfulMinutes" :
-                hkMindfulMinutes = value
-                updateActivity()
-            default : break
-        }
-    }
-    
-    func getValue(ofKey key: String) -> Double {
-        var value = 0.0
-        switch key {
-            case "mindfulMinutes": value = healthKitEnabled! ? hkMindfulMinutes : mindfulMinutes
-            default: value = 0.0
-        }
-        return value
-    }
 }
 
 

@@ -28,8 +28,8 @@ class TargetActivityViewModel {
         self.icon = target.icon!
         self.unit = target.unit!
         self.color = color
-        self.targetValue = target.value! as! Double
-        let percent = (progress / (target.value! as! Double)) * 100
+        self.targetValue = target.value!
+        let percent = target.value! > 0 ? (progress / (target.value!)) * 100 : 0.0
         self.percentComplete = percent
         self.progress = isPercent ? percent : progress
     }

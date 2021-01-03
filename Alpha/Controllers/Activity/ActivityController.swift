@@ -64,19 +64,34 @@ class ActivityController: UITableViewController {
         API.UserTarget.observeTargets(completion: { [self] targets in
             ProgressHUD.show(icon: .bolt)
             self.userTargets = targets
-            API.Activity.observeActivityLogs(forActivity: "fitness", completion: { [self]
-                logs in
-                self.fitnessActivity.logs = logs as! [FitnessLog]
+//            API.Activity.observeActivityLogs(forActivity: "fitness", completion: { [self]
+//                logs in
+//                self.fitnessActivity.logs = logs as! [FitnessLog]
+//                //self.updateController()
+//            })
+//            API.Activity.observeTodaysNutritionLogs(completion: {
+//                logs in
+//                self.nutritionActivity.logs = logs 
+//                self.hydrationActivity.logs = logs.filter({ $0.food?.foodType == "drink" }) 
+//                //self.updateController()
+//            })
+            API.Archive.loadTodaysArchiveData(forIdentifiers: self.fitnessActivity.activityDataIdentifiers, completion: {
+                handlers in
+                self.fitnessActivity.archiveDataHandlers = handlers
                 self.updateController()
             })
-            API.Activity.observeTodaysNutritionLogs(completion: {
-                logs in
-                self.nutritionActivity.logs = logs 
-                self.hydrationActivity.logs = logs.filter({ $0.food?.foodType == "drink" }) 
+            API.Archive.loadTodaysArchiveData(forIdentifiers: self.nutritionActivity.activityDataIdentifiers, completion: {
+                handlers in
+                self.nutritionActivity.archiveDataHandlers = handlers
                 self.updateController()
             })
-            self.loadHealthKit()
-            self.updateController()
+            API.Archive.loadTodaysArchiveData(forIdentifiers: self.hydrationActivity.activityDataIdentifiers, completion: {
+                handlers in
+                self.hydrationActivity.archiveDataHandlers = handlers
+                self.updateController()
+            })
+            //self.loadHealthKit()
+            //self.updateController()
 
         })
         
@@ -100,34 +115,30 @@ class ActivityController: UITableViewController {
         self.activityViewModels.removeAll()
         self.fitnessTargetViewModels.removeAll()
         self.nutritionTargetViewModels.removeAll()
-        for target in userTargets.filter({ $0.targetType == .fitness && $0.id != "energyBurned"}) {
-            let targetVM = TargetActivityViewModel(target: target, progress: fitnessActivity.getValue(ofKey: target.id), color: fitnessActivity.color, isPercent: false)
+        for target in userTargets.filter({ $0.targetType == .fitness && $0.id != .EnergyBurned}) {
+            let targetVM = TargetActivityViewModel(target: target, progress: fitnessActivity.getValue(withIdentifier: target.id), color: fitnessActivity.color, isPercent: false)
             fitnessTargetViewModels.append(targetVM)
         }
-        
-        for target in userTargets.filter({ $0.targetType == .nutrition && $0.id != "energyConsumed"}) {
-            nutritionTargetViewModels.append(TargetActivityViewModel(target: target, progress: nutritionActivity.getValue(ofKey: target.id), color: nutritionActivity.color, isPercent: true))
+        for target in userTargets.filter({ $0.targetType == .nutrition && $0.id != .EnergyConsumed}) {
+            nutritionTargetViewModels.append(TargetActivityViewModel(target: target, progress: nutritionActivity.getValue(withIdentifier: target.id), color: nutritionActivity.color, isPercent: true))
         }
-        
-        if let fitnessTarget = self.userTargets.filter({ $0.id == "energyBurned"}).first {
+        if let fitnessTarget = self.userTargets.filter({ $0.id == .EnergyBurned}).first {
             self.fitnessActivityVM = ActivityViewModel(activity: self.fitnessActivity, target: fitnessTarget)
             self.activityViewModels.append(self.fitnessActivityVM!)
         }
-        
-        if let nutritionTarget = self.userTargets.filter({ $0.id == "energyConsumed"}).first {
+        if let nutritionTarget = self.userTargets.filter({ $0.id == .EnergyConsumed}).first {
             self.nutritionActivityVM = ActivityViewModel(activity: self.nutritionActivity, target: nutritionTarget)
             self.activityViewModels.append(self.nutritionActivityVM!)
         }
-        if let hydrationTarget = self.userTargets.filter({ $0.id == "water"}).first {
+        if let hydrationTarget = self.userTargets.filter({ $0.id == .Water}).first {
             self.hydrationActivityVM = ActivityViewModel(activity: self.hydrationActivity, target: hydrationTarget)
             self.activityViewModels.append(self.hydrationActivityVM!)
-            print("hydrationProgress: \(self.hydrationActivityVM?.progress)")
         }
-        if let sleepTarget = self.userTargets.filter({ $0.id == "sleepMinutes"}).first {
+        if let sleepTarget = self.userTargets.filter({ $0.id == .SleepMinutes}).first {
             self.sleepActivityVM = ActivityViewModel(activity: self.sleepActivity, target: sleepTarget)
             self.activityViewModels.append(self.sleepActivityVM!)
         }
-        if let mindfulnessTarget = self.userTargets.filter({ $0.id == "mindfulMinutes"}).first {
+        if let mindfulnessTarget = self.userTargets.filter({ $0.id == .MindfulMinutes}).first {
             self.mindfulnessActivityVM = ActivityViewModel(activity: self.mindfulnessActivity, target: mindfulnessTarget)
             self.activityViewModels.append(self.mindfulnessActivityVM!)
         }
@@ -188,7 +199,7 @@ class ActivityController: UITableViewController {
         if segue.identifier == "hydration" {
             let destination = segue.destination as! HydrationController
             destination.hydrationActivity =  self.hydrationActivity
-            destination.userTarget = self.userTargets.filter({ $0.id == "water"}).first
+            destination.userTarget = self.userTargets.filter({ $0.id == .Water}).first
         }
     }
 }
@@ -223,7 +234,7 @@ extension ActivityController {
                    if let error = error { print(error) }
                    return
                }
-               self.sleepActivity.setValue(forIdentifier: sleepID, value: result)
+               //self.sleepActivity.setValue(forIdentifier: sleepID, value: result)
             }
             // Mindfulness
             let mindID = mindfulnessActivity.healthKitIdentifiers![0]
@@ -232,19 +243,19 @@ extension ActivityController {
                    if let error = error { print(error) }
                    return
                }
-               self.mindfulnessActivity.setValue(forIdentifier: mindID, value: result)
+               //self.mindfulnessActivity.setValue(forIdentifier: mindID, value: result)
             }
             
             // Fitness
-            for id in fitnessActivity.healthKitIdentifiers! {
-                 HealthKitAPI.getSumQuantity(forIdentifier: id) { result, error in
-                    guard let result = result else {
-                        if let error = error { print(error) }
-                        return
-                    }
-                    self.fitnessActivity.setValue(forIdentifier: id, value: result)
-                }
-            }
+//            for id in fitnessActivity.healthKitIdentifiers! {
+//                 HealthKitAPI.getSumQuantity(forIdentifier: id) { result, error in
+//                    guard let result = result else {
+//                        if let error = error { print(error) }
+//                        return
+//                    }
+//                    self.fitnessActivity.setValue(forIdentifier: id, value: result)
+//                }
+//            }
             updateController()
         }
     }

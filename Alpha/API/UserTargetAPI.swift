@@ -22,13 +22,15 @@ class UserTargetAPI {
         API.PreferredUnits.observePreferredUnits(completion: {
             units in
             self.USERTARGETS_DB_REF.child(currentUser.uid).observeSingleEvent(of: .value, with: { snapshot in
+                
+                //if let data = snapshot.value as? [String: Any] {}
+                
                 for child in snapshot.children.allObjects as! [DataSnapshot] {
                     let target = UserTarget.transformUserTarget(key: child.key, value: child.value!, units: units)
                     completion(target)
                 }
             })
         })
-        
     }
     
     func observeTargets(completion: @escaping([UserTarget]) -> Void) {
@@ -39,7 +41,7 @@ class UserTargetAPI {
         
         API.PreferredUnits.observePreferredUnits(completion: {
             units in
-            self.USERTARGETS_DB_REF.child(currentUser.uid).observe(.value, with: {
+            self.USERTARGETS_DB_REF.child(currentUser.uid).observeSingleEvent(of: .value, with: {
                 snapshot in
                 let items = snapshot.children.allObjects as! [DataSnapshot]
                 for (_, item) in items.enumerated() {
@@ -52,11 +54,11 @@ class UserTargetAPI {
         })
     }
     
-    func updateUserTarget(target: String, value: Double){
+    func updateUserTarget(target: ACTIVITY_DATA_IDENTIFIER, value: Double){
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
-        USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues([target:value], withCompletionBlock: {
+        USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues([target.rawValue:value], withCompletionBlock: {
             err, ref in
             if err != nil {
                 return
@@ -72,7 +74,8 @@ class UserTargetAPI {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
-        USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues(DEFAULT_TARGETS, withCompletionBlock: {
+        API.Bio.BIO_DB_REF.child(currentUser.uid).updateChildValues(["bodyGoal": "Maintain"])
+        USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues(USER_DEFAULT_TARGETS, withCompletionBlock: {
             err, ref in
             if err != nil {
                 return
@@ -87,7 +90,7 @@ class UserTargetAPI {
         }
         var data : [String: Any] = [:]
         for target in targets {
-            data[target.id] = target.value
+            data[target.id.rawValue] = target.value
         }
         USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues(data, withCompletionBlock: {
             err, ref in

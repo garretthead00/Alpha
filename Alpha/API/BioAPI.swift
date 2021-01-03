@@ -29,6 +29,17 @@ class BioAPI {
         })
     }
     
+    func fetchBodyGoal(completion: @escaping(String) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        BIO_DB_REF.child(currentUser.uid).child("bodyGoal").observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let data = snapshot.value as? String {
+                completion(data)
+            }
+        })
+    }
     
     func updateBio(withKey key: String, value: Any) {
         guard let currentUser = Auth.auth().currentUser else {

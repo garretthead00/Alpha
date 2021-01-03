@@ -20,7 +20,8 @@
 		683BA439259E33EC004645D4 /* HydrationTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA438259E33EC004645D4 /* HydrationTargetView.swift */; };
 		683BA43C259E3912004645D4 /* HydrationTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */; };
 		683BA44F25A0A097004645D4 /* NutritionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA44E25A0A096004645D4 /* NutritionHandler.swift */; };
-		683BA46225A0BD43004645D4 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA46125A0BD43004645D4 /* Archive.swift */; };
+		683BA46225A0BD43004645D4 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA46125A0BD43004645D4 /* ArchiveAPI.swift */; };
+		683BA47525A0D055004645D4 /* ArchiveDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA47425A0D055004645D4 /* ArchiveDataHandler.swift */; };
 		683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2304255CD6F900D601E1 /* UserTarget.swift */; };
 		683D232C255F5BAE00D601E1 /* MacrosTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */; };
 		683D239B256204C800D601E1 /* UserTargetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D239A256204C800D601E1 /* UserTargetAPI.swift */; };
@@ -108,7 +109,8 @@
 		683BA438259E33EC004645D4 /* HydrationTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationTargetView.swift; sourceTree = "<group>"; };
 		683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationTargetViewModel.swift; sourceTree = "<group>"; };
 		683BA44E25A0A096004645D4 /* NutritionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionHandler.swift; path = Alpha/Models/NutritionHandler.swift; sourceTree = SOURCE_ROOT; };
-		683BA46125A0BD43004645D4 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		683BA46125A0BD43004645D4 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
+		683BA47425A0D055004645D4 /* ArchiveDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataHandler.swift; sourceTree = "<group>"; };
 		683D2304255CD6F900D601E1 /* UserTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTarget.swift; sourceTree = "<group>"; };
 		683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTargetView.swift; sourceTree = "<group>"; };
 		683D239A256204C800D601E1 /* UserTargetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTargetAPI.swift; sourceTree = "<group>"; };
@@ -423,7 +425,7 @@
 			children = (
 				689BE05325786AB20029DE3D /* HealthKitAPI.swift */,
 				68E049F7257463F200D68862 /* ActivityAPI.swift */,
-				683BA46125A0BD43004645D4 /* Archive.swift */,
+				683BA46125A0BD43004645D4 /* ArchiveAPI.swift */,
 				683BA3D625964580004645D4 /* NutritionAPI.swift */,
 				683BA44E25A0A096004645D4 /* NutritionHandler.swift */,
 				683D239A256204C800D601E1 /* UserTargetAPI.swift */,
@@ -439,6 +441,7 @@
 		68CA588124EEAD990038BCE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				683BA47425A0D055004645D4 /* ArchiveDataHandler.swift */,
 				683BA3D92596460A004645D4 /* Food.swift */,
 				683D25BE256DFCA700D601E1 /* Activity Log */,
 				683D25DE256DFF1900D601E1 /* Activity */,
@@ -593,7 +596,7 @@
 				683D25DC256DFE5F00D601E1 /* MindfulnessLog.swift in Sources */,
 				68DADB8A24E6A6AB00366A97 /* SideMenuController.swift in Sources */,
 				68CA588524EFDE740038BCE2 /* BioAPI.swift in Sources */,
-				683BA46225A0BD43004645D4 /* Archive.swift in Sources */,
+				683BA46225A0BD43004645D4 /* ArchiveAPI.swift in Sources */,
 				683D2580256DCEDA00D601E1 /* MindfulnessActivity.swift in Sources */,
 				683BA3DA2596460A004645D4 /* Food.swift in Sources */,
 				6887CA2F254A3A7B00CB617C /* TargetsController.swift in Sources */,
@@ -605,6 +608,7 @@
 				685BAF162581D0880029CFDE /* ActivityViewModel.swift in Sources */,
 				68CA587624ED798E0038BCE2 /* AuthService.swift in Sources */,
 				683BA3842594750C004645D4 /* ActivityDataView.swift in Sources */,
+				683BA47525A0D055004645D4 /* ArchiveDataHandler.swift in Sources */,
 				68CA588324EEB27E0038BCE2 /* BioController.swift in Sources */,
 				68DDD289251AD5F5002387ED /* WalkthroughController.swift in Sources */,
 				683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */,

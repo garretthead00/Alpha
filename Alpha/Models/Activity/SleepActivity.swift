@@ -15,7 +15,10 @@ struct SleepActivity : Activity {
     var name: String
     var icon: UIImage
     var color: UIColor
-    var progress: Double?
+    var progress: Double? {
+        let handler = archiveDataHandlers.filter({ $0.id == progressIdentifier }).first
+        return handler?.total
+    }
     var activityType: ActivityType? = .sleep
     
     // MARK: - Sleep Activity Properties
@@ -26,45 +29,29 @@ struct SleepActivity : Activity {
     var healthKitEnabled : Bool? = false
     var hkSleepMinutes : Double = 0.0
     
+    var logs : [SleepLog] = []
+    
+    
+    var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .SleepMinutes
+    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.SleepMinutes]
+    var archiveDataHandlers : [ArchiveDataHandler] = []
+    
+    
     init() {
         self.name = "Sleep"
         self.icon = UIImage(named: "sleep")!
         self.color = .systemPurple
         self.healthKitIdentifiers = ["sleepMinutes"]
-        self.progress = self.sleepMinutes
     }
     
-    var logs : [SleepLog] = [] {
-        didSet {
-            calculateTotals()
-        }
-    }
     
-    mutating func calculateTotals(){
-        sleepMinutes = logs.reduce(0, {$0 + ($1.sleepMinutes ?? 0.0)})
-        updateActivity()
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler {
+        return archiveDataHandlers.filter({ $0.id == identifier }).first!
     }
-    
-    mutating func updateActivity(){
-        progress = healthKitEnabled! ? hkSleepMinutes : sleepMinutes
+    func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double {
+        let handler = archiveDataHandlers.filter({ $0.id == identifier }).first
+        return handler?.total ?? 0.0
     }
 
-    mutating func setValue(forIdentifier id: String, value: Double){
-        switch id {
-            case "sleepMinutes" :
-                hkSleepMinutes = value
-                updateActivity()
-            default : break
-        }
-    }
-    
-    func getValue(ofKey key: String) -> Double {
-        var value = 0.0
-        switch key {
-            case "sleepMinutes": value = healthKitEnabled! ? hkSleepMinutes : sleepMinutes
-            default: value = 0.0
-        }
-        return value
-    }
 }
 

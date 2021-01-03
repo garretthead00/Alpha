@@ -23,7 +23,7 @@ class HydrationViewModel {
     
     
     init(activity: HydrationActivity, target: UserTarget){
-        self.progress = activity.water
+        self.progress = activity.progress ?? 0.0
         self.target = target.value as! Double
         self.unit = target.unit
     }

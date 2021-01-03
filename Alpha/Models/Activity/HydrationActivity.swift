@@ -15,7 +15,10 @@ struct HydrationActivity : Activity {
     var name: String
     var icon: UIImage
     var color: UIColor
-    var progress: Double?
+    var progress: Double? {
+        let handler = archiveDataHandlers.filter({ $0.id == progressIdentifier }).first
+        return handler?.total
+    }
     var healthKitIdentifiers : [String]?
     var healthKitEnabled : Bool? = false
     var activityType: ActivityType? = .hydration
@@ -23,37 +26,24 @@ struct HydrationActivity : Activity {
     // MARK: - Hydration Activity Properties
     var water : Double = 0.0
     
-    var logs : [NutritionLog] = [] {
-        didSet {
-            calculateTotals()
-        }
-    }
+    var logs : [NutritionLog] = []
+    
+    var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .Water
+    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.Water]
+    var archiveDataHandlers : [ArchiveDataHandler] = []
     
     init() {
         self.name = "Hydration"
         self.icon = UIImage(named: "Hydration")!
         self.color = .systemBlue
-        self.progress = self.water
     }
+
     
-    mutating func calculateTotals(){
-        water = logs.reduce(0, {$0 + ($1.servingSize ?? 0.0)})
-        updateActivity()
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler {
+        return archiveDataHandlers.filter({ $0.id == identifier }).first!
     }
-    
-    mutating func updateActivity(){
-        self.progress = self.water
-    }
-    
-    func setValue(forIdentifier id: String, value: Double){
-    }
-    
-    func getValue(ofKey key: String) -> Double {
-        var value = 0.0
-        switch key {
-            case NUTRIENT.Water.rawValue: value = water
-            default: value = 0.0
-        }
-        return value
+    func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double {
+        let handler = archiveDataHandlers.filter({ $0.id == identifier }).first
+        return handler?.total ?? 0.0
     }
 }

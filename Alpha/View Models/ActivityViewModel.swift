@@ -28,16 +28,7 @@ class ActivityViewModel {
         self.icon = activity.icon
         self.target = target.value as! Double
         self.unit = target.unit
-        
-        
-        switch activity.activityType {
-            case .fitness : self.progress = activity.getValue(ofKey: "energyBurned")
-            case .nutrition : self.progress = activity.getValue(ofKey: "energyConsumed")
-            case .hydration : self.progress = activity.getValue(ofKey: NUTRIENT.Water.rawValue)
-            case .sleep : self.progress = activity.getValue(ofKey: "sleepMinutes")
-            case .mindfulness : self.progress = activity.getValue(ofKey: "mindfulMinutes")
-            default: self.progress = 0.0
-        }
+        self.progress = activity.progress ?? 0.0
         
     }
     

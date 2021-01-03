@@ -25,19 +25,16 @@ class MacrosTargetView: UITableViewCell {
     
     
     var proteinPercent : Double {
-        if let energy = energyConsumed {
-            return ((protein ?? 0.0) / energy) * 100
-        } else { return 0.0 }
+        let energy = energyConsumed
+        return energy! > 0 ? ((protein ?? 0.0) / energy!) * 100 : 0.0
     }
     var fatPercent : Double {
-        if let energy = energyConsumed {
-            return ((fat ?? 0.0) / energy) * 100
-        } else { return 0.0 }
+        let energy = energyConsumed
+        return energy! > 0 ? ((fat ?? 0.0) / energy!) * 100 : 0.0
     }
     var carbsPercent : Double {
-        if let energy = energyConsumed {
-            return ((carbohydrate ?? 0.0) / energy) * 100
-        } else { return 0.0 }
+        let energy = energyConsumed
+        return energy! > 0 ? ((carbohydrate ?? 0.0) / energy!) * 100 : 0.0
     }
     var sum : Double {
         return proteinPercent + fatPercent + carbsPercent
