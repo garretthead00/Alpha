@@ -26,7 +26,7 @@ class ActivityViewModel {
         self.name = activity.name
         self.color = activity.color
         self.icon = activity.icon
-        self.target = target.value as! Double
+        self.target = target.value!
         self.unit = target.unit
         self.progress = activity.progress ?? 0.0
         

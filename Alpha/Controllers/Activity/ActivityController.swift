@@ -64,17 +64,6 @@ class ActivityController: UITableViewController {
         API.UserTarget.observeTargets(completion: { [self] targets in
             ProgressHUD.show(icon: .bolt)
             self.userTargets = targets
-//            API.Activity.observeActivityLogs(forActivity: "fitness", completion: { [self]
-//                logs in
-//                self.fitnessActivity.logs = logs as! [FitnessLog]
-//                //self.updateController()
-//            })
-//            API.Activity.observeTodaysNutritionLogs(completion: {
-//                logs in
-//                self.nutritionActivity.logs = logs 
-//                self.hydrationActivity.logs = logs.filter({ $0.food?.foodType == "drink" }) 
-//                //self.updateController()
-//            })
             API.Archive.loadTodaysArchiveData(forIdentifiers: self.fitnessActivity.activityDataIdentifiers, completion: {
                 handlers in
                 self.fitnessActivity.archiveDataHandlers = handlers
@@ -230,7 +219,7 @@ extension ActivityController {
             // Sleep
             let sleepID = sleepActivity.healthKitIdentifiers![0]
             HealthKitAPI.getSum(forIdentifier: sleepID) { result, error in
-               guard let result = result else {
+                guard result != nil else {
                    if let error = error { print(error) }
                    return
                }
@@ -239,7 +228,7 @@ extension ActivityController {
             // Mindfulness
             let mindID = mindfulnessActivity.healthKitIdentifiers![0]
             HealthKitAPI.getSum(forIdentifier: mindID) { result, error in
-               guard let result = result else {
+                guard result != nil else {
                    if let error = error { print(error) }
                    return
                }

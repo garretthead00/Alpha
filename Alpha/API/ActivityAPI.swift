@@ -59,7 +59,6 @@ class ActivityAPI {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
-        
         var logs : [NutritionLog] = []
         let now = Date()
         let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970

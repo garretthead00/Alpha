@@ -35,7 +35,7 @@ class TargetView: UITableViewCell {
         if let target = self.userTarget {
             targetImage.image = target.icon
             targetLabel.text = target.name
-            if let value = target.value as? Double { targetValueLabel.text = "\(Int(value)) \(target.unit ?? "")" }
+            if let value = target.value { targetValueLabel.text = "\(Int(value)) \(target.unit ?? "")" }
         }
     }
 }
