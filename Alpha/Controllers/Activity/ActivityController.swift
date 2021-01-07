@@ -12,6 +12,8 @@ import ProgressHUD
 class ActivityController: UITableViewController {
 
     
+    // NEWS UPDATES
+    
     // MARK: - ACTIVITIES
     var fitnessActivity : FitnessActivity = FitnessActivity()
     var nutritionActivity : NutritionActivity = NutritionActivity()
