@@ -51,6 +51,7 @@
 		686C355A24E4087B00B2D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686C355824E4087B00B2D2D6 /* LaunchScreen.storyboard */; };
 		686C356524E4151C00B2D2D6 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C356424E4151C00B2D2D6 /* MainController.swift */; };
 		686C356724E6208600B2D2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686C355324E4087A00B2D2D6 /* Main.storyboard */; };
+		68806F8125AFF0BD0052AE7B /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68806F8025AFF0BD0052AE7B /* ActivityFactory.swift */; };
 		6883EAE82516F1810011C91F /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6883EAE72516F1800011C91F /* Walkthrough.storyboard */; };
 		6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */; };
 		6883EB062516F2FB0011C91F /* WalkthroughFinaleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6883EB052516F2FB0011C91F /* WalkthroughFinaleController.swift */; };
@@ -142,6 +143,7 @@
 		686C355924E4087B00B2D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		686C355B24E4087B00B2D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686C356424E4151C00B2D2D6 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		68806F8025AFF0BD0052AE7B /* ActivityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
 		6883EAE72516F1800011C91F /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughIntroController.swift; sourceTree = "<group>"; };
 		6883EB052516F2FB0011C91F /* WalkthroughFinaleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFinaleController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			children = (
 				685BAF182581D09D0029CFDE /* View Models */,
 				689BDFB9257733B10029DE3D /* Alpha.entitlements */,
+				68806F7F25AFF0990052AE7B /* Factories */,
 				68CA588124EEAD990038BCE2 /* Models */,
 				68CA587C24EEACA90038BCE2 /* API */,
 				68CA587724ED799C0038BCE2 /* Services */,
@@ -330,6 +333,14 @@
 				686C356424E4151C00B2D2D6 /* MainController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		68806F7F25AFF0990052AE7B /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				68806F8025AFF0BD0052AE7B /* ActivityFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		68839D29256EA8CE00303A4B /* Activity */ = {
@@ -649,6 +660,7 @@
 				683D257A256DCB2100D601E1 /* HydrationActivity.swift in Sources */,
 				6838A0CF250CFAE000C75D8E /* PreferredUnits.swift in Sources */,
 				68878E0B250CDB8400ACA5EC /* Global.swift in Sources */,
+				68806F8125AFF0BD0052AE7B /* ActivityFactory.swift in Sources */,
 				683D2583256DF1A000D601E1 /* FitnessLog.swift in Sources */,
 				68DDD28C251AE8B6002387ED /* BioLibrary.swift in Sources */,
 				68CE31402518C7B5007855EF /* WalkthroughActivityLevelController.swift in Sources */,

@@ -57,11 +57,50 @@ extension ArchiveAPI {
                 // create data handler from archivedData dictionary
                 let handler = ArchiveDataHandler(identifier: identifier, data: archivedData)
                 handlers.append(handler)
-                print("archivedData")
-                print(archivedData)
                 dispatchGroup.leave()
             })
         }
+        
+        dispatchGroup.notify(queue: .main, execute: {
+            completion(handlers)
+        })
+        
+    }
+    
+    func loadArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping ([ArchiveDataHandler]) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        var handlers : [ArchiveDataHandler] = []
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
+        let dispatchGroup = DispatchGroup()
+       
+        for identifier in identifiers {
+            dispatchGroup.enter()
+            
+            API.UserTarget.observeUserTarget(forIdentifier: identifier, completion: { target in
+                print("target: \(target?.name) \(target?.value)")
+                self.USER_ACTIVITY_ARCHIVES.child(currentUser.uid).child(identifier.rawValue).queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfDay).queryEnding(atValue: now.timeIntervalSince1970).observe(.value, with: { snapshot in
+                    print("got archive data for id: \(identifier.rawValue)")
+                    var archivedData : [Date:Double] = [:]
+                    let items = snapshot.children.allObjects as! [DataSnapshot]
+                    for (_, item) in items.enumerated() {
+                        if let data = item.value as? [String:Any] {
+                            let timestamp = Date(timeIntervalSince1970: data["timestamp"] as! Double)
+                            let value = data["value"] as! Double
+                            archivedData[timestamp] = value
+                        }
+                    }
+                    
+                    // create data handler from archivedData dictionary
+                    let handler = target != nil ? ArchiveDataHandler(identifier: identifier, data: archivedData, target: target!) : ArchiveDataHandler(identifier: identifier, data: archivedData)
+                    handlers.append(handler)
+                   dispatchGroup.leave()
+                })
+            })
+        }
+        
         
         dispatchGroup.notify(queue: .main, execute: {
             completion(handlers)

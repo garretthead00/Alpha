@@ -66,7 +66,7 @@ class ActivityView: UITableViewCell {
             self.iconImageView.image = vm.icon
             let colors = vm.remaining <= 0.0 ? [vm.color] : [vm.color,vm.color.withAlphaComponent(0.5)]
             self.progressLabel.textColor = colors[0]
-            progressLabel.text = "\(Int(vm.progress)) / \(Int(vm.target)) \(vm.unit ?? "")"
+            self.progressLabel.text = "\(Int(vm.progress)) / \(Int(vm.target!)) \(vm.unit ?? "")"
             remainingLabel.text = vm.remaining > 0 ? "\(Int(vm.remaining)) \(vm.unit ?? "") left to goal" : "Completed!"
             chartDataSet.colors = colors
             let pieChartDataEntry = PieChartDataEntry(value: (vm.progress))

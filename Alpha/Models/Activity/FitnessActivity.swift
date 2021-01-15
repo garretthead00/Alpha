@@ -65,8 +65,8 @@ struct FitnessActivity : Activity {
         }
     }
 
-    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler {
-        return archiveDataHandlers.filter({ $0.id == identifier }).first!
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler? {
+        return archiveDataHandlers.filter({ $0.id == identifier }).first
     }
     
     func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double {

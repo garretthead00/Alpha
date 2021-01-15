@@ -15,18 +15,16 @@ class UserTargetAPI {
     // Bio database reference
     var USERTARGETS_DB_REF = Database.database().reference().child("userTargets")
     
-    func observeUserTargets(completion: @escaping(UserTarget?) -> Void) {
+    func observeUserTarget(forIdentifier identifier: ACTIVITY_DATA_IDENTIFIER,completion: @escaping(UserTarget?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
         API.PreferredUnits.observePreferredUnits(completion: {
             units in
-            self.USERTARGETS_DB_REF.child(currentUser.uid).observeSingleEvent(of: .value, with: { snapshot in
-                
-                //if let data = snapshot.value as? [String: Any] {}
-                
-                for child in snapshot.children.allObjects as! [DataSnapshot] {
-                    let target = UserTarget.transformUserTarget(key: child.key, value: child.value!, units: units)
+            
+            self.USERTARGETS_DB_REF.child(currentUser.uid).child(identifier.rawValue).observeSingleEvent(of: .value, with: { snapshot in
+                if let data = snapshot.value as? Double {
+                    let target = UserTarget.transformUserTarget(key: snapshot.key, value: data, units: units)
                     completion(target)
                 }
             })

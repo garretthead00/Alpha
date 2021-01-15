@@ -34,4 +34,15 @@ class TargetActivityViewModel {
         self.progress = isPercent ? percent : progress
     }
     
+    init(handler: ArchiveDataHandler, color: UIColor, isPercent: Bool) {
+        self.name = handler.target!.name!
+        self.icon = handler.target!.icon!
+        self.unit = handler.unit
+        self.color = color
+        self.targetValue = handler.target!.value!
+        let percent = handler.target!.value! > 0 ? (handler.progress! / (handler.target!.value!)) * 100 : 0.0
+        self.percentComplete = percent
+        self.progress = isPercent ? percent : handler.progress!
+    }
+    
 }

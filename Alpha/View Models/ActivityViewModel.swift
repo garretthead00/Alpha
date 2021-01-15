@@ -14,22 +14,20 @@ class ActivityViewModel {
     var name : String
     var color : UIColor
     var icon : UIImage
-    var target : Double
     var progress : Double
-    var remaining : Double {
-        let value = target - progress
-        return value > 0.0 ? value : 0.0
-    }
+    var remaining : Double
     var unit : String?
+    var target : Double?
     
-    init(activity: Activity, target: UserTarget) {
+    init(activity: Activity) {
         self.name = activity.name
         self.color = activity.color
         self.icon = activity.icon
-        self.target = target.value!
-        self.unit = target.unit
         self.progress = activity.progress ?? 0.0
-        
+        let handler = activity.getHandler(withIdentifier: activity.progressIdentifier)
+        self.unit = handler?.unit
+        self.remaining = handler?.remaining ?? 0.0
+        self.target = handler?.target?.value
     }
     
 }

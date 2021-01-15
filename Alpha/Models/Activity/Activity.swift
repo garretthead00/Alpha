@@ -21,16 +21,17 @@ protocol Activity {
     var progressIdentifier : ACTIVITY_DATA_IDENTIFIER { get set }
     var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] { get set }
     var archiveDataHandlers : [ArchiveDataHandler] { get set }
-    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler?
     func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double
 }
 
-enum ActivityType {
-    case fitness
-    case nutrition
-    case hydration
-    case sleep
-    case mindfulness
+
+enum ActivityType: String {
+    case fitness = "Fitness"
+    case nutrition = "Nutrition"
+    case hydration = "Hydration"
+    case sleep = "Sleep"
+    case mindfulness = "Mindfulness"
 }
 enum ACTIVITY_DATA_IDENTIFIER : String {
     

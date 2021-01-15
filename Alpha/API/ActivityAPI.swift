@@ -142,7 +142,7 @@ class ActivityAPI {
         let newLogRef = API.Activity.ACTIVITYLOGS_DB_REF.child(currentUser.uid).child("nutrition").childByAutoId()
         newLogRef.setValue(["timestamp": now, "foodId": food.id!, "servingSize": food.servingSize!, "servingUnit": food.servingUnit!])
         for nutrient in food.nutrition {
-                newLogRef.updateChildValues([nutrient.id: nutrient.value])
+            newLogRef.updateChildValues([nutrient.id: nutrient.value])
         }
         
         // "Fan-out" nutrition data
@@ -151,4 +151,18 @@ class ActivityAPI {
     
 
     
+    func loadTodaysActivity(_ type: ActivityType, completion: @escaping (Activity) -> Void) {
+        var activity = ActivityFactory().createActivity(type)
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        API.Archive.loadArchiveData(forIdentifiers: activity.activityDataIdentifiers, completion: {
+            handlers in
+            print("got handlers for activity: \(type.rawValue)")
+            activity.archiveDataHandlers = handlers
+            dispatchGroup.leave()
+        })
+        dispatchGroup.notify(queue: .main, execute: {
+            completion(activity)
+        })
+    }
 }
