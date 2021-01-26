@@ -21,7 +21,7 @@ class ActivityLogViewModel {
         self.name = ""
         self.timestamp = ""
         self.value = 0.0
-        self.unit = target.unit ?? ""
+        self.unit = ""
         if let log = log as? NutritionLog, let food = log.food {
             if let name = food.name { self.name = name }
             if let icon = food.category { self.icon = UIImage(named: icon) }

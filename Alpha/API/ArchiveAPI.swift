@@ -32,11 +32,13 @@ class ArchiveAPI {
 // MARK: Extension Get Methods
 extension ArchiveAPI {
     
-    func loadTodaysArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping ([ArchiveDataHandler]) -> Void) {
+    func loadTodaysArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], units: PreferredUnits, completion: @escaping ([ActivityDataHandler]) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
-        var handlers : [ArchiveDataHandler] = []
+        let handlerFactory = ArchiveDataHandlerFactory()
+        let unitFactory = PreferredUnitFactory()
+        var handlers : [ActivityDataHandler] = []
         let now = Date()
         let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
         let dispatchGroup = DispatchGroup()
@@ -55,9 +57,19 @@ extension ArchiveAPI {
                 }
                 
                 // create data handler from archivedData dictionary
-                let handler = ArchiveDataHandler(identifier: identifier, data: archivedData)
-                handlers.append(handler)
-                dispatchGroup.leave()
+                //let handler = ArchiveDataHandler(identifier: identifier, data: archivedData)
+                
+                // ArchiveHandlerFactory
+                var handler = handlerFactory.makeDataHandler(identifier, data: archivedData)
+                handler.preferredUnit = unitFactory.createUnit(identifier, units: units)
+                
+                API.UserTarget.observeTarget(identifier, completion: { target in
+                    handler.target = target
+                    handlers.append(handler)
+                    dispatchGroup.leave()
+                })
+                
+                
             })
         }
         
@@ -67,11 +79,16 @@ extension ArchiveAPI {
         
     }
     
-    func loadArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping ([ArchiveDataHandler]) -> Void) {
+    private func getPreferredUnits(){
+        
+    }
+    
+    func loadArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping ([ActivityDataHandler]) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
-        var handlers : [ArchiveDataHandler] = []
+        let handlerFactory = ArchiveDataHandlerFactory()
+        var handlers : [ActivityDataHandler] = []
         let now = Date()
         let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
         let dispatchGroup = DispatchGroup()
@@ -80,9 +97,7 @@ extension ArchiveAPI {
             dispatchGroup.enter()
             
             API.UserTarget.observeUserTarget(forIdentifier: identifier, completion: { target in
-                print("target: \(target?.name) \(target?.value)")
                 self.USER_ACTIVITY_ARCHIVES.child(currentUser.uid).child(identifier.rawValue).queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfDay).queryEnding(atValue: now.timeIntervalSince1970).observe(.value, with: { snapshot in
-                    print("got archive data for id: \(identifier.rawValue)")
                     var archivedData : [Date:Double] = [:]
                     let items = snapshot.children.allObjects as! [DataSnapshot]
                     for (_, item) in items.enumerated() {
@@ -94,7 +109,8 @@ extension ArchiveAPI {
                     }
                     
                     // create data handler from archivedData dictionary
-                    let handler = target != nil ? ArchiveDataHandler(identifier: identifier, data: archivedData, target: target!) : ArchiveDataHandler(identifier: identifier, data: archivedData)
+                    let handler = handlerFactory.makeDataHandler(identifier, data: archivedData)
+                    
                     handlers.append(handler)
                    dispatchGroup.leave()
                 })
@@ -107,5 +123,7 @@ extension ArchiveAPI {
         })
         
     }
+    
+
     
 }

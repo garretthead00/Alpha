@@ -34,7 +34,7 @@ struct SleepActivity : Activity {
     
     var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .SleepMinutes
     var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.SleepMinutes]
-    var archiveDataHandlers : [ArchiveDataHandler] = []
+    var archiveDataHandlers : [ActivityDataHandler] = []
     
     
     init() {
@@ -45,7 +45,7 @@ struct SleepActivity : Activity {
     }
     
     
-    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler? {
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ActivityDataHandler? {
         return archiveDataHandlers.filter({ $0.id == identifier }).first
     }
     func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double {

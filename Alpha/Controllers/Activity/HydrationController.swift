@@ -92,11 +92,11 @@ extension HydrationController {
     }
     
     private func loadArchivedData(){
-        API.Archive.loadTodaysArchiveData(forIdentifiers: self.hydrationActivity!.activityDataIdentifiers, completion: {
-            handlers in
-            self.hydrationActivity!.archiveDataHandlers = handlers
-            self.loadViewModels()
-        })
+//        API.Archive.loadTodaysArchiveData(forIdentifiers: self.hydrationActivity!.activityDataIdentifiers, completion: {
+//            handlers in
+//            self.hydrationActivity!.archiveDataHandlers = handlers
+//            self.loadViewModels()
+//        })
     }
     
     private func loadViewModels(){
@@ -116,7 +116,7 @@ extension HydrationController {
     private func presentHydrationLogMenu(){
         let alertController = UIAlertController(title: "How much did you drink?", message: "", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = self.userTarget?.unit
+            textField.placeholder = "self.userTarget?.unit"
             textField.keyboardType = .numberPad
         }
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
@@ -125,7 +125,7 @@ extension HydrationController {
                 return
             }
             if let value = Double(input) {
-                let water = Food(id: "xxALPHAXxx_Water", name: "Water", foodType: "drink", category: "water", servingSize: value, unit: self.userTarget!.unit!, nutrition: [NutritionHandler(id: ACTIVITY_DATA_IDENTIFIER.Water.rawValue, name: "Water", value: value, unit: self.userTarget!.unit!)])
+                let water = Food(id: "xxALPHAXxx_Water", name: "Water", foodType: "drink", category: "water", servingSize: value, unit: "fl oz", nutrition: [NutritionHandler(id: ACTIVITY_DATA_IDENTIFIER.Water.rawValue, name: "Water", value: value, unit: "fl oz")])
                 
                 API.Activity.createLog(withFood: water)
                 self.refreshLogs()

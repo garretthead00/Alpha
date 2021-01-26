@@ -15,6 +15,7 @@ class PreferredUnits {
     var volume : String?
     var energy : String?
     var distance : String?
+    var nutrition : String?
     var time : String?
     var ratio : String?
     var count : String?
@@ -24,12 +25,13 @@ extension PreferredUnits {
     static func transformUnits(data: [String: Any], key: String) -> PreferredUnits {
         let units = PreferredUnits()
         units.uid = key
-        units.height = data["height"] as? String
-        units.weight = data["weight"] as? String
-        units.distance = data["distance"] as? String
-        units.volume = data["volume"] as? String
-        units.energy = data["energy"] as? String
-        units.time = "min"
+        units.height = data["Height"] as? String
+        units.weight = data["Weight"] as? String
+        units.distance = data["Distance"] as? String
+        units.volume = data["Volume"] as? String
+        units.energy = data["Energy"] as? String
+        units.nutrition = data["Nutrition"] as? String
+        units.time = data["Time"] as? String
         units.ratio = "%"
         units.count = ""
         return units

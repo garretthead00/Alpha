@@ -47,7 +47,7 @@ class ActivityController: UITableViewController {
         for type in activityIdentifiers {
             print("type: \(type)")
             API.Activity.loadTodaysActivity(type, completion: { activity in
-                print("---Activity: \(activity.name) ---progress: \(activity.progress)")
+                print("---Activity: \(activity.name) ---progress: \(activity.progress ?? 0.0)")
                 self.activities.append(activity)
             })
         }

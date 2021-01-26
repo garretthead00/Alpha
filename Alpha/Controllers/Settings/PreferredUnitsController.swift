@@ -16,14 +16,21 @@ let heightUnits : [String] = ["in", "cm"]
 let distanceUnits : [String] = ["mi", "km"]
 let energyUnits : [String] = ["kCal", "kJ"]
 
+let unitDictionary : [String : [Unit]] = [
+    "Weight" : [UnitMass.kilograms, UnitMass.pounds],
+    "Height" : [UnitLength.centimeters, UnitLength.inches, UnitLength.feet],
+    "Distance": [UnitLength.meters, UnitLength.kilometers, UnitLength.feet, UnitLength.yards, UnitLength.miles],
+    "Energy" : [UnitEnergy.kilocalories, UnitEnergy.calories],
+    "Volume" : [UnitVolume.milliliters, UnitVolume.liters, UnitVolume.fluidOunces, UnitVolume.cups],
+    "Macros" : [UnitMass.grams, UnitMass.ounces],
+    "Nutrition" : [UnitMass.grams, UnitMass.milligrams, UnitMass.micrograms]
+    
+]
+
 class PreferredUnitsController: UITableViewController {
 
 
-    var preferredUnits : PreferredUnits = PreferredUnits() {
-        didSet {
-            updateView()
-        }
-    }
+    var preferredUnits : PreferredUnits = PreferredUnits() { didSet { updateView() } }
     
     // MARK: - Outlets
     @IBOutlet weak var weightSegmentedControl: UISegmentedControl!

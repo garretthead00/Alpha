@@ -25,7 +25,7 @@ struct FitnessActivity : Activity {
     var logs : [FitnessLog] = []
     var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .EnergyBurned
     var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .ExerciseMinutes, .Steps, .Distance, .WorkoutsCompleted]
-    var archiveDataHandlers : [ArchiveDataHandler] = []
+    var archiveDataHandlers : [ActivityDataHandler] = []
     
     // MARK: - HealthKit properties
     var healthKitEnabled : Bool? = false
@@ -65,7 +65,7 @@ struct FitnessActivity : Activity {
         }
     }
 
-    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler? {
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ActivityDataHandler? {
         return archiveDataHandlers.filter({ $0.id == identifier }).first
     }
     

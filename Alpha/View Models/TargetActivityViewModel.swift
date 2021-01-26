@@ -24,9 +24,9 @@ class TargetActivityViewModel {
     }
     
     init(target: UserTarget, progress: Double, color: UIColor, isPercent: Bool) {
-        self.name = target.name!
-        self.icon = target.icon!
-        self.unit = target.unit!
+        self.name = ""//target.name!
+        self.icon = UIImage(named: "")!//target.icon!
+        self.unit = ""//target.unit!
         self.color = color
         self.targetValue = target.value!
         let percent = target.value! > 0 ? (progress / (target.value!)) * 100 : 0.0
@@ -34,10 +34,10 @@ class TargetActivityViewModel {
         self.progress = isPercent ? percent : progress
     }
     
-    init(handler: ArchiveDataHandler, color: UIColor, isPercent: Bool) {
-        self.name = handler.target!.name!
-        self.icon = handler.target!.icon!
-        self.unit = handler.unit
+    init(handler: ActivityDataHandler, color: UIColor, isPercent: Bool) {
+        self.name = handler.name
+        self.icon = handler.icon
+        self.unit = handler.unit.symbol
         self.color = color
         self.targetValue = handler.target!.value!
         let percent = handler.target!.value! > 0 ? (handler.progress! / (handler.target!.value!)) * 100 : 0.0

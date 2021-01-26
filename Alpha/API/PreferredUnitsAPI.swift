@@ -26,6 +26,17 @@ class PreferredUnitsAPI {
         })
     }
     
+    func observePreferredUnit(forKey key: String, completion: @escaping (String) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        PREFERRED_UNITS_DB_REF.child(currentUser.uid).child(key).observeSingleEvent(of: .value, with: { snapshot in
+            if let data = snapshot.value as? String {
+                completion(data)
+            }
+        })
+    }
+    
     func updatePreferredUnits(withKey key: String, value: Any) {
         guard let currentUser = Auth.auth().currentUser else {
             return

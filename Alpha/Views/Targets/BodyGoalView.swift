@@ -16,7 +16,7 @@ class BodyGoalView: UITableViewCell {
     
     let segments : [String] = ["Lose Fat", "Maintain", "Gain Muscle"]
     let descriptions : [String] = ["Your goal determines the amount of calories you need each day. Depending on your activity level, body type, and your goals, the daily caloric intake will generate either a surplus or deficiency of calories to consume eachday."]
-    var delegate : UserTargetDelegate?
+    var delegate : TargetDelegate?
     var bodyGoal : String? {
         didSet{
             updateView()

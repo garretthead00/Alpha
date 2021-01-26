@@ -50,49 +50,38 @@ class UserTarget {
     }
     
     var id : ACTIVITY_DATA_IDENTIFIER
-    var name : String?
-    var description : String?
-    var icon : UIImage?
-    var unit : String?
     var value : Double?
     var targetType : TargetType?
     
     init(id: ACTIVITY_DATA_IDENTIFIER, name: String, description : String, icon : UIImage, value : Double, type: TargetType) {
         self.id = id
-        self.name = name
-        self.description = description
-        self.icon = icon
         self.value = value
         self.targetType = type
     }
     
-    init(id: ACTIVITY_DATA_IDENTIFIER, name: String, description : String, icon : UIImage, value : Double, type: TargetType, unit: String) {
+    init(id: ACTIVITY_DATA_IDENTIFIER, value : Double, type: TargetType) {
         self.id = id
-        self.name = name
-        self.description = description
-        self.icon = icon
         self.value = value
         self.targetType = type
-        self.unit = unit
     }
 }
 
 extension UserTarget {
     
-    static func transformUserTarget(key: String, value: Any, units: PreferredUnits) -> UserTarget? {
+    static func transformUserTarget(key: String, value: Double) -> UserTarget? {
         switch key {
-            case ACTIVITY_DATA_IDENTIFIER.EnergyBurned.rawValue: return UserTarget(id: .EnergyBurned, name: "Energy Burned", description: "Total active energy burned.", icon: UIImage(named: "energyBurned")!, value: value as! Double, type: TargetType.fitness, unit: units.energy!)
-            case ACTIVITY_DATA_IDENTIFIER.Distance.rawValue: return UserTarget(id: .Distance, name: "Distance", description: "Total distance travelled", icon: UIImage(named: "distance")!, value: value as! Double, type: TargetType.fitness, unit: units.distance!)
-            case ACTIVITY_DATA_IDENTIFIER.Steps.rawValue: return UserTarget(id: .Steps, name: "Steps", description: "Total steps taken.", icon: UIImage(named: "steps")!, value: value as! Double, type: TargetType.fitness, unit: units.count!)
-            case ACTIVITY_DATA_IDENTIFIER.WorkoutsCompleted.rawValue: return UserTarget(id: .WorkoutsCompleted, name: "Workouts", description: "Total workouts completed", icon: UIImage(named: "workouts")!, value: value as! Double, type: TargetType.fitness, unit: units.count!)
-            case ACTIVITY_DATA_IDENTIFIER.ExerciseMinutes.rawValue: return UserTarget(id: .ExerciseMinutes, name: "Exercise Minutes", description: "Total minutes exercised.", icon: UIImage(named: "exerciseMinutes")!, value: value as! Double, type: TargetType.fitness, unit: units.time!)
-            case ACTIVITY_DATA_IDENTIFIER.EnergyConsumed.rawValue: return UserTarget(id: .EnergyConsumed, name: "Energy Consumed", description: "Total energy consumed", icon: UIImage(named: "energyConsumed")!, value: value as! Double, type: TargetType.nutrition, unit: units.energy!)
-            case ACTIVITY_DATA_IDENTIFIER.Protein.rawValue: return UserTarget(id: .Protein, name: "Protein", description: "Total protein consumed", icon: UIImage(named: "protein")!, value: value as! Double, type: TargetType.nutrition, unit: units.ratio!)
-            case ACTIVITY_DATA_IDENTIFIER.Fat.rawValue: return UserTarget(id: .Fat, name: "Fats", description: "Total fats consumed", icon: UIImage(named: "fat")!, value: value as! Double, type: TargetType.nutrition, unit: units.ratio!)
-            case ACTIVITY_DATA_IDENTIFIER.Carbohydrates.rawValue: return UserTarget(id: .Carbohydrates, name: "Carbohydrates", description: "Total carbohydrates consumed", icon: UIImage(named: "carbohydrates")!, value: value as! Double, type: TargetType.nutrition, unit: units.ratio!)
-            case ACTIVITY_DATA_IDENTIFIER.Water.rawValue: return UserTarget(id: .Water, name: "Water Drank", description: "Total water drank", icon: UIImage(named: "water")!, value: value as! Double, type: TargetType.hydration, unit: units.volume!)
-            case ACTIVITY_DATA_IDENTIFIER.SleepMinutes.rawValue: return UserTarget(id: .SleepMinutes, name: "Sleep Minutes", description: "Total minutes slept", icon: UIImage(named: "sleep")!, value: value as! Double, type: TargetType.sleep, unit: units.time!)
-            case ACTIVITY_DATA_IDENTIFIER.MindfulMinutes.rawValue: return UserTarget(id: .MindfulMinutes, name: "Mindful Minutes", description: "Total mindful minutes", icon: UIImage(named: "mindfulness")!, value: value as! Double, type: TargetType.mindfulness, unit: units.time!)
+            case ACTIVITY_DATA_IDENTIFIER.EnergyBurned.rawValue: return UserTarget(id: .EnergyBurned, value: value, type: TargetType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.Distance.rawValue: return UserTarget(id: .Distance, value: value, type: TargetType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.Steps.rawValue: return UserTarget(id: .Steps, value: value, type: TargetType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.WorkoutsCompleted.rawValue: return UserTarget(id: .WorkoutsCompleted, value: value, type: TargetType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.ExerciseMinutes.rawValue: return UserTarget(id: .ExerciseMinutes, value: value, type: TargetType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.EnergyConsumed.rawValue: return UserTarget(id: .EnergyConsumed, value: value, type: TargetType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Protein.rawValue: return UserTarget(id: .Protein, value: value, type: TargetType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Fat.rawValue: return UserTarget(id: .Fat, value: value, type: TargetType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Carbohydrates.rawValue: return UserTarget(id: .Carbohydrates, value: value, type: TargetType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Water.rawValue: return UserTarget(id: .Water, value: value, type: TargetType.hydration)
+            case ACTIVITY_DATA_IDENTIFIER.SleepMinutes.rawValue: return UserTarget(id: .SleepMinutes, value: value, type: TargetType.sleep)
+            case ACTIVITY_DATA_IDENTIFIER.MindfulMinutes.rawValue: return UserTarget(id: .MindfulMinutes, value: value, type: TargetType.mindfulness)
             default: return nil
         }
     }

@@ -17,7 +17,7 @@ class HydrationTargetViewModel {
     init(waterDrank: Double, target: UserTarget) {
         self.waterDrank = waterDrank
         self.targetValue = target.value!
-        self.unit = target.unit ?? ""
+        self.unit = ""
     }
     
 }

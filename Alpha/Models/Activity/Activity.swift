@@ -20,8 +20,8 @@ protocol Activity {
  
     var progressIdentifier : ACTIVITY_DATA_IDENTIFIER { get set }
     var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] { get set }
-    var archiveDataHandlers : [ArchiveDataHandler] { get set }
-    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ArchiveDataHandler?
+    var archiveDataHandlers : [ActivityDataHandler] { get set }
+    func getHandler(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> ActivityDataHandler?
     func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double
 }
 
@@ -106,6 +106,7 @@ enum ACTIVITY_DATA_IDENTIFIER : String {
     // Mindfulness
     case MindfulMinutes = "MindfulMinutes"
 }
+
 
 
 

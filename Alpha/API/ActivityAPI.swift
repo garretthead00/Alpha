@@ -155,12 +155,16 @@ class ActivityAPI {
         var activity = ActivityFactory().createActivity(type)
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        API.Archive.loadArchiveData(forIdentifiers: activity.activityDataIdentifiers, completion: {
-            handlers in
-            print("got handlers for activity: \(type.rawValue)")
-            activity.archiveDataHandlers = handlers
-            dispatchGroup.leave()
+        API.PreferredUnits.observePreferredUnits(completion: { units in
+            API.Archive.loadTodaysArchiveData(forIdentifiers: activity.activityDataIdentifiers, units: units, completion: {
+                handlers in
+                print("got handlers for activity: \(type.rawValue)")
+                activity.archiveDataHandlers = handlers
+                dispatchGroup.leave()
+            })
+            
         })
+        
         dispatchGroup.notify(queue: .main, execute: {
             completion(activity)
         })

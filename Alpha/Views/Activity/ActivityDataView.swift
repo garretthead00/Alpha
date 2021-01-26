@@ -20,7 +20,7 @@ class ActivityDataView: UITableViewCell {
     
     var userTarget : UserTarget? { didSet { updateView() } }
     
-    var delegate : UserTargetDelegate?
+    //var delegate : UserTargetDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

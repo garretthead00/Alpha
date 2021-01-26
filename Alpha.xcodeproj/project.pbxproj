@@ -21,9 +21,8 @@
 		683BA43C259E3912004645D4 /* HydrationTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */; };
 		683BA44F25A0A097004645D4 /* NutritionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA44E25A0A096004645D4 /* NutritionHandler.swift */; };
 		683BA46225A0BD43004645D4 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA46125A0BD43004645D4 /* ArchiveAPI.swift */; };
-		683BA47525A0D055004645D4 /* ArchiveDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA47425A0D055004645D4 /* ArchiveDataHandler.swift */; };
+		683BA47525A0D055004645D4 /* ActivityDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BA47425A0D055004645D4 /* ActivityDataHandler.swift */; };
 		683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D2304255CD6F900D601E1 /* UserTarget.swift */; };
-		683D232C255F5BAE00D601E1 /* MacrosTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */; };
 		683D239B256204C800D601E1 /* UserTargetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D239A256204C800D601E1 /* UserTargetAPI.swift */; };
 		683D241F2568D02B00D601E1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D241E2568D02B00D601E1 /* Activity.swift */; };
 		683D24222568D0F900D601E1 /* FitnessActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D24212568D0F900D601E1 /* FitnessActivity.swift */; };
@@ -45,12 +44,21 @@
 		685BAFEB258C30A60029CFDE /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 685BAFEA258C30A60029CFDE /* Activity.storyboard */; };
 		685BAFEE258C36E90029CFDE /* HydrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAFED258C36E90029CFDE /* HydrationController.swift */; };
 		685BAFF1258C38500029CFDE /* HydrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAFF0258C38500029CFDE /* HydrationViewModel.swift */; };
+		686006D025BF932A0059DF3C /* TargetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686006CF25BF932A0059DF3C /* TargetDelegate.swift */; };
+		686006E325BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686006E225BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift */; };
+		6860071625BFB9C00059DF3C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860071525BFB9C00059DF3C /* UnitConverter.swift */; };
+		6860073C25BFD75F0059DF3C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860073B25BFD75F0059DF3C /* UnitConverter.swift */; };
+		6860074125BFD7FF0059DF3C /* PreferredUnitsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860074025BFD7FF0059DF3C /* PreferredUnitsTVC.swift */; };
+		6860074425BFD8240059DF3C /* PreferredUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860074325BFD8240059DF3C /* PreferredUnitView.swift */; };
 		686C354E24E4087A00B2D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C354D24E4087A00B2D2D6 /* AppDelegate.swift */; };
 		686C355024E4087A00B2D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C354F24E4087A00B2D2D6 /* SceneDelegate.swift */; };
 		686C355724E4087B00B2D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686C355624E4087B00B2D2D6 /* Assets.xcassets */; };
 		686C355A24E4087B00B2D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686C355824E4087B00B2D2D6 /* LaunchScreen.storyboard */; };
 		686C356524E4151C00B2D2D6 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C356424E4151C00B2D2D6 /* MainController.swift */; };
 		686C356724E6208600B2D2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686C355324E4087A00B2D2D6 /* Main.storyboard */; };
+		687E4CA825B292B900288AB3 /* UnitLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E4CA725B292B900288AB3 /* UnitLibrary.swift */; };
+		687E4CD025B4ACAD00288AB3 /* ArchiveDataHandlerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E4CCF25B4ACAD00288AB3 /* ArchiveDataHandlerFactory.swift */; };
+		687E4CD325B4C72400288AB3 /* PreferredUnitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E4CD225B4C72400288AB3 /* PreferredUnitFactory.swift */; };
 		68806F8125AFF0BD0052AE7B /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68806F8025AFF0BD0052AE7B /* ActivityFactory.swift */; };
 		6883EAE82516F1810011C91F /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6883EAE72516F1800011C91F /* Walkthrough.storyboard */; };
 		6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */; };
@@ -62,13 +70,14 @@
 		6886BD1A2511A8CB00F29BEF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6886BD192511A8CB00F29BEF /* Settings.storyboard */; };
 		68878E0B250CDB8400ACA5EC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878E0A250CDB8400ACA5EC /* Global.swift */; };
 		68878E0D250CEC6D00ACA5EC /* PreferredUnitsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68878E0C250CEC6D00ACA5EC /* PreferredUnitsController.swift */; };
-		6887CA2F254A3A7B00CB617C /* TargetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887CA2E254A3A7B00CB617C /* TargetsController.swift */; };
 		6887CA32254D89A000CB617C /* BodyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887CA31254D89A000CB617C /* BodyGoalView.swift */; };
-		6887CA37254DA26C00CB617C /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887CA36254DA26C00CB617C /* TargetView.swift */; };
 		689BDFBB257733B10029DE3D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689BDFBA257733B10029DE3D /* HealthKit.framework */; };
 		689BE02B257846810029DE3D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689BE02A257846810029DE3D /* Charts.framework */; };
 		689BE040257846D90029DE3D /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */; };
 		689BE05425786AB20029DE3D /* HealthKitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE05325786AB20029DE3D /* HealthKitAPI.swift */; };
+		68A3FD2925BB49E900A21E5A /* TargetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD2825BB49E900A21E5A /* TargetsController.swift */; };
+		68A3FD2C25BB4A1F00A21E5A /* ActivityHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */; };
+		68A3FD5F25BCB67700A21E5A /* MacroTargetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */; };
 		68AAA70D251599A100972664 /* TeamColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAA70C251599A100972664 /* TeamColorController.swift */; };
 		68BEE5EE24EBF98C00250310 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEE5ED24EBF98C00250310 /* HomeController.swift */; };
 		68BEE5F224EC273E00250310 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BEE5F124EC273E00250310 /* SideMenu.storyboard */; };
@@ -111,9 +120,8 @@
 		683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationTargetViewModel.swift; sourceTree = "<group>"; };
 		683BA44E25A0A096004645D4 /* NutritionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionHandler.swift; path = Alpha/Models/NutritionHandler.swift; sourceTree = SOURCE_ROOT; };
 		683BA46125A0BD43004645D4 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
-		683BA47425A0D055004645D4 /* ArchiveDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataHandler.swift; sourceTree = "<group>"; };
+		683BA47425A0D055004645D4 /* ActivityDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDataHandler.swift; sourceTree = "<group>"; };
 		683D2304255CD6F900D601E1 /* UserTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTarget.swift; sourceTree = "<group>"; };
-		683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTargetView.swift; sourceTree = "<group>"; };
 		683D239A256204C800D601E1 /* UserTargetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTargetAPI.swift; sourceTree = "<group>"; };
 		683D241E2568D02B00D601E1 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		683D24212568D0F900D601E1 /* FitnessActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessActivity.swift; sourceTree = "<group>"; };
@@ -135,6 +143,12 @@
 		685BAFEA258C30A60029CFDE /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		685BAFED258C36E90029CFDE /* HydrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationController.swift; sourceTree = "<group>"; };
 		685BAFF0258C38500029CFDE /* HydrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewModel.swift; sourceTree = "<group>"; };
+		686006CF25BF932A0059DF3C /* TargetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDelegate.swift; sourceTree = "<group>"; };
+		686006E225BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTargetHandlerViewModel.swift; sourceTree = "<group>"; };
+		6860071525BFB9C00059DF3C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitConverter.swift; path = /Users/Garrett/Documents/Workspace/Alpha/Project/Alpha/Alpha/Services/UnitConverter.swift; sourceTree = "<absolute>"; };
+		6860073B25BFD75F0059DF3C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitConverter.swift; path = /Users/Garrett/Documents/Workspace/Alpha/Project/Alpha/Alpha/Services/UnitConverter.swift; sourceTree = "<absolute>"; };
+		6860074025BFD7FF0059DF3C /* PreferredUnitsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnitsTVC.swift; sourceTree = "<group>"; };
+		6860074325BFD8240059DF3C /* PreferredUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnitView.swift; sourceTree = "<group>"; };
 		686C354A24E4087A00B2D2D6 /* Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686C354D24E4087A00B2D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		686C354F24E4087A00B2D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +157,9 @@
 		686C355924E4087B00B2D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		686C355B24E4087B00B2D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686C356424E4151C00B2D2D6 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		687E4CA725B292B900288AB3 /* UnitLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitLibrary.swift; sourceTree = "<group>"; };
+		687E4CCF25B4ACAD00288AB3 /* ArchiveDataHandlerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataHandlerFactory.swift; sourceTree = "<group>"; };
+		687E4CD225B4C72400288AB3 /* PreferredUnitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnitFactory.swift; sourceTree = "<group>"; };
 		68806F8025AFF0BD0052AE7B /* ActivityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
 		6883EAE72516F1800011C91F /* Walkthrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		6883EAEA2516F2260011C91F /* WalkthroughIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughIntroController.swift; sourceTree = "<group>"; };
@@ -154,14 +171,15 @@
 		6886BD192511A8CB00F29BEF /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		68878E0A250CDB8400ACA5EC /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		68878E0C250CEC6D00ACA5EC /* PreferredUnitsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferredUnitsController.swift; path = Alpha/Controllers/Settings/PreferredUnitsController.swift; sourceTree = SOURCE_ROOT; };
-		6887CA2E254A3A7B00CB617C /* TargetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsController.swift; sourceTree = "<group>"; };
 		6887CA31254D89A000CB617C /* BodyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyGoalView.swift; sourceTree = "<group>"; };
-		6887CA36254DA26C00CB617C /* TargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
 		689BDFB9257733B10029DE3D /* Alpha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Alpha.entitlements; sourceTree = "<group>"; };
 		689BDFBA257733B10029DE3D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		689BE02A257846810029DE3D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
 		689BE05325786AB20029DE3D /* HealthKitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAPI.swift; sourceTree = "<group>"; };
+		68A3FD2825BB49E900A21E5A /* TargetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsController.swift; sourceTree = "<group>"; };
+		68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHandlerView.swift; sourceTree = "<group>"; };
+		68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTargetMenuController.swift; sourceTree = "<group>"; };
 		68AAA70C251599A100972664 /* TeamColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamColorController.swift; sourceTree = "<group>"; };
 		68BEE5ED24EBF98C00250310 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		68BEE5F124EC273E00250310 /* SideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
@@ -215,6 +233,7 @@
 		6822375B24E9419A007CAD9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6860074325BFD8240059DF3C /* PreferredUnitView.swift */,
 				68839D29256EA8CE00303A4B /* Activity */,
 				6887CA34254D89A700CB617C /* Targets */,
 				6886BD17251199F700F29BEF /* DarkModeSettingsView.swift */,
@@ -250,6 +269,7 @@
 		685BAF182581D09D0029CFDE /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				686006E225BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift */,
 				683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */,
 				683BA40425993508004645D4 /* ActivityLogViewModel.swift */,
 				685BAFF0258C38500029CFDE /* HydrationViewModel.swift */,
@@ -315,6 +335,7 @@
 		686C356224E40A1000B2D2D6 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				686006CF25BF932A0059DF3C /* TargetDelegate.swift */,
 				686C354D24E4087A00B2D2D6 /* AppDelegate.swift */,
 				686C354F24E4087A00B2D2D6 /* SceneDelegate.swift */,
 			);
@@ -335,10 +356,20 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		687E4C3425B2874D00288AB3 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				687E4CA725B292B900288AB3 /* UnitLibrary.swift */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
 		68806F7F25AFF0990052AE7B /* Factories */ = {
 			isa = PBXGroup;
 			children = (
 				68806F8025AFF0BD0052AE7B /* ActivityFactory.swift */,
+				687E4CCF25B4ACAD00288AB3 /* ArchiveDataHandlerFactory.swift */,
+				687E4CD225B4C72400288AB3 /* PreferredUnitFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -346,6 +377,7 @@
 		68839D29256EA8CE00303A4B /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */,
 				683BA438259E33EC004645D4 /* HydrationTargetView.swift */,
 				683BA3EC2597943F004645D4 /* HydrationView.swift */,
 				683BA3832594750C004645D4 /* ActivityDataView.swift */,
@@ -374,6 +406,7 @@
 		6886A31225101F96002A3A84 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				6860074025BFD7FF0059DF3C /* PreferredUnitsTVC.swift */,
 				68AAA70C251599A100972664 /* TeamColorController.swift */,
 				6886A31025101A7F002A3A84 /* BodyMeasurementController.swift */,
 				68878E0C250CEC6D00ACA5EC /* PreferredUnitsController.swift */,
@@ -386,9 +419,7 @@
 		6887CA34254D89A700CB617C /* Targets */ = {
 			isa = PBXGroup;
 			children = (
-				683D232B255F5BAE00D601E1 /* MacrosTargetView.swift */,
 				6887CA31254D89A000CB617C /* BodyGoalView.swift */,
-				6887CA36254DA26C00CB617C /* TargetView.swift */,
 			);
 			path = Targets;
 			sourceTree = "<group>";
@@ -396,9 +427,10 @@
 		689BE206257DB1910029DE3D /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */,
+				68A3FD2825BB49E900A21E5A /* TargetsController.swift */,
 				685BAFED258C36E90029CFDE /* HydrationController.swift */,
 				685BAF122581D05F0029CFDE /* ActivityController.swift */,
-				6887CA2E254A3A7B00CB617C /* TargetsController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -408,6 +440,7 @@
 			children = (
 				689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */,
 				68878E0A250CDB8400ACA5EC /* Global.swift */,
+				687E4C3425B2874D00288AB3 /* Units */,
 				68DDD28B251AE8B6002387ED /* BioLibrary.swift */,
 			);
 			path = "Supporting Files";
@@ -425,6 +458,8 @@
 		68CA587724ED799C0038BCE2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6860071525BFB9C00059DF3C /* UnitConverter.swift */,
+				6860073B25BFD75F0059DF3C /* UnitConverter.swift */,
 				68CA587524ED798E0038BCE2 /* AuthService.swift */,
 				68CA587824ED841F0038BCE2 /* Config.swift */,
 			);
@@ -452,7 +487,7 @@
 		68CA588124EEAD990038BCE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				683BA47425A0D055004645D4 /* ArchiveDataHandler.swift */,
+				683BA47425A0D055004645D4 /* ActivityDataHandler.swift */,
 				683BA3D92596460A004645D4 /* Food.swift */,
 				683D25BE256DFCA700D601E1 /* Activity Log */,
 				683D25DE256DFF1900D601E1 /* Activity */,
@@ -610,17 +645,20 @@
 				683BA46225A0BD43004645D4 /* ArchiveAPI.swift in Sources */,
 				683D2580256DCEDA00D601E1 /* MindfulnessActivity.swift in Sources */,
 				683BA3DA2596460A004645D4 /* Food.swift in Sources */,
-				6887CA2F254A3A7B00CB617C /* TargetsController.swift in Sources */,
 				685BAFF1258C38500029CFDE /* HydrationViewModel.swift in Sources */,
 				685BAFEE258C36E90029CFDE /* HydrationController.swift in Sources */,
+				6860074125BFD7FF0059DF3C /* PreferredUnitsTVC.swift in Sources */,
 				68BEE5F424EC434400250310 /* LoginController.swift in Sources */,
+				686006E325BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift in Sources */,
 				683D25C1256DFCC400D601E1 /* NutritionLog.swift in Sources */,
 				683D295D250E2EBC006B3DE7 /* BodyMeasurement.swift in Sources */,
 				685BAF162581D0880029CFDE /* ActivityViewModel.swift in Sources */,
 				68CA587624ED798E0038BCE2 /* AuthService.swift in Sources */,
 				683BA3842594750C004645D4 /* ActivityDataView.swift in Sources */,
-				683BA47525A0D055004645D4 /* ArchiveDataHandler.swift in Sources */,
+				683BA47525A0D055004645D4 /* ActivityDataHandler.swift in Sources */,
+				68A3FD2925BB49E900A21E5A /* TargetsController.swift in Sources */,
 				68CA588324EEB27E0038BCE2 /* BioController.swift in Sources */,
+				687E4CD025B4ACAD00288AB3 /* ArchiveDataHandlerFactory.swift in Sources */,
 				68DDD289251AD5F5002387ED /* WalkthroughController.swift in Sources */,
 				683D2305255CD6F900D601E1 /* UserTarget.swift in Sources */,
 				68CA587E24EEACDE0038BCE2 /* UserAPI.swift in Sources */,
@@ -629,30 +667,36 @@
 				689BE05425786AB20029DE3D /* HealthKitAPI.swift in Sources */,
 				689BE040257846D90029DE3D /* HealthKitSetupAssistant.swift in Sources */,
 				686C356524E4151C00B2D2D6 /* MainController.swift in Sources */,
+				687E4CD325B4C72400288AB3 /* PreferredUnitFactory.swift in Sources */,
 				6887CA32254D89A000CB617C /* BodyGoalView.swift in Sources */,
 				6838A0CD250CF64300C75D8E /* PreferredUnitsAPI.swift in Sources */,
 				685BAF132581D05F0029CFDE /* ActivityController.swift in Sources */,
+				6860071625BFB9C00059DF3C /* UnitConverter.swift in Sources */,
 				686C354E24E4087A00B2D2D6 /* AppDelegate.swift in Sources */,
 				68CA587924ED841F0038BCE2 /* Config.swift in Sources */,
 				6886BD18251199F700F29BEF /* DarkModeSettingsView.swift in Sources */,
 				68DDD28F251B72EA002387ED /* WalkthroughUnitsController.swift in Sources */,
 				68BEE5EE24EBF98C00250310 /* HomeController.swift in Sources */,
 				6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */,
+				68A3FD5F25BCB67700A21E5A /* MacroTargetMenuController.swift in Sources */,
 				683D2577256DC7EA00D601E1 /* NutritionActivity.swift in Sources */,
 				683BA43C259E3912004645D4 /* HydrationTargetViewModel.swift in Sources */,
 				683BA3D725964580004645D4 /* NutritionAPI.swift in Sources */,
 				68DDD292251B7787002387ED /* WalkthroughTeamColorController.swift in Sources */,
 				68CA588724EFDF520038BCE2 /* Bio.swift in Sources */,
 				68E049F8257463F200D68862 /* ActivityAPI.swift in Sources */,
-				683D232C255F5BAE00D601E1 /* MacrosTargetView.swift in Sources */,
 				683D241F2568D02B00D601E1 /* Activity.swift in Sources */,
 				683BA36E25946283004645D4 /* Nutrition.swift in Sources */,
+				6860074425BFD8240059DF3C /* PreferredUnitView.swift in Sources */,
 				683D24222568D0F900D601E1 /* FitnessActivity.swift in Sources */,
+				687E4CA825B292B900288AB3 /* UnitLibrary.swift in Sources */,
 				6883EB062516F2FB0011C91F /* WalkthroughFinaleController.swift in Sources */,
+				686006D025BF932A0059DF3C /* TargetDelegate.swift in Sources */,
 				686C355024E4087A00B2D2D6 /* SceneDelegate.swift in Sources */,
-				6887CA37254DA26C00CB617C /* TargetView.swift in Sources */,
 				683BA3ED2597943F004645D4 /* HydrationView.swift in Sources */,
+				68A3FD2C25BB4A1F00A21E5A /* ActivityHandlerView.swift in Sources */,
 				683BA40525993508004645D4 /* ActivityLogViewModel.swift in Sources */,
+				6860073C25BFD75F0059DF3C /* UnitConverter.swift in Sources */,
 				683BA44F25A0A097004645D4 /* NutritionHandler.swift in Sources */,
 				6883EB1B2516F3160011C91F /* WalkthroughBioController.swift in Sources */,
 				683BA439259E33EC004645D4 /* HydrationTargetView.swift in Sources */,

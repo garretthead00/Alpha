@@ -25,7 +25,7 @@ class ActivityViewModel {
         self.icon = activity.icon
         self.progress = activity.progress ?? 0.0
         let handler = activity.getHandler(withIdentifier: activity.progressIdentifier)
-        self.unit = handler?.unit
+        self.unit = handler?.unit.symbol
         self.remaining = handler?.remaining ?? 0.0
         self.target = handler?.target?.value
     }
