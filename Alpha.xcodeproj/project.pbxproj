@@ -39,14 +39,13 @@
 		685BAF132581D05F0029CFDE /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF122581D05F0029CFDE /* ActivityController.swift */; };
 		685BAF162581D0880029CFDE /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF152581D0880029CFDE /* ActivityViewModel.swift */; };
 		685BAF6D2583024B0029CFDE /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF6C2583024B0029CFDE /* ActivityView.swift */; };
-		685BAF90258468B60029CFDE /* TargetActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */; };
+		685BAF90258468B60029CFDE /* ActivityTargetDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF8F258468B60029CFDE /* ActivityTargetDataViewModel.swift */; };
 		685BAF9325846B590029CFDE /* TargetActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAF9225846B590029CFDE /* TargetActivityView.swift */; };
 		685BAFEB258C30A60029CFDE /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 685BAFEA258C30A60029CFDE /* Activity.storyboard */; };
 		685BAFEE258C36E90029CFDE /* HydrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAFED258C36E90029CFDE /* HydrationController.swift */; };
 		685BAFF1258C38500029CFDE /* HydrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BAFF0258C38500029CFDE /* HydrationViewModel.swift */; };
 		686006D025BF932A0059DF3C /* TargetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686006CF25BF932A0059DF3C /* TargetDelegate.swift */; };
 		686006E325BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686006E225BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift */; };
-		6860071625BFB9C00059DF3C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860071525BFB9C00059DF3C /* UnitConverter.swift */; };
 		6860073C25BFD75F0059DF3C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860073B25BFD75F0059DF3C /* UnitConverter.swift */; };
 		6860074125BFD7FF0059DF3C /* PreferredUnitsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860074025BFD7FF0059DF3C /* PreferredUnitsTVC.swift */; };
 		6860074425BFD8240059DF3C /* PreferredUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6860074325BFD8240059DF3C /* PreferredUnitView.swift */; };
@@ -75,6 +74,7 @@
 		689BE02B257846810029DE3D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689BE02A257846810029DE3D /* Charts.framework */; };
 		689BE040257846D90029DE3D /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */; };
 		689BE05425786AB20029DE3D /* HealthKitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE05325786AB20029DE3D /* HealthKitAPI.swift */; };
+		68A1883825C20C90006FD3F8 /* CreateHydrationLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A1883725C20C90006FD3F8 /* CreateHydrationLogController.swift */; };
 		68A3FD2925BB49E900A21E5A /* TargetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD2825BB49E900A21E5A /* TargetsController.swift */; };
 		68A3FD2C25BB4A1F00A21E5A /* ActivityHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */; };
 		68A3FD5F25BCB67700A21E5A /* MacroTargetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */; };
@@ -138,14 +138,13 @@
 		685BAF122581D05F0029CFDE /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		685BAF152581D0880029CFDE /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewModel.swift; path = "Alpha/View Models/ActivityViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		685BAF6C2583024B0029CFDE /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
-		685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetActivityViewModel.swift; sourceTree = "<group>"; };
+		685BAF8F258468B60029CFDE /* ActivityTargetDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTargetDataViewModel.swift; sourceTree = "<group>"; };
 		685BAF9225846B590029CFDE /* TargetActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetActivityView.swift; sourceTree = "<group>"; };
 		685BAFEA258C30A60029CFDE /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		685BAFED258C36E90029CFDE /* HydrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationController.swift; sourceTree = "<group>"; };
 		685BAFF0258C38500029CFDE /* HydrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationViewModel.swift; sourceTree = "<group>"; };
 		686006CF25BF932A0059DF3C /* TargetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDelegate.swift; sourceTree = "<group>"; };
 		686006E225BFADC10059DF3C /* ActivityTargetHandlerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTargetHandlerViewModel.swift; sourceTree = "<group>"; };
-		6860071525BFB9C00059DF3C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitConverter.swift; path = /Users/Garrett/Documents/Workspace/Alpha/Project/Alpha/Alpha/Services/UnitConverter.swift; sourceTree = "<absolute>"; };
 		6860073B25BFD75F0059DF3C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitConverter.swift; path = /Users/Garrett/Documents/Workspace/Alpha/Project/Alpha/Alpha/Services/UnitConverter.swift; sourceTree = "<absolute>"; };
 		6860074025BFD7FF0059DF3C /* PreferredUnitsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnitsTVC.swift; sourceTree = "<group>"; };
 		6860074325BFD8240059DF3C /* PreferredUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredUnitView.swift; sourceTree = "<group>"; };
@@ -177,6 +176,7 @@
 		689BE02A257846810029DE3D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
 		689BE05325786AB20029DE3D /* HealthKitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAPI.swift; sourceTree = "<group>"; };
+		68A1883725C20C90006FD3F8 /* CreateHydrationLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHydrationLogController.swift; sourceTree = "<group>"; };
 		68A3FD2825BB49E900A21E5A /* TargetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsController.swift; sourceTree = "<group>"; };
 		68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHandlerView.swift; sourceTree = "<group>"; };
 		68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTargetMenuController.swift; sourceTree = "<group>"; };
@@ -257,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				683D241E2568D02B00D601E1 /* Activity.swift */,
+				683BA47425A0D055004645D4 /* ActivityDataHandler.swift */,
 				683D2576256DC7EA00D601E1 /* NutritionActivity.swift */,
 				683D2579256DCB2100D601E1 /* HydrationActivity.swift */,
 				683D257C256DCEA300D601E1 /* SleepActivity.swift */,
@@ -273,7 +274,7 @@
 				683BA43B259E3912004645D4 /* HydrationTargetViewModel.swift */,
 				683BA40425993508004645D4 /* ActivityLogViewModel.swift */,
 				685BAFF0258C38500029CFDE /* HydrationViewModel.swift */,
-				685BAF8F258468B60029CFDE /* TargetActivityViewModel.swift */,
+				685BAF8F258468B60029CFDE /* ActivityTargetDataViewModel.swift */,
 				685BAF152581D0880029CFDE /* ActivityViewModel.swift */,
 			);
 			path = "View Models";
@@ -427,6 +428,7 @@
 		689BE206257DB1910029DE3D /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				68A1883725C20C90006FD3F8 /* CreateHydrationLogController.swift */,
 				68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */,
 				68A3FD2825BB49E900A21E5A /* TargetsController.swift */,
 				685BAFED258C36E90029CFDE /* HydrationController.swift */,
@@ -458,7 +460,6 @@
 		68CA587724ED799C0038BCE2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6860071525BFB9C00059DF3C /* UnitConverter.swift */,
 				6860073B25BFD75F0059DF3C /* UnitConverter.swift */,
 				68CA587524ED798E0038BCE2 /* AuthService.swift */,
 				68CA587824ED841F0038BCE2 /* Config.swift */,
@@ -487,7 +488,6 @@
 		68CA588124EEAD990038BCE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				683BA47425A0D055004645D4 /* ActivityDataHandler.swift */,
 				683BA3D92596460A004645D4 /* Food.swift */,
 				683D25BE256DFCA700D601E1 /* Activity Log */,
 				683D25DE256DFF1900D601E1 /* Activity */,
@@ -671,7 +671,6 @@
 				6887CA32254D89A000CB617C /* BodyGoalView.swift in Sources */,
 				6838A0CD250CF64300C75D8E /* PreferredUnitsAPI.swift in Sources */,
 				685BAF132581D05F0029CFDE /* ActivityController.swift in Sources */,
-				6860071625BFB9C00059DF3C /* UnitConverter.swift in Sources */,
 				686C354E24E4087A00B2D2D6 /* AppDelegate.swift in Sources */,
 				68CA587924ED841F0038BCE2 /* Config.swift in Sources */,
 				6886BD18251199F700F29BEF /* DarkModeSettingsView.swift in Sources */,
@@ -680,6 +679,7 @@
 				6883EAEB2516F2260011C91F /* WalkthroughIntroController.swift in Sources */,
 				68A3FD5F25BCB67700A21E5A /* MacroTargetMenuController.swift in Sources */,
 				683D2577256DC7EA00D601E1 /* NutritionActivity.swift in Sources */,
+				68A1883825C20C90006FD3F8 /* CreateHydrationLogController.swift in Sources */,
 				683BA43C259E3912004645D4 /* HydrationTargetViewModel.swift in Sources */,
 				683BA3D725964580004645D4 /* NutritionAPI.swift in Sources */,
 				68DDD292251B7787002387ED /* WalkthroughTeamColorController.swift in Sources */,
@@ -708,7 +708,7 @@
 				683D2583256DF1A000D601E1 /* FitnessLog.swift in Sources */,
 				68DDD28C251AE8B6002387ED /* BioLibrary.swift in Sources */,
 				68CE31402518C7B5007855EF /* WalkthroughActivityLevelController.swift in Sources */,
-				685BAF90258468B60029CFDE /* TargetActivityViewModel.swift in Sources */,
+				685BAF90258468B60029CFDE /* ActivityTargetDataViewModel.swift in Sources */,
 				683D25AA256DFBC900D601E1 /* ActivityLog.swift in Sources */,
 				685BAF6D2583024B0029CFDE /* ActivityView.swift in Sources */,
 				683BA40225992865004645D4 /* ActivityLogView.swift in Sources */,

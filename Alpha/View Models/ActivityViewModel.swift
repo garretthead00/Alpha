@@ -30,4 +30,27 @@ class ActivityViewModel {
         self.target = handler?.target?.value
     }
     
+    init(activity: Activity, withUnit unit: Unit) {
+        self.name = activity.name
+        self.color = activity.color
+        self.icon = activity.icon
+        self.unit = unit.symbol
+        if let handler = activity.getHandler(withIdentifier: activity.progressIdentifier) {
+            let unitConverter = UnitConverter()
+            let target = unitConverter.convert(value: handler.target!.value!, toUnit: unit, fromUnit: handler.unit)
+            let total = unitConverter.convert(value: handler.total, toUnit: unit, fromUnit: handler.unit)
+            let remaining = target - total
+            self.target = target
+            self.progress = total
+            self.remaining = remaining
+        } else {
+            self.target = 0.0
+            self.progress = 0.0
+            self.remaining = 0.0
+        }
+        
+        
+    }
+    
+    
 }

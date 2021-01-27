@@ -26,18 +26,28 @@ class ArchiveAPI {
         }
     }
     
+    func archiveData(fromHandler handler: ActivityDataHandler, ofUnit unit: Unit, withLogId logId: String){
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let now = Date().timeIntervalSince1970
+        let unitConverter = UnitConverter()
+        let convertedValue = unitConverter.convert(value: handler.total, toUnit: handler.unit, fromUnit: unit)
+        let newLogRef = USER_ACTIVITY_ARCHIVES.child(currentUser.uid).child(handler.id.rawValue).child(logId)
+        newLogRef.setValue(["timestamp": now, "value": convertedValue])
+    }
+    
 }
 
 
 // MARK: Extension Get Methods
 extension ArchiveAPI {
     
-    func loadTodaysArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], units: PreferredUnits, completion: @escaping ([ActivityDataHandler]) -> Void) {
+    func loadTodaysArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping ([ActivityDataHandler]) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
         let handlerFactory = ArchiveDataHandlerFactory()
-        let unitFactory = PreferredUnitFactory()
         var handlers : [ActivityDataHandler] = []
         let now = Date()
         let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
@@ -55,21 +65,12 @@ extension ArchiveAPI {
                         archivedData[timestamp] = value
                     }
                 }
-                
-                // create data handler from archivedData dictionary
-                //let handler = ArchiveDataHandler(identifier: identifier, data: archivedData)
-                
-                // ArchiveHandlerFactory
                 var handler = handlerFactory.makeDataHandler(identifier, data: archivedData)
-                handler.preferredUnit = unitFactory.createUnit(identifier, units: units)
-                
                 API.UserTarget.observeTarget(identifier, completion: { target in
                     handler.target = target
                     handlers.append(handler)
                     dispatchGroup.leave()
                 })
-                
-                
             })
         }
         
@@ -79,50 +80,6 @@ extension ArchiveAPI {
         
     }
     
-    private func getPreferredUnits(){
-        
-    }
-    
-    func loadArchiveData(forIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping ([ActivityDataHandler]) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        let handlerFactory = ArchiveDataHandlerFactory()
-        var handlers : [ActivityDataHandler] = []
-        let now = Date()
-        let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
-        let dispatchGroup = DispatchGroup()
-       
-        for identifier in identifiers {
-            dispatchGroup.enter()
-            
-            API.UserTarget.observeUserTarget(forIdentifier: identifier, completion: { target in
-                self.USER_ACTIVITY_ARCHIVES.child(currentUser.uid).child(identifier.rawValue).queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfDay).queryEnding(atValue: now.timeIntervalSince1970).observe(.value, with: { snapshot in
-                    var archivedData : [Date:Double] = [:]
-                    let items = snapshot.children.allObjects as! [DataSnapshot]
-                    for (_, item) in items.enumerated() {
-                        if let data = item.value as? [String:Any] {
-                            let timestamp = Date(timeIntervalSince1970: data["timestamp"] as! Double)
-                            let value = data["value"] as! Double
-                            archivedData[timestamp] = value
-                        }
-                    }
-                    
-                    // create data handler from archivedData dictionary
-                    let handler = handlerFactory.makeDataHandler(identifier, data: archivedData)
-                    
-                    handlers.append(handler)
-                   dispatchGroup.leave()
-                })
-            })
-        }
-        
-        
-        dispatchGroup.notify(queue: .main, execute: {
-            completion(handlers)
-        })
-        
-    }
     
 
     

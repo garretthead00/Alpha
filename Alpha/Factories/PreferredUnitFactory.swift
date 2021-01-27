@@ -31,7 +31,7 @@ struct PreferredUnitFactory {
                 else { unit = UnitMass.micrograms }
                 
             case .Protein, .Carbohydrates, .Fat:
-                if units.nutrition == UnitMass.grams.symbol { unit = UnitMass.grams }
+                if units.macros == UnitMass.grams.symbol { unit = UnitMass.grams }
                 else { unit = UnitMass.ounces }
         
         // Duration

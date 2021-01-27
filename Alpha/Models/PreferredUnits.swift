@@ -16,6 +16,7 @@ class PreferredUnits {
     var energy : String?
     var distance : String?
     var nutrition : String?
+    var macros : String?
     var time : String?
     var ratio : String?
     var count : String?
@@ -32,6 +33,7 @@ extension PreferredUnits {
         units.energy = data["Energy"] as? String
         units.nutrition = data["Nutrition"] as? String
         units.time = data["Time"] as? String
+        units.macros = data["Macros"] as? String
         units.ratio = "%"
         units.count = ""
         return units

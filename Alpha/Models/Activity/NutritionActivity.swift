@@ -16,7 +16,10 @@ struct NutritionActivity : Activity {
     var name: String
     var icon: UIImage
     var color: UIColor
-    var progress: Double?
+    var progress: Double? {
+        let handler = archiveDataHandlers.filter({ $0.id == progressIdentifier }).first
+        return handler?.total
+    }
     var healthKitIdentifiers : [String]?
     var healthKitEnabled : Bool? = false
     var activityType: ActivityType? = .nutrition

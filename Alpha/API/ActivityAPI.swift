@@ -134,7 +134,7 @@ class ActivityAPI {
     
     
     // Creates the Activity Log based on the food parameter
-    func createLog(withFood food: Food){
+    func createLog(withFood food: Food, completion: @escaping (String) -> Void){
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
@@ -144,9 +144,10 @@ class ActivityAPI {
         for nutrient in food.nutrition {
             newLogRef.updateChildValues([nutrient.id: nutrient.value])
         }
-        
+        completion(newLogRef.key!)
         // "Fan-out" nutrition data
-        API.Archive.archiveData(forFood: food, withLogId: newLogRef.key!)
+        //API.Archive.archiveData(forFood: food, withLogId: newLogRef.key!)
+
     }
     
 
@@ -155,14 +156,10 @@ class ActivityAPI {
         var activity = ActivityFactory().createActivity(type)
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        API.PreferredUnits.observePreferredUnits(completion: { units in
-            API.Archive.loadTodaysArchiveData(forIdentifiers: activity.activityDataIdentifiers, units: units, completion: {
-                handlers in
-                print("got handlers for activity: \(type.rawValue)")
-                activity.archiveDataHandlers = handlers
-                dispatchGroup.leave()
-            })
-            
+        API.Archive.loadTodaysArchiveData(forIdentifiers: activity.activityDataIdentifiers, completion: {
+            handlers in
+            activity.archiveDataHandlers = handlers
+            dispatchGroup.leave()
         })
         
         dispatchGroup.notify(queue: .main, execute: {

@@ -14,6 +14,7 @@ class ActivityController: UITableViewController {
 
     // MARK: - HealthKit parameters
     var isHealthKitEnabled : Bool = false
+    var preferredUnits : PreferredUnits?
     
     
     var activityIdentifiers : [ActivityType] = [.fitness, .nutrition, .hydration, .sleep, .mindfulness]
@@ -26,32 +27,24 @@ class ActivityController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // navigation config
         navigationItem.title = "Activity"
-        // navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // ProgressHUB config
         ProgressHUD.colorAnimation = .systemGreen
         ProgressHUD.animationType = .multipleCirclePulse
         
-        // Refresh Control config
         self.refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refreshController), for: UIControl.Event.valueChanged)
         self.tableView.refreshControl = self.refreshControl
         
         loadActivity()
+        
+        print("----TIME NOW and MIDNIGHT-----")
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
+        print("----TIME NOW and MIDNIGHT-----")
+        print("start of day: \(startOfDay) and now: \(now.timeIntervalSince1970)")
     }
     
-    private func loadActivity(){
-        print("-----LOAD ACTIVITY-----")
-        for type in activityIdentifiers {
-            print("type: \(type)")
-            API.Activity.loadTodaysActivity(type, completion: { activity in
-                print("---Activity: \(activity.name) ---progress: \(activity.progress ?? 0.0)")
-                self.activities.append(activity)
-            })
-        }
-    }
+
     
     @objc private func refreshController(){
         self.activities.removeAll()
@@ -75,14 +68,18 @@ class ActivityController: UITableViewController {
         let section = indexPath.section
         let row = indexPath.row
         if row == 0 {
-            let viewModel = ActivityViewModel(activity: activities[section])
+            let activity = activities[section]
+            let identifier = activity.progressIdentifier
+            let unit = PreferredUnitFactory().createUnit(identifier, units: self.preferredUnits!)
+            let viewModel = ActivityViewModel(activity: activity, withUnit: unit)
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityView", for: indexPath) as! ActivityView
             cell.activityViewModel = viewModel
             return cell
         } else {
             let activity = activities[section]
             let identifier = activity.activityDataIdentifiers[row]
-            let viewModel = TargetActivityViewModel(handler: activity.getHandler(withIdentifier: identifier)!, color: activity.color, isPercent: false)
+            let unit = PreferredUnitFactory().createUnit(identifier, units: self.preferredUnits!)
+            let viewModel = ActivityTargetDataViewModel(handler: activity.getHandler(withIdentifier: identifier)!, ofUnit: unit, withColor: activity.color)
             let cell = tableView.dequeueReusableCell(withIdentifier: "TargetActivityView", for: indexPath) as! TargetActivityView
             cell.viewModel = viewModel
             return cell
@@ -96,15 +93,33 @@ class ActivityController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
         if section > 0 {
-            self.performSegue(withIdentifier: self.activityIdentifiers[section].rawValue, sender: nil)
+            self.performSegue(withIdentifier: self.activityIdentifiers[section].rawValue, sender: activities[section])
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "hydration" {
-            //let destination = segue.destination as! HydrationController
-            //destination.hydrationActivity =  self.hydrationActivity
+        if segue.identifier == ActivityType.hydration.rawValue {
+            let destination = segue.destination as! HydrationController
+            let activity = sender as! HydrationActivity
+            destination.preferredUnits = self.preferredUnits
+            destination.hydrationActivity =  activity
         }
+    }
+}
+
+
+// MARK: - API
+extension ActivityController {
+    private func loadActivity(){
+        API.PreferredUnits.observePreferredUnits(completion: { units in
+            self.preferredUnits = units
+            for type in self.activityIdentifiers {
+                print("type: \(type)")
+                API.Activity.loadTodaysActivity(type, completion: { activity in
+                    self.activities.append(activity)
+                })
+            }
+        })
     }
 }
 

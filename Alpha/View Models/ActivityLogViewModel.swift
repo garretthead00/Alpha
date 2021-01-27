@@ -14,7 +14,6 @@ class ActivityLogViewModel {
     var name : String
     var timestamp : String
     var value : Double
-    var icon : UIImage?
     var unit : String
 
     init(log: ActivityLog, target: UserTarget) {
@@ -24,9 +23,8 @@ class ActivityLogViewModel {
         self.unit = ""
         if let log = log as? NutritionLog, let food = log.food {
             if let name = food.name { self.name = name }
-            if let icon = food.category { self.icon = UIImage(named: icon) }
             if let value = log.servingSize { self.value = value }
-            
+            if let unit = log.servingUnit { self.unit = unit }
             if let time = log.timestamp {
                 let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -40,7 +38,6 @@ class ActivityLogViewModel {
                 self.timestamp = dateString
                 
             }
-
         }
     }
 }

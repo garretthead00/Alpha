@@ -7,10 +7,8 @@
 //
 
 import UIKit
-
-
-
 import Charts
+
 class MacroTargetMenuController: UIViewController {
 
     var delegate : TargetDelegate?

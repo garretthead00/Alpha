@@ -338,7 +338,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:30 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw8-xE-aTH">
                                                     <rect key="frame" x="32" y="0.0" width="198" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -347,8 +347,8 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="96" id="XnT-Sk-DiO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                    <color key="textColor" systemColor="systemBlueColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -361,7 +361,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="iconImageView" destination="9Pf-p8-Pnq" id="D1P-h4-qod"/>
                                     <outlet property="nameLabel" destination="Uw8-xE-aTH" id="Rw7-4n-SEP"/>
                                     <outlet property="valueLabel" destination="UAu-0p-hxZ" id="IAR-O7-S5q"/>
                                 </connections>
@@ -375,7 +374,7 @@
                     <navigationItem key="navigationItem" title="Hydration" id="NMp-xb-4fQ">
                         <barButtonItem key="rightBarButtonItem" image="Hydration" id="kgA-aX-WIL">
                             <connections>
-                                <action selector="drinkButton_Tapped:" destination="OzT-Qf-UXU" id="jv2-AF-ezR"/>
+                                <segue destination="P0m-m0-Ffc" kind="presentation" identifier="CreateHydrationLog" id="20f-Rs-KB8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -383,6 +382,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npt-Nv-69F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1492.753623188406" y="3498.2142857142858"/>
+        </scene>
+        <!--Create Hydration Log Controller-->
+        <scene sceneID="hUG-OK-jjg">
+            <objects>
+                <viewController id="P0m-m0-Ffc" customClass="CreateHydrationLogController" customModule="Alpha" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ILS-UV-hWQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1eD-a4-nvS">
+                                <rect key="frame" x="26" y="250" width="362" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Za-Ko-ATB">
+                                <rect key="frame" x="26" y="296" width="362" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPU-xC-JT5">
+                                <rect key="frame" x="26" y="20" width="30" height="30"/>
+                                <connections>
+                                    <action selector="cancelButton_Tapped:" destination="P0m-m0-Ffc" eventType="touchUpInside" id="XJD-mC-hMj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMx-t2-lHv">
+                                <rect key="frame" x="351" y="20" width="37" height="30"/>
+                                <state key="normal" title="Drink"/>
+                                <connections>
+                                    <action selector="drinkButton_Tapped:" destination="P0m-m0-Ffc" eventType="touchUpInside" id="pTF-IU-5Qv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much did you drink?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gG0-yN-gCY">
+                                <rect key="frame" x="26" y="120" width="362" height="82"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jN3-dx-8mx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jN3-dx-8mx" firstAttribute="trailing" secondItem="1eD-a4-nvS" secondAttribute="trailing" constant="26" id="1Si-Zf-Efl"/>
+                            <constraint firstItem="1eD-a4-nvS" firstAttribute="centerX" secondItem="jN3-dx-8mx" secondAttribute="centerX" id="3Eo-wL-0Qk"/>
+                            <constraint firstItem="gG0-yN-gCY" firstAttribute="leading" secondItem="jN3-dx-8mx" secondAttribute="leading" constant="26" id="BiM-dU-0tN"/>
+                            <constraint firstItem="RMx-t2-lHv" firstAttribute="top" secondItem="jN3-dx-8mx" secondAttribute="top" constant="20" id="FgZ-cJ-8Du"/>
+                            <constraint firstItem="1eD-a4-nvS" firstAttribute="top" secondItem="gG0-yN-gCY" secondAttribute="bottom" constant="48" id="PbT-2g-rbs"/>
+                            <constraint firstItem="jN3-dx-8mx" firstAttribute="trailing" secondItem="gG0-yN-gCY" secondAttribute="trailing" constant="26" id="Q5q-Wp-KoB"/>
+                            <constraint firstItem="jN3-dx-8mx" firstAttribute="trailing" secondItem="RMx-t2-lHv" secondAttribute="trailing" constant="26" id="R88-9a-cxP"/>
+                            <constraint firstItem="9Za-Ko-ATB" firstAttribute="leading" secondItem="jN3-dx-8mx" secondAttribute="leading" constant="26" id="RKC-mw-SsL"/>
+                            <constraint firstItem="9Za-Ko-ATB" firstAttribute="centerX" secondItem="jN3-dx-8mx" secondAttribute="centerX" id="Ukf-Yi-7fv"/>
+                            <constraint firstItem="jN3-dx-8mx" firstAttribute="trailing" secondItem="9Za-Ko-ATB" secondAttribute="trailing" constant="26" id="WSW-xE-9W5"/>
+                            <constraint firstItem="1eD-a4-nvS" firstAttribute="leading" secondItem="jN3-dx-8mx" secondAttribute="leading" constant="26" id="m2x-NN-Rcy"/>
+                            <constraint firstItem="gG0-yN-gCY" firstAttribute="centerX" secondItem="jN3-dx-8mx" secondAttribute="centerX" id="oYh-k6-nAR"/>
+                            <constraint firstItem="9Za-Ko-ATB" firstAttribute="top" secondItem="1eD-a4-nvS" secondAttribute="bottom" constant="12" id="pnA-RA-lXh"/>
+                            <constraint firstItem="PPU-xC-JT5" firstAttribute="leading" secondItem="jN3-dx-8mx" secondAttribute="leading" constant="26" id="uMR-5N-7ht"/>
+                            <constraint firstItem="9Za-Ko-ATB" firstAttribute="centerY" secondItem="jN3-dx-8mx" secondAttribute="centerY" id="ynx-RZ-tnq"/>
+                            <constraint firstItem="PPU-xC-JT5" firstAttribute="top" secondItem="jN3-dx-8mx" secondAttribute="top" constant="20" id="z42-xV-jqf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="unitPicker" destination="9Za-Ko-ATB" id="pIx-sf-2op"/>
+                        <outlet property="valueTextField" destination="1eD-a4-nvS" id="rEl-7v-05F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Oo-uu-9xz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2430.434782608696" y="3495.5357142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZeB-a3-cir">

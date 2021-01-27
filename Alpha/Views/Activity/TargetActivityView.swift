@@ -16,7 +16,7 @@ class TargetActivityView: UITableViewCell {
     @IBOutlet weak var progessLabel: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     
-    var viewModel : TargetActivityViewModel? { didSet { updateView() } }
+    var viewModel : ActivityTargetDataViewModel? { didSet { updateView() } }
     var chartDataSet = PieChartDataSet()
     
     override func awakeFromNib() {

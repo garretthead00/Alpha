@@ -8,19 +8,22 @@
 
 import UIKit
 
+protocol HydrationDelegate {
+    func createLog(withValue value: Double, ofUnit unit: Unit)
+}
 
 class HydrationController: UITableViewController {
 
-
-    var hydrationActivity : HydrationActivity? //{ didSet { loadHydrationLogs() } }
-    var userTarget : UserTarget?// { didSet { loadViewModels() } }
+    var preferredUnits : PreferredUnits?
+    var hydrationActivity : HydrationActivity? { didSet { loadHydrationLogs() } }
     var hydrationViewModel : HydrationViewModel?
     var hydrationTargetViewModel : HydrationTargetViewModel?
-    var hydrationLogs : [ActivityLogViewModel]? = []// { didSet { self.tableView.reloadData() } }
+    var hydrationLogs : [ActivityLogViewModel]? = []
+    var logs : [NutritionLog]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadHydrationLogs()
+        //loadHydrationLogs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,14 +33,8 @@ class HydrationController: UITableViewController {
         navigationController?.navigationBar.sizeToFit()
     }
     
-    @IBAction func drinkButton_Tapped(_ sender: Any) {
-        presentHydrationLogMenu()
-    }
-
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
+    override func numberOfSections(in tableView: UITableView) -> Int { return 3 }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows = 0
@@ -77,6 +74,13 @@ class HydrationController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section > 1 ? "Logs" : ""
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreateHydrationLog" {
+            let destination = segue.destination as! CreateHydrationLogController
+            destination.delegate = self
+        }
+    }
 
 }
 
@@ -85,63 +89,65 @@ extension HydrationController {
     private func loadHydrationLogs(){
         API.Activity.observeTodaysNutritionLogs(completion: {
             logs in
-            self.hydrationActivity?.logs = logs.filter({ $0.food?.foodType == "drink" })
-            self.hydrationLogs?.removeAll()
+            self.logs = logs
             self.loadViewModels()
         })
     }
     
-    private func loadArchivedData(){
-//        API.Archive.loadTodaysArchiveData(forIdentifiers: self.hydrationActivity!.activityDataIdentifiers, completion: {
-//            handlers in
-//            self.hydrationActivity!.archiveDataHandlers = handlers
-//            self.loadViewModels()
-//        })
+    private func reloadActivity(){
+        self.logs?.removeAll()
+        self.hydrationLogs?.removeAll()
+        API.Activity.loadTodaysActivity(.hydration, completion: { activity in
+            self.hydrationActivity = activity as? HydrationActivity
+            API.Activity.observeTodaysNutritionLogs(completion: {
+                logs in
+                self.logs = logs
+                self.loadViewModels()
+            })
+        })
     }
     
     private func loadViewModels(){
-        if let activity = hydrationActivity, let target = userTarget {
-            self.hydrationViewModel = HydrationViewModel(activity: activity, target: target)
-            self.hydrationTargetViewModel = HydrationTargetViewModel(waterDrank: activity.progress!, target: target)
-            var logs = activity.logs
-            logs.sort(by: { $0.timestamp! > $1.timestamp! })
-            for log in logs {
-                let hydrationLogViewModel = ActivityLogViewModel(log: log, target: target)
-                self.hydrationLogs?.append(hydrationLogViewModel)
+        print("loadViewModels")
+        if let activity = hydrationActivity,
+           let preferredUnits = preferredUnits {
+            let handler = activity.getHandler(withIdentifier: activity.progressIdentifier)
+            let unit = PreferredUnitFactory().createUnit(activity.progressIdentifier, units: preferredUnits)
+            self.hydrationViewModel = HydrationViewModel(handler: handler!, ofUnit: unit)
+            self.hydrationTargetViewModel = HydrationTargetViewModel(handler: handler!, ofUnit: unit)
+
+            if var logs = logs {
+                logs.sort(by: { $0.timestamp! > $1.timestamp! })
+                for log in logs {
+                    let hydrationLogViewModel = ActivityLogViewModel(log: log, target: handler!.target!)
+                    self.hydrationLogs?.append(hydrationLogViewModel)
+                    self.tableView.reloadData()
+                }
             }
-            self.tableView.reloadData()
         }
+        self.tableView.reloadData()
     }
-    
-    private func presentHydrationLogMenu(){
-        let alertController = UIAlertController(title: "How much did you drink?", message: "", preferredStyle: .alert)
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "self.userTarget?.unit"
-            textField.keyboardType = .numberPad
-        }
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
-            let textField = alertController.textFields![0] as UITextField
-            guard let input = textField.text else {
-                return
-            }
-            if let value = Double(input) {
-                let water = Food(id: "xxALPHAXxx_Water", name: "Water", foodType: "drink", category: "water", servingSize: value, unit: "fl oz", nutrition: [NutritionHandler(id: ACTIVITY_DATA_IDENTIFIER.Water.rawValue, name: "Water", value: value, unit: "fl oz")])
-                
-                API.Activity.createLog(withFood: water)
-                self.refreshLogs()
-            }
-            
+}
+
+
+extension HydrationController : HydrationDelegate {
+    func createLog(withValue value: Double, ofUnit unit: Unit) {
+        let water = Food(id: "xxALPHAXxx_Water",
+                        name: ACTIVITY_DATA_IDENTIFIER.Water.rawValue,
+                        foodType: "drink",
+                        category: ACTIVITY_DATA_IDENTIFIER.Water.rawValue,
+                        servingSize: value,
+                        unit: unit.symbol,
+                        nutrition: [NutritionHandler(id: ACTIVITY_DATA_IDENTIFIER.Water.rawValue, name: "Water", value: value, unit: unit.symbol)])
+        
+        API.Activity.createLog(withFood: water, completion: { ref in
+            let handler = ArchiveDataHandlerFactory().makeDataHandler(.Water, data: [Date():value])
+            let unit = PreferredUnitFactory().createUnit(handler.id, units: self.preferredUnits!)
+            API.Archive.archiveData(fromHandler: handler, ofUnit: unit, withLogId: ref)
+            self.reloadActivity()
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in })
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        
     }
     
-    private func refreshLogs(){
-        loadHydrationLogs()
-        loadArchivedData()
-    }
     
 }

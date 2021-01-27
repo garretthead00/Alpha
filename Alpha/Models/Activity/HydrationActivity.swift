@@ -22,12 +22,6 @@ struct HydrationActivity : Activity {
     var healthKitIdentifiers : [String]?
     var healthKitEnabled : Bool? = false
     var activityType: ActivityType? = .hydration
-    
-    // MARK: - Hydration Activity Properties
-    var water : Double = 0.0
-    
-    var logs : [NutritionLog] = []
-    
     var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .Water
     var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.Water]
     var archiveDataHandlers : [ActivityDataHandler] = []
