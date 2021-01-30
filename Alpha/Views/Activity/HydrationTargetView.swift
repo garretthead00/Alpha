@@ -27,8 +27,8 @@ class HydrationTargetView: UITableViewCell {
     
     private func updateView(){
         if let targetViewModel = self.hydrationTargetViewModel {
-            waterDrankLabel.text = "\(targetViewModel.waterDrank) \(targetViewModel.unit)"
-            targetLabel.text = "\(targetViewModel.targetValue) \(targetViewModel.unit)"
+            waterDrankLabel.text = "\(Int(targetViewModel.waterDrank)) \(targetViewModel.unit)"
+            targetLabel.text = "\(Int(targetViewModel.targetValue)) \(targetViewModel.unit)"
         }
         
     }

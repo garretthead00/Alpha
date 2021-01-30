@@ -18,10 +18,6 @@ class ActivityDataView: UITableViewCell {
     var name : String? { didSet { updateView() } }
     var value : Double? { didSet { updateView() } }
     
-    var userTarget : UserTarget? { didSet { updateView() } }
-    
-    //var delegate : UserTargetDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.image = nil
@@ -33,7 +29,7 @@ class ActivityDataView: UITableViewCell {
 
     private func updateView(){
         if let name = self.name { nameLabel.text = name }
-        if let value = self.value { valueLabel.text = "\((value*100).rounded()/100) g" }
+        if let value = self.value { valueLabel.text = "\(Int(value))" }
         if let icon = self.icon { iconImageView.image = icon }
     }
 

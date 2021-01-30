@@ -67,7 +67,6 @@ class TargetsController: UITableViewController {
                     print("handlerview")
                     let target = groupedHandlers[section-1][row]
                     if target.targetType == .nutrition {
-                        //setMacroTarget(forHandler: target.handler)
                         setMacroTarget()
                     } else {
                         promptTargetMenu(forViewModel: target)

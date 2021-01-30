@@ -61,7 +61,7 @@ class ActivityController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activities[section].activityDataIdentifiers.count
+        return activities[section].archiveDataHandlers.filter({ $0.target != nil }).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,9 +92,7 @@ class ActivityController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
-        if section > 0 {
-            self.performSegue(withIdentifier: self.activityIdentifiers[section].rawValue, sender: activities[section])
-        }
+        self.performSegue(withIdentifier: self.activityIdentifiers[section].rawValue, sender: activities[section])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,6 +101,12 @@ class ActivityController: UITableViewController {
             let activity = sender as! HydrationActivity
             destination.preferredUnits = self.preferredUnits
             destination.hydrationActivity =  activity
+        }
+        else if segue.identifier == ActivityType.nutrition.rawValue {
+            let destination = segue.destination as! NutritionController
+            let activity = sender as! NutritionActivity
+            destination.preferredUnits = self.preferredUnits
+            destination.activity =  activity
         }
     }
 }

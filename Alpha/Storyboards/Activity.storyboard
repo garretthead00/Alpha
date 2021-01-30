@@ -162,11 +162,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="OzT-Qf-UXU" kind="show" identifier="Hydration" id="Fs4-ge-gS9"/>
+                        <segue destination="FW8-2R-4zP" kind="show" identifier="Nutrition" id="jGc-hK-JF3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndw-Al-ZKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="2673"/>
+            <point key="canvasLocation" x="820" y="2673"/>
         </scene>
         <!--Hydration-->
         <scene sceneID="niT-ml-Onh">
@@ -381,7 +382,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npt-Nv-69F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1492.753623188406" y="3498.2142857142858"/>
+            <point key="canvasLocation" x="819" y="3496"/>
         </scene>
         <!--Create Hydration Log Controller-->
         <scene sceneID="hUG-OK-jjg">
@@ -466,7 +467,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4O-gE-G8H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583" y="2673"/>
+            <point key="canvasLocation" x="-162" y="2673"/>
         </scene>
         <!--Targets Controller-->
         <scene sceneID="VmD-6Y-BWH">
@@ -585,7 +586,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOp-IL-5nT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2506" y="2690"/>
+            <point key="canvasLocation" x="2430" y="1955"/>
         </scene>
         <!--Macro Target Menu Controller-->
         <scene sceneID="qYf-gV-0Ok">
@@ -780,7 +781,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1I-l8-EGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3312" y="2690"/>
+            <point key="canvasLocation" x="3226" y="1955"/>
         </scene>
         <!--SideMenu-->
         <scene sceneID="kda-lS-EGU">
@@ -790,7 +791,82 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROz-y0-tFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2029" y="2164"/>
+            <point key="canvasLocation" x="1493" y="2041"/>
+        </scene>
+        <!--Nutrition Controller-->
+        <scene sceneID="yUo-Vd-1ft">
+            <objects>
+                <tableViewController id="FW8-2R-4zP" customClass="NutritionController" customModule="Alpha" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="biB-2d-Ugk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="ActivityDataView" rowHeight="44" id="ayc-M9-aJT" customClass="ActivityDataView" customModule="Alpha" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ayc-M9-aJT" id="F75-98-7xI">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tv5-gW-hYj">
+                                            <rect key="frame" x="20" y="9.5" width="334" height="25"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EnergyBurned" translatesAutoresizingMaskIntoConstraints="NO" id="oAT-8I-o3U">
+                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="dHE-Fj-9R5"/>
+                                                        <constraint firstAttribute="width" constant="25" id="iLw-9w-tq5"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy burn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Taq-Wy-Kby">
+                                                    <rect key="frame" x="33" y="0.0" width="165" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="720 kCals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8Z-16-n6w">
+                                                    <rect key="frame" x="206" y="0.0" width="128" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="128" id="8FN-fL-1rx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Tv5-gW-hYj" firstAttribute="centerY" secondItem="F75-98-7xI" secondAttribute="centerY" id="3VS-pO-nx0"/>
+                                        <constraint firstItem="Tv5-gW-hYj" firstAttribute="leading" secondItem="F75-98-7xI" secondAttribute="leading" constant="20" symbolic="YES" id="4JW-zH-9lP"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tv5-gW-hYj" secondAttribute="trailing" constant="20" symbolic="YES" id="7zr-MF-O9B"/>
+                                        <constraint firstItem="Tv5-gW-hYj" firstAttribute="centerX" secondItem="F75-98-7xI" secondAttribute="centerX" id="mw5-gf-zn4"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImageView" destination="oAT-8I-o3U" id="KOB-nz-9Wq"/>
+                                    <outlet property="nameLabel" destination="Taq-Wy-Kby" id="SBh-cT-W2H"/>
+                                    <outlet property="valueLabel" destination="y8Z-16-n6w" id="Aat-Cj-XV9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FW8-2R-4zP" id="VVd-HX-Sy3"/>
+                            <outlet property="delegate" destination="FW8-2R-4zP" id="Cfj-oe-wKB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="vhd-mg-l4O">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="WD2-hd-A1n">
+                            <connections>
+                                <action selector="editButton_Tapped:" destination="FW8-2R-4zP" id="DIk-Af-gZ9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYH-cW-efa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2430" y="2707"/>
         </scene>
     </scenes>
     <resources>

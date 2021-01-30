@@ -96,7 +96,7 @@ extension HydrationController {
     
     private func reloadActivity(){
         self.logs?.removeAll()
-        self.hydrationLogs?.removeAll()
+        
         API.Activity.loadTodaysActivity(.hydration, completion: { activity in
             self.hydrationActivity = activity as? HydrationActivity
             API.Activity.observeTodaysNutritionLogs(completion: {
@@ -109,6 +109,7 @@ extension HydrationController {
     
     private func loadViewModels(){
         print("loadViewModels")
+        self.hydrationLogs?.removeAll()
         if let activity = hydrationActivity,
            let preferredUnits = preferredUnits {
             let handler = activity.getHandler(withIdentifier: activity.progressIdentifier)

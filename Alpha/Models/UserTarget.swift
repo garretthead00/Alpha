@@ -40,26 +40,19 @@ let USER_DEFAULT_TARGETS : [String : Double] = [
     ACTIVITY_DATA_IDENTIFIER.MindfulMinutes.rawValue: 0.0]
 
 class UserTarget {
-    
-    enum TargetType {
-        case fitness
-        case nutrition
-        case hydration
-        case sleep
-        case mindfulness
-    }
+
     
     var id : ACTIVITY_DATA_IDENTIFIER
     var value : Double?
-    var targetType : TargetType?
+    var targetType : ActivityType?
     
-    init(id: ACTIVITY_DATA_IDENTIFIER, name: String, description : String, icon : UIImage, value : Double, type: TargetType) {
+    init(id: ACTIVITY_DATA_IDENTIFIER, name: String, description : String, icon : UIImage, value : Double, type: ActivityType) {
         self.id = id
         self.value = value
         self.targetType = type
     }
     
-    init(id: ACTIVITY_DATA_IDENTIFIER, value : Double, type: TargetType) {
+    init(id: ACTIVITY_DATA_IDENTIFIER, value : Double, type: ActivityType) {
         self.id = id
         self.value = value
         self.targetType = type
@@ -70,18 +63,18 @@ extension UserTarget {
     
     static func transformUserTarget(key: String, value: Double) -> UserTarget? {
         switch key {
-            case ACTIVITY_DATA_IDENTIFIER.EnergyBurned.rawValue: return UserTarget(id: .EnergyBurned, value: value, type: TargetType.fitness)
-            case ACTIVITY_DATA_IDENTIFIER.Distance.rawValue: return UserTarget(id: .Distance, value: value, type: TargetType.fitness)
-            case ACTIVITY_DATA_IDENTIFIER.Steps.rawValue: return UserTarget(id: .Steps, value: value, type: TargetType.fitness)
-            case ACTIVITY_DATA_IDENTIFIER.WorkoutsCompleted.rawValue: return UserTarget(id: .WorkoutsCompleted, value: value, type: TargetType.fitness)
-            case ACTIVITY_DATA_IDENTIFIER.ExerciseMinutes.rawValue: return UserTarget(id: .ExerciseMinutes, value: value, type: TargetType.fitness)
-            case ACTIVITY_DATA_IDENTIFIER.EnergyConsumed.rawValue: return UserTarget(id: .EnergyConsumed, value: value, type: TargetType.nutrition)
-            case ACTIVITY_DATA_IDENTIFIER.Protein.rawValue: return UserTarget(id: .Protein, value: value, type: TargetType.nutrition)
-            case ACTIVITY_DATA_IDENTIFIER.Fat.rawValue: return UserTarget(id: .Fat, value: value, type: TargetType.nutrition)
-            case ACTIVITY_DATA_IDENTIFIER.Carbohydrates.rawValue: return UserTarget(id: .Carbohydrates, value: value, type: TargetType.nutrition)
-            case ACTIVITY_DATA_IDENTIFIER.Water.rawValue: return UserTarget(id: .Water, value: value, type: TargetType.hydration)
-            case ACTIVITY_DATA_IDENTIFIER.SleepMinutes.rawValue: return UserTarget(id: .SleepMinutes, value: value, type: TargetType.sleep)
-            case ACTIVITY_DATA_IDENTIFIER.MindfulMinutes.rawValue: return UserTarget(id: .MindfulMinutes, value: value, type: TargetType.mindfulness)
+            case ACTIVITY_DATA_IDENTIFIER.EnergyBurned.rawValue: return UserTarget(id: .EnergyBurned, value: value, type: ActivityType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.Distance.rawValue: return UserTarget(id: .Distance, value: value, type: ActivityType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.Steps.rawValue: return UserTarget(id: .Steps, value: value, type: ActivityType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.WorkoutsCompleted.rawValue: return UserTarget(id: .WorkoutsCompleted, value: value, type: ActivityType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.ExerciseMinutes.rawValue: return UserTarget(id: .ExerciseMinutes, value: value, type: ActivityType.fitness)
+            case ACTIVITY_DATA_IDENTIFIER.EnergyConsumed.rawValue: return UserTarget(id: .EnergyConsumed, value: value, type: ActivityType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Protein.rawValue: return UserTarget(id: .Protein, value: value, type: ActivityType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Fat.rawValue: return UserTarget(id: .Fat, value: value, type: ActivityType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Carbohydrates.rawValue: return UserTarget(id: .Carbohydrates, value: value, type: ActivityType.nutrition)
+            case ACTIVITY_DATA_IDENTIFIER.Water.rawValue: return UserTarget(id: .Water, value: value, type: ActivityType.hydration)
+            case ACTIVITY_DATA_IDENTIFIER.SleepMinutes.rawValue: return UserTarget(id: .SleepMinutes, value: value, type: ActivityType.sleep)
+            case ACTIVITY_DATA_IDENTIFIER.MindfulMinutes.rawValue: return UserTarget(id: .MindfulMinutes, value: value, type: ActivityType.mindfulness)
             default: return nil
         }
     }

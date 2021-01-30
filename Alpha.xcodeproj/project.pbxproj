@@ -75,6 +75,7 @@
 		689BE040257846D90029DE3D /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */; };
 		689BE05425786AB20029DE3D /* HealthKitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689BE05325786AB20029DE3D /* HealthKitAPI.swift */; };
 		68A1883825C20C90006FD3F8 /* CreateHydrationLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A1883725C20C90006FD3F8 /* CreateHydrationLogController.swift */; };
+		68A1885B25C21F8A006FD3F8 /* NutritionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A1885A25C21F8A006FD3F8 /* NutritionController.swift */; };
 		68A3FD2925BB49E900A21E5A /* TargetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD2825BB49E900A21E5A /* TargetsController.swift */; };
 		68A3FD2C25BB4A1F00A21E5A /* ActivityHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */; };
 		68A3FD5F25BCB67700A21E5A /* MacroTargetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */; };
@@ -177,6 +178,7 @@
 		689BE03F257846D90029DE3D /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
 		689BE05325786AB20029DE3D /* HealthKitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAPI.swift; sourceTree = "<group>"; };
 		68A1883725C20C90006FD3F8 /* CreateHydrationLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHydrationLogController.swift; sourceTree = "<group>"; };
+		68A1885A25C21F8A006FD3F8 /* NutritionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionController.swift; sourceTree = "<group>"; };
 		68A3FD2825BB49E900A21E5A /* TargetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsController.swift; sourceTree = "<group>"; };
 		68A3FD2B25BB4A1F00A21E5A /* ActivityHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHandlerView.swift; sourceTree = "<group>"; };
 		68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTargetMenuController.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				68A3FD5E25BCB67600A21E5A /* MacroTargetMenuController.swift */,
 				68A3FD2825BB49E900A21E5A /* TargetsController.swift */,
 				685BAFED258C36E90029CFDE /* HydrationController.swift */,
+				68A1885A25C21F8A006FD3F8 /* NutritionController.swift */,
 				685BAF122581D05F0029CFDE /* ActivityController.swift */,
 			);
 			path = Activity;
@@ -672,6 +675,7 @@
 				6838A0CD250CF64300C75D8E /* PreferredUnitsAPI.swift in Sources */,
 				685BAF132581D05F0029CFDE /* ActivityController.swift in Sources */,
 				686C354E24E4087A00B2D2D6 /* AppDelegate.swift in Sources */,
+				68A1885B25C21F8A006FD3F8 /* NutritionController.swift in Sources */,
 				68CA587924ED841F0038BCE2 /* Config.swift in Sources */,
 				6886BD18251199F700F29BEF /* DarkModeSettingsView.swift in Sources */,
 				68DDD28F251B72EA002387ED /* WalkthroughUnitsController.swift in Sources */,

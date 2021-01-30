@@ -29,7 +29,7 @@ class ActivityLogView: UITableViewCell {
     private func updateView(){
         if let viewModel = activityLogViewModel {
             valueLabel.text = "\(viewModel.timestamp)"
-            nameLabel.text = "\(viewModel.value) \(viewModel.unit)"
+            nameLabel.text = "\(Int(viewModel.value)) \(viewModel.unit)"
         }
     }
 }

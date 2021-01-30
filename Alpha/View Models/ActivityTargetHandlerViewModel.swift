@@ -16,7 +16,7 @@ struct ActivityTargetHandlerViewModel{
     let icon : UIImage
     let unit : Unit
     var value : Double
-    let targetType : UserTarget.TargetType
+     let targetType : ActivityType
     
     init(handler: ActivityDataHandler, unit: Unit){
         self.identifier = handler.id

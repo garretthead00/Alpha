@@ -66,7 +66,10 @@ extension ArchiveAPI {
                     }
                 }
                 var handler = handlerFactory.makeDataHandler(identifier, data: archivedData)
+                
+                print("observetarget for \(identifier)")
                 API.UserTarget.observeTarget(identifier, completion: { target in
+                    print("got target for \(target.id.rawValue)")
                     handler.target = target
                     handlers.append(handler)
                     dispatchGroup.leave()
