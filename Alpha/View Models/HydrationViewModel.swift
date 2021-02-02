@@ -28,11 +28,11 @@ class HydrationViewModel {
         self.unit = "target.unit"
     }
     
-    init(handler: ActivityDataHandler, ofUnit unit: Unit){
+    init(handler: ActivityDataHandler, ofUnit unit: Unit, target: UserTarget){
         let unitConverter = UnitConverter()
         self.progress = unitConverter.convert(value: handler.total, toUnit: unit, fromUnit: handler.unit)
         self.unit = unit.symbol
-        if let targetValue = handler.target!.value { self.target = unitConverter.convert(value: targetValue, toUnit: unit, fromUnit: handler.unit) }
+        if let targetValue = target.value { self.target = unitConverter.convert(value: targetValue, toUnit: unit, fromUnit: handler.unit) }
         else { self.target = 0.0 }
     }
 }

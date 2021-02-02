@@ -7,27 +7,32 @@
 //
 
 import UIKit
-
+import ProgressHUD
 
 class TargetsController: UITableViewController {
 
-    var allIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .ExerciseMinutes, .Steps, .Distance, .WorkoutsCompleted, .EnergyConsumed, .Protein, .Carbohydrates, .Fat, .Sugar, .Fiber, .Cholesterol, .MonounsaturatedFat, .PolyunsaturatedFat, .SaturatedFat, .TotalFluids, .Caffeine, .VitaminA, .VitaminB1, .VitaminB2, .VitaminB3, .VitaminB5, .VitaminB6, .VitaminB7, .VitaminC, .VitaminD, .VitaminE, .VitaminK, .Folate, .Calcium, .Chloride, .Iron, .Magnesium, .Manganese, .Phosphorus, .Potassium, .Sodium, .Zinc, .Chromium, .Copper, .Iodine, .Molybdenum, .Selenium, .Water, .SleepMinutes, .MindfulMinutes]
-    var tagretIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .ExerciseMinutes, .Steps, .Distance, .WorkoutsCompleted, .EnergyConsumed, .Protein, .Carbohydrates, .Fat, .Water, .SleepMinutes, .MindfulMinutes]
-    var handlers : [ActivityDataHandler] = [] { didSet { manageData() } }
-    var bodyGoal : String? { didSet { tableView.reloadData() } }
+    var preferredUnits : PreferredUnits?
+    var targetHandlers : [TargetHandler] = [] { didSet { manageData() } }
+    var groupedHandlers = [[ActivityTargetHandlerViewModel]]()
+    var bodyGoal : String?
     
     let sectionTitles = ["Body", "Fitness", "Nutrition", "Hydration", "Sleep", "Mindfulness"]
-    var groupedHandlers = [[ActivityTargetHandlerViewModel]]()
+    let primaryTargets : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .EnergyConsumed, .Water, .SleepMinutes, .MindfulMinutes]
     var targetViewModels : [ActivityTargetHandlerViewModel] = []
     let unitFactory = PreferredUnitFactory()
-    var preferredUnits : PreferredUnits?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Targets"
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.allowsSelectionDuringEditing = true
-        loadData()
+        
+        // ProgressHUB config
+        ProgressHUD.colorAnimation = .systemGreen
+        ProgressHUD.animationType = .multipleCirclePulse
+        
+        loadTargets()
     }
 
     // MARK: IBActions and Outlets
@@ -72,7 +77,7 @@ class TargetsController: UITableViewController {
                         promptTargetMenu(forViewModel: target)
                     }
                     
-                case "BodyGoalTargetView": print("BodyGoalTargetView")
+                case "BodyGoalTargetView": break
                 default: break
             }
         }
@@ -93,7 +98,6 @@ extension TargetsController {
     
     private func editTargets(){
         if isEditing {
-            print("saveTargets")
             saveTargets()
         }
         isEditing = !isEditing
@@ -128,49 +132,43 @@ extension TargetsController {
     }
     
     private func setTarget(forIdentifier identifier: ACTIVITY_DATA_IDENTIFIER, withValue value: Double, ofUnit unit: Unit) {
-        if let index = self.handlers.firstIndex(where: { $0.id == identifier }) {
-            let convertedValue = UnitConverter().convert(value: value, toUnit: self.handlers[index].unit, fromUnit: unit)
-            self.handlers[index].target!.value = convertedValue
+        if let index = self.targetHandlers.firstIndex(where: { $0.id == identifier }) {
+            let convertedValue = UnitConverter().convert(value: value, toUnit: self.targetHandlers[index].unit, fromUnit: unit)
+            self.targetHandlers[index].value = convertedValue
             manageData()
         }
     }
     
-    private func setMacroTarget() {
-        self.performSegue(withIdentifier: "macroMenu", sender: nil)
-    }
+    private func setMacroTarget() { self.performSegue(withIdentifier: "macroMenu", sender: nil) }
 }
 
 
 // MARK: - DATA HANDLING; API service calls
 extension TargetsController {
     
-    private func loadData(){
+    private func loadTargets(){
+        ProgressHUD.show("Fetching Targets...", interaction: false)
         API.Bio.fetchBodyGoal(completion: { goal in
             self.bodyGoal = goal
-        })
-        API.PreferredUnits.observePreferredUnits(completion: { units in
-            self.preferredUnits = units
-            let handlerFactory = ArchiveDataHandlerFactory()
-            for identifier in self.tagretIdentifiers {
-                API.UserTarget.observeUserTarget(forIdentifier: identifier, completion: { target in
-                    if let target = target {
-                        let handler = handlerFactory.makeDataHandler(identifier, target: target)
-                        self.handlers.append(handler)
-                    }
+            API.PreferredUnits.observePreferredUnits(completion: { units in
+                self.preferredUnits = units
+                API.UserTarget.fetchTargetHandlers(completion: { handlers in
+                    self.targetHandlers = handlers
+                    ProgressHUD.show(icon: .bolt)
                 })
-            }
+            })
         })
     }
     
     private func saveTargets(){
         API.Bio.updateBio(withKey: "bodyGoal", value: self.bodyGoal!)
-        API.UserTarget.updateTargets(self.handlers)
+        API.UserTarget.updateTargets(targets: self.targetHandlers)
     }
     
     private func manageData(){
         groupedHandlers.removeAll()
         targetViewModels.removeAll()
-        for handler in handlers { targetViewModels.append(ActivityTargetHandlerViewModel(handler: handler, unit: unitFactory.createUnit(handler.id, units: preferredUnits!))) }
+        for handler in targetHandlers { targetViewModels.append(ActivityTargetHandlerViewModel(handler: handler, unit: unitFactory.createUnit(handler.id, units: preferredUnits!))) }
         groupedHandlers.append(targetViewModels.filter({ $0.targetType == .fitness }))
         groupedHandlers.append(targetViewModels.filter({ $0.targetType == .nutrition }))
         groupedHandlers.append(targetViewModels.filter({ $0.targetType == .hydration }))
@@ -183,28 +181,12 @@ extension TargetsController {
 
 // MARK: Protocol TargetDelegate
 extension TargetsController : TargetDelegate {
-
-    func updateMacros(handlers: [ActivityDataHandler]){
-        for handler in handlers {
-            if let index = self.handlers.firstIndex(where: { $0.id == handler.id }) {
-                
-                self.handlers[index].target!.value = handler.target!.value
-            }
-        }
-        manageData()
-    }
+    func updateBodyGoalTarget(value: String) { self.bodyGoal = value }
     
     func updateMacros(viewModels: [ActivityTargetHandlerViewModel]){
-        for vm in viewModels {
-            setTarget(forIdentifier: vm.identifier, withValue: vm.value, ofUnit: vm.unit)
-        }
+        for vm in viewModels { setTarget(forIdentifier: vm.identifier, withValue: vm.value, ofUnit: vm.unit) }
         manageData()
     }
-    
-    func updateBodyGoalTarget(value: String) {
-        self.bodyGoal = value
-    }
-    
 }
 
 

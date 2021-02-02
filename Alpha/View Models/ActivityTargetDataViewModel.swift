@@ -23,25 +23,13 @@ class ActivityTargetDataViewModel {
         return value > 0.0 ? value : 0.0
     }
     
-    
-    init(handler: ActivityDataHandler, color: UIColor) {
-        self.name = handler.name
-        self.icon = handler.icon
-        self.unit = handler.unit.symbol
-        self.color = color
-        self.targetValue = handler.target!.value!
-        let percent = handler.target!.value! > 0 ? (handler.progress! / (handler.target!.value!)) * 100 : 0.0
-        self.percentComplete = percent
-        self.progress = handler.total
-    }
-    
-    init(handler: ActivityDataHandler, ofUnit unit: Unit, withColor color: UIColor){
+    init(handler: ActivityDataHandler, ofUnit unit: Unit, withColor color: UIColor, target: UserTarget){
         self.name = handler.name
         self.icon = handler.icon
         self.color = color
-        if let targetValue = handler.target!.value {
+        if let targetValue = target.value {
             let unitConverter = UnitConverter()
-            let percent = targetValue > 0 ? (handler.progress! / (targetValue)) * 100 : 0.0
+            let percent = targetValue > 0 ? (handler.total / (targetValue)) * 100 : 0.0
             self.percentComplete = percent
             self.targetValue = unitConverter.convert(value: targetValue, toUnit: unit, fromUnit: handler.unit)
             self.progress = unitConverter.convert(value: handler.total, toUnit: unit, fromUnit: handler.unit)

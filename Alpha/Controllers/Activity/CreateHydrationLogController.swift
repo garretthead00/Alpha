@@ -32,15 +32,12 @@ class CreateHydrationLogController: UIViewController {
     }
 }
 
-//
 extension CreateHydrationLogController {
     private func cancel() { self.dismiss(animated: true, completion: nil) }
     private func drink() {
-        print("DRINK!")
         if let input = valueTextField.text, let value = Double(input) {
             let row = unitPicker.selectedRow(inComponent: 0)
             let unit = unitOptions[row]
-            print("value of \(self.valueTextField.text)selected unit: \(unit.symbol)")
             delegate?.createLog(withValue: value, ofUnit: unit)
             self.dismiss(animated: true, completion: nil)
         }

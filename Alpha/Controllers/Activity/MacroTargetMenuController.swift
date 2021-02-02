@@ -24,14 +24,13 @@ class MacroTargetMenuController: UIViewController {
     var fatPercent : Double = 0.0
     var carbohydratePercent : Double = 0.0
     
-    
     // MARK: IBActions and Outlets
     @IBOutlet weak var pieChart: PieChartView!
     @IBAction func cancelButton_Tapped(_ sender: Any) { self.dismiss(animated: true, completion: nil) }
     @IBAction func saveButton_Tapped(_ sender: Any) { saveMacros() }
-    
-
-    @IBOutlet weak var energyLabel: UILabel!
+    @IBAction func energyTextField_EditingDidEnd(_ sender: Any) { updateEnergy() }
+    @IBAction func energyTextField_EditingDidDegin(_ sender: Any) { toggleEnergyLabel() }
+    @IBOutlet weak var energyTextField: UITextField!
     @IBOutlet weak var proteinSlider: UISlider!
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var fatSlider: UISlider!
@@ -68,7 +67,8 @@ class MacroTargetMenuController: UIViewController {
         chartDataSet.selectionShift = 0
         setupCharts()
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { view.endEditing(true) }
 }
 
 extension MacroTargetMenuController {
@@ -84,36 +84,27 @@ extension MacroTargetMenuController {
                let proteinTarget = proteinHandler!.value
                let fatTarget = fatHandler!.value
                let carbohydratesTarget = carbohydratesHandler!.value
-                energyLabel.text = "\(Int(energyTarget)) \(preferredUnit.symbol)"
+                energyTextField.text = "\(Int(energyTarget)) \(preferredUnit.symbol)"
                 
                 proteinPercent = energyTarget > 0 ? (proteinTarget / energyTarget) * 100 : 0
                 fatPercent = energyTarget > 0 ? (fatTarget / energyTarget) * 100 : 0
                 carbohydratePercent = energyTarget > 0 ? (carbohydratesTarget / energyTarget) * 100 : 0
                 let sum = proteinPercent + fatPercent + carbohydratePercent
-                if sum != 100 {
-                    proteinLabel.textColor = .systemRed
-                    fatLabel.textColor = .systemRed
-                    carbohydratesLabel.textColor = .systemRed
-                } else {
-                    proteinLabel.textColor = .label
-                    fatLabel.textColor = .label
-                    carbohydratesLabel.textColor = .label
-                }
+                proteinLabel.textColor = sum != 100 ? .systemRed : .label
+                fatLabel.textColor = sum != 100 ? .systemRed : .label
+                carbohydratesLabel.textColor = sum != 100 ? .systemRed : .label
                 proteinLabel.text = "\(Int(proteinPercent)) %"
                 fatLabel.text = "\(Int(fatPercent)) %"
                 carbohydratesLabel.text = "\(Int(carbohydratePercent)) %"
                 proteinSlider.value = Float(proteinPercent)
                 fatSlider.value = Float(fatPercent)
                 carbohydratesSlider.value = Float(carbohydratePercent)
-                
-                // Handle Chart data
                 chartDataSet.removeAll()
                 chartDataSet.append(contentsOf: [PieChartDataEntry(value: proteinTarget), PieChartDataEntry(value: fatTarget), PieChartDataEntry(value: carbohydratesTarget)])
                 let colors = [UIColor.systemRed, UIColor.systemTeal, UIColor.systemYellow]
                 chartDataSet.colors = colors
                 let chartData = PieChartData(dataSet: chartDataSet)
                 pieChart.data = chartData
-            
         }
     }
     
@@ -164,9 +155,9 @@ extension MacroTargetMenuController {
         let fatValue = energyTarget * fatPercent / 100
         let carbValue = energyTarget * carbohydratePercent / 100
         print("setTargets: protein - \(proteinValue)    fats - \(fatValue)     carbs - \(carbValue)")
-        proteinHandler!.value = proteinValue > 0 ? proteinValue : 0
-        fatHandler!.value = fatValue > 0 ? fatValue : 0
-        carbohydratesHandler!.value = carbValue > 0 ? carbValue : 0
+        proteinHandler!.value = proteinValue > 0 ? proteinValue.rounded(.down) : 0
+        fatHandler!.value = fatValue > 0 ? fatValue.rounded(.down) : 0
+        carbohydratesHandler!.value = carbValue > 0 ? carbValue.rounded(.down) : 0
         refreshViewModels()
     }
     
@@ -177,10 +168,21 @@ extension MacroTargetMenuController {
     }
     
     private func saveMacros(){
-        let sum = proteinPercent + fatPercent + carbohydratePercent
+        let sum = Int(proteinPercent + fatPercent + carbohydratePercent)
         if sum == 100 {
             delegate?.updateMacros(viewModels: [energyConsumedHandler!, proteinHandler!, fatHandler!, carbohydratesHandler!])
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
+    private func updateEnergy(){
+        if let input = energyTextField.text,
+            let energy = Double(input) {
+            energyConsumedHandler!.value = energy
+            setTargets()
+        }
+    }
+    
+    private func toggleEnergyLabel() { energyTextField.text = "\(Int(energyConsumedHandler!.value))" }
 }
+

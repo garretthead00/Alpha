@@ -629,20 +629,20 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy Consumed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fke-Vg-3Zi">
-                                        <rect key="frame" x="33" y="0.0" width="181" height="25"/>
+                                        <rect key="frame" x="33" y="0.0" width="118.5" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="720 kCals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xea-IH-7ch">
-                                        <rect key="frame" x="222" y="0.0" width="128" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="128" id="5wD-Q1-5Yu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="cals" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zw2-jy-QkJ">
+                                        <rect key="frame" x="159.5" y="0.0" width="190.5" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="energyTextField_EditingDidDegin:" destination="2PE-q1-76w" eventType="editingDidBegin" id="N5g-hC-vCG"/>
+                                            <action selector="energyTextField_EditingDidEnd:" destination="2PE-q1-76w" eventType="editingDidEnd" id="zGM-Vk-Efl"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XDd-9p-GYw">
@@ -771,7 +771,7 @@
                     <connections>
                         <outlet property="carbohydratesLabel" destination="3JK-5T-3fy" id="YjJ-6V-9dD"/>
                         <outlet property="carbohydratesSlider" destination="BFM-z2-h5d" id="3N7-eW-Ley"/>
-                        <outlet property="energyLabel" destination="xea-IH-7ch" id="ekq-n0-636"/>
+                        <outlet property="energyTextField" destination="zw2-jy-QkJ" id="4aL-by-JpR"/>
                         <outlet property="fatLabel" destination="3UI-kl-doO" id="HqK-Vr-Y79"/>
                         <outlet property="fatSlider" destination="SqS-Bh-dzL" id="sQx-gx-03N"/>
                         <outlet property="pieChart" destination="D5G-wf-Fsv" id="Vcz-09-yaP"/>

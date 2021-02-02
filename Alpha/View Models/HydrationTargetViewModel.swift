@@ -20,11 +20,11 @@ class HydrationTargetViewModel {
         self.unit = ""
     }
     
-    init(handler: ActivityDataHandler, ofUnit unit: Unit){        
+    init(handler: ActivityDataHandler, ofUnit unit: Unit, target: UserTarget){
         let unitConverter = UnitConverter()
         self.waterDrank = unitConverter.convert(value: handler.total, toUnit: unit, fromUnit: handler.unit)
         self.unit = unit.symbol
-        if let targetValue = handler.target!.value { self.targetValue = unitConverter.convert(value: targetValue, toUnit: unit, fromUnit: handler.unit) }
+        if let targetValue = target.value { self.targetValue = unitConverter.convert(value: targetValue, toUnit: unit, fromUnit: handler.unit) }
         else { self.targetValue = 0.0 }
     }
     

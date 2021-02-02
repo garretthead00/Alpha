@@ -11,33 +11,8 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class ActivityAPI {
+    
     var ACTIVITYLOGS_DB_REF = Database.database().reference().child("activityLogs")
-    
-    
-    
-    func observeActivityLogs(forActivity activity: String, completion: @escaping([ActivityLog]) -> Void) {
-        var logs : [ActivityLog] = []
-        let now = Date()
-        let startOfDay = Calendar.current.startOfDay(for: now).timeIntervalSince1970
-        print("start of day: \(startOfDay) and now: \(now.timeIntervalSince1970)")
-        guard let currentUser = Auth.auth().currentUser else { return }
-        ACTIVITYLOGS_DB_REF.child(currentUser.uid).child(activity).queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfDay).queryEnding(atValue: now.timeIntervalSince1970).observe(.value, with: { snapshot in
-            let items = snapshot.children.allObjects as! [DataSnapshot]
-            for (_, item) in items.enumerated() {
-                if let data = item.value as? [String:Any]{
-                    switch activity {
-                        case "fitness" : if let log = FitnessLog.transformFitnessLog(data: data, key: item.key) { logs.append(log) }
-                        case "nutrition" : if let log = NutritionLog.transformLog(data: data, key: item.key) { logs.append(log) }
-                        case "hydration" : if let log = NutritionLog.transformLog(data: data, key: item.key) { logs.append(log) }
-                        case "sleep" : if let log = SleepLog.transformLog(data: data, key: item.key) { logs.append(log) }
-                        case "mindfulness" : if let log = MindfulnessLog.transformLog(data: data, key: item.key) { logs.append(log) }
-                        default : break
-                    }
-                }
-            }
-            completion(logs)
-        })
-    }
     
     // Returns the User Fitness Logs.
     func observeFitnessLogs( completion: @escaping (FitnessLog) -> Void) {
@@ -166,4 +141,5 @@ class ActivityAPI {
             completion(activity)
         })
     }
+
 }

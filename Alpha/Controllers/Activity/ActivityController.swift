@@ -9,16 +9,21 @@
 import UIKit
 import ProgressHUD
 
+struct TargetedHandler {
+    var handler : ActivityDataHandler
+    var target : UserTarget
+    var unit : Unit
+}
+
 class ActivityController: UITableViewController {
 
 
-    // MARK: - HealthKit parameters
+    var activityIdentifiers : [ActivityType] = [.fitness, .nutrition, .hydration, .sleep, .mindfulness]
+    var activities : [Activity] = [] { didSet { manageHandlers() } }
     var isHealthKitEnabled : Bool = false
     var preferredUnits : PreferredUnits?
-    
-    
-    var activityIdentifiers : [ActivityType] = [.fitness, .nutrition, .hydration, .sleep, .mindfulness]
-    var activities : [Activity] = [] { didSet { self.tableView.reloadData() } }
+    var userTargets : [UserTarget] = []
+    var targetedHandlers : [[TargetedHandler]] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -44,10 +49,11 @@ class ActivityController: UITableViewController {
         print("start of day: \(startOfDay) and now: \(now.timeIntervalSince1970)")
     }
     
-
     
     @objc private func refreshController(){
-        self.activities.removeAll()
+        activities.removeAll()
+        targetedHandlers.removeAll()
+        tableView.reloadData()
         loadActivity()
         self.refreshControl!.endRefreshing()
     }
@@ -57,29 +63,26 @@ class ActivityController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return activities.count
+        return targetedHandlers.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activities[section].archiveDataHandlers.filter({ $0.target != nil }).count
+        return targetedHandlers[section].count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
         let row = indexPath.row
+        let handler = targetedHandlers[section][row]
         if row == 0 {
             let activity = activities[section]
-            let identifier = activity.progressIdentifier
-            let unit = PreferredUnitFactory().createUnit(identifier, units: self.preferredUnits!)
-            let viewModel = ActivityViewModel(activity: activity, withUnit: unit)
+            let viewModel = ActivityViewModel(activity: activity, withUnit: handler.unit, target: handler.target)
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityView", for: indexPath) as! ActivityView
             cell.activityViewModel = viewModel
             return cell
         } else {
             let activity = activities[section]
-            let identifier = activity.activityDataIdentifiers[row]
-            let unit = PreferredUnitFactory().createUnit(identifier, units: self.preferredUnits!)
-            let viewModel = ActivityTargetDataViewModel(handler: activity.getHandler(withIdentifier: identifier)!, ofUnit: unit, withColor: activity.color)
+            let viewModel = ActivityTargetDataViewModel(handler: handler.handler, ofUnit: handler.unit, withColor: activity.color, target: handler.target)
             let cell = tableView.dequeueReusableCell(withIdentifier: "TargetActivityView", for: indexPath) as! TargetActivityView
             cell.viewModel = viewModel
             return cell
@@ -100,6 +103,7 @@ class ActivityController: UITableViewController {
             let destination = segue.destination as! HydrationController
             let activity = sender as! HydrationActivity
             destination.preferredUnits = self.preferredUnits
+            destination.userTargets = userTargets.filter({ $0.targetType == .hydration })
             destination.hydrationActivity =  activity
         }
         else if segue.identifier == ActivityType.nutrition.rawValue {
@@ -115,15 +119,36 @@ class ActivityController: UITableViewController {
 // MARK: - API
 extension ActivityController {
     private func loadActivity(){
+        ProgressHUD.show("Fetching Activity...", interaction: false)
         API.PreferredUnits.observePreferredUnits(completion: { units in
             self.preferredUnits = units
-            for type in self.activityIdentifiers {
-                print("type: \(type)")
-                API.Activity.loadTodaysActivity(type, completion: { activity in
-                    self.activities.append(activity)
-                })
-            }
+            API.UserTarget.observeTargets(completion: { targets in
+                self.userTargets = targets
+                for type in self.activityIdentifiers {
+                    print("type: \(type)")
+                    API.Activity.loadTodaysActivity(type, completion: { activity in
+                        self.activities.append(activity)
+                        ProgressHUD.show(icon: .bolt)
+                    })
+                }
+            })
         })
+    }
+    
+    private func manageHandlers() {
+        targetedHandlers.removeAll()
+        for activity in activities {
+            let targets = userTargets.filter({ $0.targetType == activity.activityType })
+            var handlers : [TargetedHandler] = []
+            for target in targets {
+                let handler = activity.getHandler(withIdentifier: target.id)
+                let unit = PreferredUnitFactory().createUnit(target.id, units: self.preferredUnits!)
+                if handler?.id == activity.progressIdentifier { handlers.insert(TargetedHandler(handler: handler!, target: target, unit: unit), at: 0) }
+                else { handlers.append(TargetedHandler(handler: handler!, target: target, unit: unit)) }
+            }
+            targetedHandlers.append(handlers)
+            tableView.reloadData()
+        }
     }
 }
 

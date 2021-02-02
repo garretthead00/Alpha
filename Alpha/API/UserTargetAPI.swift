@@ -32,19 +32,35 @@ class UserTargetAPI {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
-        
-        API.PreferredUnits.observePreferredUnits(completion: {
-            units in
-            self.USERTARGETS_DB_REF.child(currentUser.uid).observeSingleEvent(of: .value, with: {
-                snapshot in
-                let items = snapshot.children.allObjects as! [DataSnapshot]
-                for (_, item) in items.enumerated() {
-                    if let target = UserTarget.transformUserTarget(key: item.key, value: item.value as! Double) {
-                        targets.append(target)
-                    }
+
+        USERTARGETS_DB_REF.child(currentUser.uid).observeSingleEvent(of: .value, with: {
+            snapshot in
+            let items = snapshot.children.allObjects as! [DataSnapshot]
+            for (_, item) in items.enumerated() {
+                if let target = UserTarget.transformUserTarget(key: item.key, value: item.value as! Double) {
+                    targets.append(target)
                 }
-                completion(targets)
-            })
+            }
+            completion(targets)
+        })
+    }
+    
+    func fetchTargetHandlers(completion: @escaping([TargetHandler]) -> Void) {
+        var targets : [TargetHandler] = []
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let factory = ActivityFactory()
+        USERTARGETS_DB_REF.child(currentUser.uid).observeSingleEvent(of: .value, with: {
+            snapshot in
+            let items = snapshot.children.allObjects as! [DataSnapshot]
+            for (_, item) in items.enumerated() {
+                if let target = UserTarget.transformUserTarget(key: item.key, value: item.value as! Double) {
+                    let handler = factory.makeTargetHandler(target: target)
+                    targets.append(handler!)
+                }
+            }
+            completion(targets)
         })
     }
     
@@ -78,7 +94,7 @@ class UserTargetAPI {
         })
     }
     
-    func updateTargets(targets: [UserTarget]) {
+    func updateTargets(targets: [TargetHandler]) {
         guard let currentUser = Auth.auth().currentUser else {
             return
         }
@@ -107,25 +123,25 @@ class UserTargetAPI {
             }
         })
     }
-    
-    func updateTargets(_ handlers: [ActivityDataHandler]) {
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        var data : [String: Any] = [:]
-        for handler in handlers {
-            if let target = handler.target {
-                data[target.id.rawValue] = target.value
-            }
-            
-        }
-        USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues(data, withCompletionBlock: {
-            err, ref in
-            if err != nil {
-                return
-            }
-            print("Successfully updated UserTargets in Firebase!")
-        })
-        
-    }
+//    
+//    func updateTargets(_ handlers: [ActivityDataHandler]) {
+//        guard let currentUser = Auth.auth().currentUser else {
+//            return
+//        }
+//        var data : [String: Any] = [:]
+//        for handler in handlers {
+//            if let target = handler.target {
+//                data[target.id.rawValue] = target.value
+//            }
+//            
+//        }
+//        USERTARGETS_DB_REF.child(currentUser.uid).updateChildValues(data, withCompletionBlock: {
+//            err, ref in
+//            if err != nil {
+//                return
+//            }
+//            print("Successfully updated UserTargets in Firebase!")
+//        })
+//        
+//    }
 }

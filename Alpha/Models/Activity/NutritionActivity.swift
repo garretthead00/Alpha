@@ -26,7 +26,7 @@ struct NutritionActivity : Activity {
     var logs : [NutritionLog] = []
     
     var progressIdentifier : ACTIVITY_DATA_IDENTIFIER = .EnergyConsumed
-    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyConsumed, .Protein, .Carbohydrates, .Fat]// .Sugar, .Fiber, .Cholesterol, .MonounsaturatedFat, .PolyunsaturatedFat, .SaturatedFat, .TotalFluids, .Caffeine, .VitaminA, .VitaminB1, .VitaminB2, .VitaminB3, .VitaminB5, .VitaminB6, .VitaminB7, .VitaminC, .VitaminD, .VitaminE, .VitaminK, .Folate, .Calcium, .Chloride, .Iron, .Magnesium, .Manganese, .Phosphorus, .Potassium, .Sodium, .Zinc, .Chromium, .Copper, .Iodine, .Molybdenum, .Selenium]
+    var activityDataIdentifiers : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyConsumed, .Protein, .Carbohydrates, .Fat, .Sugar]// .Fiber, .Cholesterol, .MonounsaturatedFat, .PolyunsaturatedFat, .SaturatedFat, .TotalFluids, .Caffeine, .VitaminA, .VitaminB1, .VitaminB2, .VitaminB3, .VitaminB5, .VitaminB6, .VitaminB7, .VitaminC, .VitaminD, .VitaminE, .VitaminK, .Folate, .Calcium, .Chloride, .Iron, .Magnesium, .Manganese, .Phosphorus, .Potassium, .Sodium, .Zinc, .Chromium, .Copper, .Iodine, .Molybdenum, .Selenium]
     var archiveDataHandlers : [ActivityDataHandler] = []
     
     init() {

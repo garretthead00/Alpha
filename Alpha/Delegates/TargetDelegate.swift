@@ -9,7 +9,6 @@
 import Foundation
 
 protocol TargetDelegate {
-    func updateMacros(handlers: [ActivityDataHandler])
     func updateMacros(viewModels: [ActivityTargetHandlerViewModel])
     func updateBodyGoalTarget(value: String)
 }

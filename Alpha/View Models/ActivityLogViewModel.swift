@@ -16,7 +16,7 @@ class ActivityLogViewModel {
     var value : Double
     var unit : String
 
-    init(log: ActivityLog, target: UserTarget) {
+    init(log: ActivityLog) {
         self.name = ""
         self.timestamp = ""
         self.value = 0.0

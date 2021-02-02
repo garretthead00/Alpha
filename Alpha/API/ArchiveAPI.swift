@@ -55,7 +55,6 @@ extension ArchiveAPI {
         for identifier in identifiers {
             dispatchGroup.enter()
             USER_ACTIVITY_ARCHIVES.child(currentUser.uid).child(identifier.rawValue).queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfDay).queryEnding(atValue: now.timeIntervalSince1970).observe(.value, with: { snapshot in
-                
                 var archivedData : [Date:Double] = [:]
                 let items = snapshot.children.allObjects as! [DataSnapshot]
                 for (_, item) in items.enumerated() {
@@ -65,15 +64,8 @@ extension ArchiveAPI {
                         archivedData[timestamp] = value
                     }
                 }
-                var handler = handlerFactory.makeDataHandler(identifier, data: archivedData)
-                
-                print("observetarget for \(identifier)")
-                API.UserTarget.observeTarget(identifier, completion: { target in
-                    print("got target for \(target.id.rawValue)")
-                    handler.target = target
-                    handlers.append(handler)
-                    dispatchGroup.leave()
-                })
+                handlers.append(handlerFactory.makeDataHandler(identifier, data: archivedData))
+                dispatchGroup.leave()
             })
         }
         

@@ -15,7 +15,9 @@ protocol HydrationDelegate {
 class HydrationController: UITableViewController {
 
     var preferredUnits : PreferredUnits?
-    var hydrationActivity : HydrationActivity? { didSet { loadHydrationLogs() } }
+    var hydrationActivity : HydrationActivity? { didSet { loadViewModels() } }
+    var userTargets : [UserTarget] = []
+    
     var hydrationViewModel : HydrationViewModel?
     var hydrationTargetViewModel : HydrationTargetViewModel?
     var hydrationLogs : [ActivityLogViewModel]? = []
@@ -23,7 +25,7 @@ class HydrationController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadHydrationLogs()
+        loadHydrationLogs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,13 +116,14 @@ extension HydrationController {
            let preferredUnits = preferredUnits {
             let handler = activity.getHandler(withIdentifier: activity.progressIdentifier)
             let unit = PreferredUnitFactory().createUnit(activity.progressIdentifier, units: preferredUnits)
-            self.hydrationViewModel = HydrationViewModel(handler: handler!, ofUnit: unit)
-            self.hydrationTargetViewModel = HydrationTargetViewModel(handler: handler!, ofUnit: unit)
+            let target = userTargets.first(where: { $0.id == handler?.id })
+            self.hydrationViewModel = HydrationViewModel(handler: handler!, ofUnit: unit, target: target!)
+           self.hydrationTargetViewModel = HydrationTargetViewModel(handler: handler!, ofUnit: unit, target: target!)
 
             if var logs = logs {
                 logs.sort(by: { $0.timestamp! > $1.timestamp! })
                 for log in logs {
-                    let hydrationLogViewModel = ActivityLogViewModel(log: log, target: handler!.target!)
+                    let hydrationLogViewModel = ActivityLogViewModel(log: log)
                     self.hydrationLogs?.append(hydrationLogViewModel)
                     self.tableView.reloadData()
                 }

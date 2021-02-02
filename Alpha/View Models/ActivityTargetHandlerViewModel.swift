@@ -18,24 +18,15 @@ struct ActivityTargetHandlerViewModel{
     var value : Double
      let targetType : ActivityType
     
-    init(handler: ActivityDataHandler, unit: Unit){
+    init(handler: TargetHandler, unit: Unit){
         self.identifier = handler.id
         self.name = handler.name
         self.icon = handler.icon
         self.unit = unit
-        if let targetValue = handler.target!.value {
-            let unitConverter = UnitConverter()
-            let convertedValue = unitConverter.convert(value: targetValue, toUnit: unit, fromUnit: handler.unit)
-            self.value = convertedValue
-        } else {
-            print("no conversion of value. \(handler.name)")
-            self.value = 0.0
-        }
-        if let type = handler.target!.targetType {
-            self.targetType = type
-        } else {
-            self.targetType = .fitness
-        }
+        self.targetType = handler.targetType
+        let unitConverter = UnitConverter()
+        let convertedValue = unitConverter.convert(value: handler.value, toUnit: unit, fromUnit: handler.unit)
+        self.value = convertedValue
     }
     
 }

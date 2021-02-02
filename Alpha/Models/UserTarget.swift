@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-let TARGETS : [String] = ["bodyGoal","energyBurned", "steps", "distance", "workouts", "exerciseMinutes","energyConsumed", "protein", "fats", "carbohydrates","water","sleepMinutes", "mindfulMinutes"]
 let DEFAULT_TARGETS : [String : Any] = ["bodyGoal": "Maintain",
                                            "energyBurned": 0.0,
                                            "steps": 0.0,
@@ -61,6 +60,7 @@ class UserTarget {
 
 extension UserTarget {
     
+    // map string key to the activity identifier. use the Target factory method to create the 
     static func transformUserTarget(key: String, value: Double) -> UserTarget? {
         switch key {
             case ACTIVITY_DATA_IDENTIFIER.EnergyBurned.rawValue: return UserTarget(id: .EnergyBurned, value: value, type: ActivityType.fitness)
