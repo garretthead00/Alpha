@@ -25,7 +25,7 @@ protocol Activity {
     func getValue(withIdentifier identifier: ACTIVITY_DATA_IDENTIFIER) -> Double
 }
 
-var ALL_ACTIVITY_IDENTIFIERS : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .ExerciseMinutes, .Steps, .Distance, .WorkoutsCompleted, .EnergyConsumed, .Protein, .Carbohydrates, .Fat, .Sugar, .Fiber, .Cholesterol, .MonounsaturatedFat, .PolyunsaturatedFat, .SaturatedFat, .TotalFluids, .Caffeine, .VitaminA, .VitaminB1, .VitaminB2, .VitaminB3, .VitaminB5, .VitaminB6, .VitaminB7, .VitaminC, .VitaminD, .VitaminE, .VitaminK, .Folate, .Calcium, .Chloride, .Iron, .Magnesium, .Manganese, .Phosphorus, .Potassium, .Sodium, .Zinc, .Chromium, .Copper, .Iodine, .Molybdenum, .Selenium, .Water, .SleepMinutes, .MindfulMinutes]
+var ALL_ACTIVITY_IDENTIFIERS : [ACTIVITY_DATA_IDENTIFIER] = [.EnergyBurned, .ExerciseMinutes, .Steps, .Distance, .WorkoutsCompleted, .EnergyConsumed, .Protein, .Carbohydrates, .Fat, .Sugar, .Fiber, .Cholesterol, .MonounsaturatedFat, .PolyunsaturatedFat, .SaturatedFat, .TotalFluids, .Caffeine, .VitaminA, .VitaminB1, .VitaminB2, .VitaminB3, .VitaminB5, .VitaminB6, .VitaminB7, .VitaminC, .VitaminD, .VitaminE, .VitaminK, .Folate, .Calcium, .Chloride, .Iron, .Magnesium, .Phosphorus, .Potassium, .Sodium, .Zinc, .Chromium, .Copper, .Iodine, .Manganese, .Molybdenum, .Selenium, .Water, .SleepMinutes, .MindfulMinutes]
 
 enum ActivityType: String {
     case fitness = "Fitness"

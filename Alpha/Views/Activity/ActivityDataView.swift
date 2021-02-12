@@ -29,7 +29,7 @@ class ActivityDataView: UITableViewCell {
 
     private func updateView(){
         if let name = self.name { nameLabel.text = name }
-        if let value = self.value { valueLabel.text = "\(Int(value))" }
+        if let value = self.value { valueLabel.text = "\(value)" }
         if let icon = self.icon { iconImageView.image = icon }
     }
 

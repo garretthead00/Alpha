@@ -141,5 +141,20 @@ class ActivityAPI {
             completion(activity)
         })
     }
+    
+    
+    func loadTodaysTargetedActivity(_ type: ActivityType, withIdentifiers identifiers: [ACTIVITY_DATA_IDENTIFIER], completion: @escaping (Activity) -> Void) {
+        var activity = ActivityFactory().createActivity(type)
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        API.Archive.loadTodaysArchiveData(forIdentifiers: identifiers, completion: {
+            handlers in
+            activity.archiveDataHandlers = handlers
+            dispatchGroup.leave()
+        })
+        dispatchGroup.notify(queue: .main, execute: {
+            completion(activity)
+        })
+    }
 
 }

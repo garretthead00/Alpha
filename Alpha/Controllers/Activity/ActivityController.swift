@@ -95,7 +95,7 @@ class ActivityController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
-        self.performSegue(withIdentifier: self.activityIdentifiers[section].rawValue, sender: activities[section])
+        if (section == 1 || section == 2) { self.performSegue(withIdentifier: self.activityIdentifiers[section].rawValue, sender: activities[section]) }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -110,6 +110,7 @@ class ActivityController: UITableViewController {
             let destination = segue.destination as! NutritionController
             let activity = sender as! NutritionActivity
             destination.preferredUnits = self.preferredUnits
+            destination.userTargets = userTargets.filter({ $0.targetType == .nutrition })
             destination.activity =  activity
         }
     }
@@ -126,7 +127,8 @@ extension ActivityController {
                 self.userTargets = targets
                 for type in self.activityIdentifiers {
                     print("type: \(type)")
-                    API.Activity.loadTodaysActivity(type, completion: { activity in
+                    let identifiers = self.userTargets.filter({ $0.targetType == type }).map{ $0.id }
+                    API.Activity.loadTodaysTargetedActivity(type, withIdentifiers: identifiers, completion: { activity in
                         self.activities.append(activity)
                         ProgressHUD.show(icon: .bolt)
                     })
