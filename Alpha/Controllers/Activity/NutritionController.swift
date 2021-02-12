@@ -81,7 +81,7 @@ class NutritionController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
         let row = indexPath.row
-        
+                
         if section == 0{
             if row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "NutritionTargetView", for: indexPath) as! TargetedHandlerStackView
@@ -97,13 +97,13 @@ class NutritionController: UITableViewController {
                 print("got macro handlers: \(groupedHandlers.count)")
                 let proteinHandler = handlers.first(where: { $0.id == .Protein})
                 let proteinTarget = userTargets.first(where: { $0.id == proteinHandler!.id })
-                
+
                 let fatHandler = handlers.first(where: { $0.id == .Fat})
                 let fatTarget = userTargets.first(where: { $0.id == fatHandler!.id })
-                
+
                 let carbHandler = handlers.first(where: { $0.id == .Carbohydrates})
                 let carbTarget = userTargets.first(where: { $0.id == carbHandler!.id })
-                
+
                 let vm = MacroRatioChartViewModel(protein: (proteinHandler!, proteinTarget!), fat: (fatHandler!, fatTarget!), carbs: (carbHandler!, carbTarget!))
                 cell.viewModel = vm
                 return cell
